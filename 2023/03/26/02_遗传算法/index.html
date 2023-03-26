@@ -3,7 +3,7 @@
 <html lang="zh-CN">
     <head>
         <meta charset="UTF-8" />
-        <title>遗传算法 | EZ0328</title>
+        <title>遗传算法与模型优化 | EZ0328</title>
         <meta name="author" content="Eric Zhang" />
         <meta name="description" content="Be creative, be innovative" />
         <meta name="keywords" content="" />
@@ -257,7 +257,7 @@ mjx-container[display="true"] + br {
 
                 <div class="article">
     <div>
-        <h1>遗传算法</h1>
+        <h1>遗传算法与模型优化</h1>
     </div>
     <div class="info">
         <span class="date">
@@ -275,7 +275,7 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #ffa2c4">大创</a>
+                <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #03a9f4">大创</a>
             </span>
             
         </span>
@@ -305,34 +305,12 @@ algorithms）。（关于元启发式算法参见<a target="_blank" rel="noopene
 <h2 id="classical-ga">Classical GA</h2>
 <p>GA算法的伪代码描述如下（Hexo貌似不支持VSCode + Markdown Preview
 Enhanced +
-pseudocode.js文件魔改之后的伪代码渲染，只好在代码块之后放图了，显得直观些，想了解如何在markdown中写伪代码块参见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/406649966">在 Markdown
+pseudocode.js文件魔改之后的伪代码渲染，只好放图了，显得直观些，想了解如何在markdown中写伪代码块参见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/406649966">在 Markdown
 中书写伪代码</a>）</p>
-<pre class="pseudocode"><code>% This quicksort algorithm is extracted from Chapter 7, Introduction to Algorithms (3rd edition)
-\begin{algorithm}
-\caption{Quicksort with lineNumber}
-\begin{algorithmic}
-\PROCEDURE{Quicksort}{$A, p, r$}
-    \IF{$p &lt; r$} 
-        \STATE $q = $ \CALL{Partition}{$A, p, r$}
-        \STATE \CALL{Quicksort}{$A, p, q - 1$}
-        \STATE \CALL{Quicksort}{$A, q + 1, r$}
-    \ENDIF
-\ENDPROCEDURE
-\PROCEDURE{Partition}{$A, p, r$}
-    \STATE $x = A[r]$
-    \STATE $i = p - 1$
-    \FOR{$j = p$ \TO $r - 1$}
-        \IF{$A[j] &lt; x$}
-            \STATE $i = i + 1$
-            \STATE exchange
-            $A[i]$ with $A[j]$
-        \ENDIF
-        \STATE exchange $A[i]$ with $A[r]$
-    \ENDFOR
-\ENDPROCEDURE
-\end{algorithmic}
-\end{algorithm}
-&lt;/pre&gt;</code></pre>
+<figure>
+<img src="/2023/03/26/02_%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95/imgs/01.png" alt="img">
+<figcaption aria-hidden="true">img</figcaption>
+</figure>
 
     </div>
     
