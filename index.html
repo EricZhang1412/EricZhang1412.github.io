@@ -294,23 +294,10 @@ mjx-container[display="true"] + br {
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>遗传算法（GA，genetic algorithm）是一种基于种群的元启发式算法（metaheuristic algorithms）。（关于元启发式算法参见<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41313851/article/details/116045159">各种元启发式算法（Metaheuristics）介绍</a>），其灵感来自<strong>生物进化过程</strong>。</p>
-<h2 id="遗传算法的基本要素"><a href="#遗传算法的基本要素" class="headerlink" title="遗传算法的基本要素"></a>遗传算法的基本要素</h2><pre><code>1.染色体表示（chromosome representation），
-2.适应度选择（fitness selection），
-3.仿生算子（biological-inspired operators）
-</code></pre>
-<h2 id="遗传算法的工作方式"><a href="#遗传算法的工作方式" class="headerlink" title="遗传算法的工作方式"></a>遗传算法的工作方式</h2><p>问题参数编码为染色体，再利用迭代的方式进行选择，交叉以及变异等运算来交换种群中的染色体信息，生成符合优化目标的染色体。染色体即对应数据/数组（串式结构）。</p>
-<h2 id="遗传算法的基本步骤"><a href="#遗传算法的基本步骤" class="headerlink" title="遗传算法的基本步骤"></a>遗传算法的基本步骤</h2><pre><code>1. 编码：GA进行搜索之前对解空间的解数据表示成遗传空间的基因型串结构数据，这些串结构数据的不同组合构成了不同的点。
-2. 生成初始群体：随机产生N个初始串结构数据，每个串结构数据生成一个个体，N个个体构成一个群体。GA算法以这个群体为初始点开始进化。
-3. 适应度评估：依据实际的问题构造适应性函数。
-4. 选择：从当前群体中选出优良个体，使他们有机会作为父代为下一代繁殖子孙。（体现达尔文的适者生存法则）
-5. 交叉：（最主要的遗传操作）通过交叉操作得到新一代个体，新个体组合了父辈的个体特性，体现信息交换的思想。
-6. 变异：群体中随机选择一个个体，以一定概率随机改变串结构数据中的某个串的值。类比生物界的基因突变，GA算法的变异概率很低，通常取值很小。
-</code></pre>
-<h1 id="GA算法的基本结构与遗传算子"><a href="#GA算法的基本结构与遗传算子" class="headerlink" title="GA算法的基本结构与遗传算子"></a>GA算法的基本结构与遗传算子</h1><p>此部分将对GA算法的基本结构及其遗传算子进行讨论。</p>
-<h2 id="Classical-GA"><a href="#Classical-GA" class="headerlink" title="Classical GA"></a>Classical GA</h2><p>GA算法的伪代码描述如下（Hexo貌似不支持VSCode + Markdown Preview Enhanced + pseudocode.js文件魔改之后的伪代码渲染，只好放图了，显得直观些，想了解如何在markdown中写伪代码块参见<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/406649966">在 Markdown 中书写伪代码</a>）</p>
-<p>{asset_img 01.jpg [Classical Genetic Algorithm (GA) pseudocode]}</p>
-
+            <h1 id="概述">概述</h1>
+<p>遗传算法（GA，genetic
+algorithm）是一种基于种群的元启发式算法（metaheuristic
+algorithms）。（关于元启发式算法参见<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41313851/article/details/116045159">各种元启发式算法（Metaheuristics）介绍</a>），其灵感来自<strong>生物进化过程</strong>。</p>
             
         </div>
     </div>
@@ -323,7 +310,7 @@ mjx-container[display="true"] + br {
         
         <span class="tag">
             
-            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #ffa2c4">
+            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #00a596">
                 大创
             </a>
         </span>
@@ -350,7 +337,8 @@ mjx-container[display="true"] + br {
     <div class="description">
         <div class="content" v-pre>
             
-            <h1 id="汽车功率需求仿真"><a href="#汽车功率需求仿真" class="headerlink" title="汽车功率需求仿真"></a>汽车功率需求仿真</h1><p>每个驾驶员有自己的驾驶习惯，不同的驾驶习惯对应不同的驾驶模式，不同的驾驶模式对应不同的功率需求。因此，我们需要对不同的驾驶模式进行仿真。</p>
+            <h1 id="汽车功率需求仿真">汽车功率需求仿真</h1>
+<p>每个驾驶员有自己的驾驶习惯，不同的驾驶习惯对应不同的驾驶模式，不同的驾驶模式对应不同的功率需求。因此，我们需要对不同的驾驶模式进行仿真。</p>
             
         </div>
     </div>
@@ -390,18 +378,20 @@ mjx-container[display="true"] + br {
     <div class="description">
         <div class="content" v-pre>
             
-            <p>Welcome to <a href="ericzhang1412.github.io">EricZhang’s Blog</a>! </p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="code">hexo new &quot;My New Post&quot;
-</code></pre>
+            <p>Welcome to <a href="ericzhang1412.github.io">EricZhang's
+Blog</a>!</p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<pre class="code"><code>hexo new &quot;My New Post&quot;</code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="code">hexo server
-</code></pre>
+<h3 id="run-server">Run server</h3>
+<pre class="code"><code>hexo server</code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="code">hexo generate
-</code></pre>
+<h3 id="generate-static-files">Generate static files</h3>
+<pre class="code"><code>hexo generate</code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="code">hexo deploy
-</code></pre>
+<h3 id="deploy-to-remote-sites">Deploy to remote sites</h3>
+<pre class="code"><code>hexo deploy</code></pre>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
             
@@ -440,7 +430,9 @@ mjx-container[display="true"] + br {
         </div>
         <div class="name">Eric Zhang</div>
         <div class="description">
-            <p>University of Electronic Science and Technology of China, School of Information and Communication Engineering, Department of Internet-of-Things.</p>
+            <p>University of Electronic Science and Technology of China, School of
+Information and Communication Engineering, Department of
+Internet-of-Things.</p>
 
         </div>
         
