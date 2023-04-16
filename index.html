@@ -277,6 +277,36 @@ mjx-container[display="true"] + br {
             
 
 <div class="post">
+    <a href="/2023/04/16/%E5%85%B3%E4%BA%8E%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF/">
+        <h2 class="post-title">关于振荡电路</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/4/16
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/04/16/%E5%85%B3%E4%BA%8E%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
     <a href="/2023/04/06/%E6%98%8E%E6%9C%88%E6%B9%96/">
         <h2 class="post-title">明月湖二三事</h2>
     </a>
@@ -308,7 +338,7 @@ mjx-container[display="true"] + br {
         
         <span class="tag">
             
-            <a href="/tags/%E5%88%9B%E4%B8%9A/" style="color: #ff7d73">
+            <a href="/tags/%E5%88%9B%E4%B8%9A/" style="color: #ffa2c4">
                 创业
             </a>
         </span>
@@ -351,7 +381,7 @@ mjx-container[display="true"] + br {
         
         <span class="tag">
             
-            <a href="/tags/%E6%A0%A1%E5%8F%B2/" style="color: #ff7d73">
+            <a href="/tags/%E6%A0%A1%E5%8F%B2/" style="color: #03a9f4">
                 校史
             </a>
         </span>
@@ -427,14 +457,14 @@ mjx-container[display="true"] + br {
         
         <span class="tag">
             
-            <a href="/tags/DNN/" style="color: #ffa2c4">
+            <a href="/tags/DNN/" style="color: #ff7d73">
                 DNN
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/DP/" style="color: #00a596">
+            <a href="/tags/DP/" style="color: #ffa2c4">
                 DP
             </a>
         </span>
@@ -455,7 +485,7 @@ mjx-container[display="true"] + br {
         
         <span class="tag">
             
-            <a href="/tags/Koopman-Operator/" style="color: #00a596">
+            <a href="/tags/Koopman-Operator/" style="color: #ffa2c4">
                 Koopman Operator
             </a>
         </span>
@@ -507,7 +537,7 @@ mjx-container[display="true"] + br {
         
         <span class="tag">
             
-            <a href="/tags/ESP8266/" style="color: #03a9f4">
+            <a href="/tags/ESP8266/" style="color: #ff7d73">
                 ESP8266
             </a>
         </span>
@@ -537,76 +567,6 @@ mjx-container[display="true"] + br {
             <h1 id="因特网再认识">因特网再认识</h1>
 <h2 id="沙漏模型">沙漏模型</h2>
 <p>还是第一次看见这样子描述因特网的。 <img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/01.png" alt="fig01"></p>
-<h2 id="因特网的基本通信模型">因特网的基本通信模型</h2>
-<p>两大部分：<strong>地址</strong>（who+where）+<strong>传输协议</strong>（what+how+when）</p>
-<h3 id="尽力而为-or-补偿">尽力而为 or 补偿</h3>
-<p>网络将其收到的，要传送的数据尽力传送到目的节点，但不保证数据率、传输延迟、丢包率</p>
-<p>“尽力而为”并不是很好，因为有服务总比没有服务好。我们可以舍弃一些获取将就的数据传输业务</p>
-<h3 id="路由器的role">路由器的ROLE</h3>
-<p>实现包的“跳传”</p>
-<p><strong>应用不可知</strong>：路由等设备不关心我的应用本身是什么，应用遵循着相同的通信协议，网络设备只需要遵从协议收发。
-应用不可知的实现方式是：路由器不提供具体应用服务，而是根据包头转发数据包</p>
-<p><strong>深度数据包检查</strong>：路由器试图窥视数据包里的内容，总而改变他们的行为</p>
-<p><strong>跟踪、记忆</strong></p>
-<h3 id="关于状态">关于“状态”</h3>
-<p>定义：设备基于存储的信息来处于不同的状态，这些信息可以反映过于发生过的事情（和SS中的因果系统/记忆性系统很像）。</p>
-<p>对于路由器，如果不记录其转发日志，则被视为无记忆的/无状态的</p>
-<h3 id="端节点上的应用支撑数据包乱传怎么办">端节点上的应用支撑：数据包乱传怎么办</h3>
-<p>因特网协议中运行在基本因特网服务之上的传输服务，试图监测校正错误。——TCP的由来</p>
-<p>服务内容：Sender将数据给TCP，TCP将数据有序、准确地送达Receiver一次。TCP软件负责将数据拆分成数据包，对其编号以检测丢失、重排序、重传丢失的数据包，直到其最终送达。</p>
-<h4 id="tcp与ip的责任划分">TCP与IP的责任划分</h4>
-<p>TCP运行在端节点上，而非路由器内。原则上，路由器在转发的时候只能看到IP信息，只有终端节点会查看包中的TCP信息。</p>
-<p><strong>“端到端”的观点</strong>：因特网的设计原则是尽可能简化网络承担的功能，把那些功能放到终端节点实现。其优势在于不需要修改路由器的情况下，可以根据自己的需求创建新应用挥着新的支撑服务。这种观点也催化了因特网的迅猛发展。</p>
-<h2 id="路由转发技术">路由转发技术</h2>
-<p>路由表的构建：不断计算最佳路径。</p>
-<p>SDN：使用集中的控制器，为该区域的路由器计算正确的路由信息。（进一步简化了路由器的功能）</p>
-<h2 id="因特网的区域">因特网的区域</h2>
-<p><strong>自治系统（AS）</strong>：
-<strong>边界网关协议（BGP）</strong>：</p>
-<p>嵌套结构：BGP-&gt;AS-&gt;端节点</p>
-<h2 id="域名系统dns">域名系统（DNS）</h2>
-<p>背景：因特网路由器的地址用户记不住，用起来太麻烦了。</p>
-<p>分层命名： - 顶级名字：组织类型（.edu） -
-二级名字：各个机构（mit.edu） - ...</p>
-<p>DNS通过服务器实现，服务器分层与DNS命名分层一一对应。</p>
-<h3 id="例子1万维网协议">例子1：万维网协议</h3>
-<p>CS架构：Web客户端、Web服务器
-Web服务器存储网页，这些页面具有的名字称为<strong>URL（统一资源定位器）</strong></p>
-<p>依赖的主要协议：
-1.HTTP：提供请求Web页面的报文规则（与页面本身的格式没有关系，可以是图片、文字、视频等等）
-2.TCP 3.IP</p>
-<h3 id="例子2email">例子2：email</h3>
-<p>不是每个时间点两个人都同时在线，所以利用服务器储存邮件。
-sender-&gt;send.server-&gt;receiver.server-&gt;receiver</p>
-<h1 id="因特网发展史">因特网发展史</h1>
-<h2 id="s发明与憧憬">1960s：发明与憧憬</h2>
-<p>1.分组交换技术提出，但是目的不同。</p>
-<p>2.ARPAnet广域分组交换网（DARPA）
-将计算机和人连接在一起的应用：人与人的通信 广泛获取信息</p>
-<p>(前途一片大好啊）</p>
-<p><img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/02.png" alt="fig02">???</p>
-<h2 id="s证明与探索">1970s：证明与探索</h2>
-<p>ARPAnet-&gt;SATnet-&gt;PRnet 怎么将不同网络连接在一起？
-TCP、IP标准的提出</p>
-<h2 id="s成长与标准制定">1980s：成长与标准制定</h2>
-<p>ICCB组建（现为IAB）：解决如何将因特网的路由方案扩展到万亿级别的规模</p>
-<p>IETF成立。 DNS开发：终端节点扩展更加便捷。</p>
-<p>NSFnet的开发：淘汰掉了旧日的ARPAnet，运行成本过高。</p>
-<p><strong>其他协议套件的竞争</strong>：XNS、OSI。（OSI工作在竞争期之后就慢慢消逝了）</p>
-<p>异步传输模式（ATM）产生</p>
-<p>Email的产生</p>
-<h2 id="s商业化万维网光纤技术">1990s：商业化&amp;万维网&amp;光纤技术</h2>
-<p>nSFnet退役，取而代之的是商业网络提供商的网路。存储式音乐网站、亚马逊的崛起。</p>
-<p>寻址结构的改进：提出IPv6</p>
-<p>网络地址变换（NAT）设备：很多设备接入一个链路，这条链路连接到因特网。然后为这些节点分配本地地址。每个NAT设备会被赋予一个或者少数可全局路由的因特网地址，当数据包离开机群就重写包的地址。</p>
-<p>多播概念的提出</p>
-<h2 id="s享受宽带的十年">2000s：享受宽带的十年</h2>
-<p>宽带服务：</p>
-<p>两种计算机病毒的释放：Melissa、ILOVEYOU</p>
-<p>移动智能手机</p>
-<p>电子商务</p>
-<h2 id="s流媒体视频和社交媒体">2010s：流媒体视频和社交媒体</h2>
-
             
         </div>
     </div>
@@ -619,7 +579,7 @@ TCP、IP标准的提出</p>
         
         <span class="tag">
             
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #03a9f4">
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #ff7d73">
                 计算机网络
             </a>
         </span>
@@ -660,14 +620,14 @@ TCP、IP标准的提出</p>
         
         <span class="tag">
             
-            <a href="/tags/%E6%B5%B7%E6%80%9D/" style="color: #00bcd4">
+            <a href="/tags/%E6%B5%B7%E6%80%9D/" style="color: #ff7d73">
                 海思
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #03a9f4">
+            <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #ffa2c4">
                 嵌入式大赛
             </a>
         </span>
@@ -710,7 +670,7 @@ algorithms）。（关于元启发式算法参见<a target="_blank" rel="noopene
         
         <span class="tag">
             
-            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #03a9f4">
+            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #00bcd4">
                 大创
             </a>
         </span>
@@ -751,7 +711,7 @@ algorithms）。（关于元启发式算法参见<a target="_blank" rel="noopene
         
         <span class="tag">
             
-            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #03a9f4">
+            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #00a596">
                 大创
             </a>
         </span>
