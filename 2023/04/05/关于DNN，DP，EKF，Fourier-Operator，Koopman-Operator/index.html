@@ -32,6 +32,9 @@
 
 
 
+<script src="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.css" />
+
 
 
 
@@ -275,27 +278,27 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/DNN/" style="color: #03a9f4">DNN</a>
+                <a href="/tags/DNN/" style="color: #ffa2c4">DNN</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/DP/" style="color: #ff7d73">DP</a>
+                <a href="/tags/DP/" style="color: #ffa2c4">DP</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/EKF/" style="color: #00a596">EKF</a>
+                <a href="/tags/EKF/" style="color: #03a9f4">EKF</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/Fourier-Operator/" style="color: #ff7d73">Fourier Operator</a>
+                <a href="/tags/Fourier-Operator/" style="color: #00bcd4">Fourier Operator</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/Koopman-Operator/" style="color: #03a9f4">Koopman Operator</a>
+                <a href="/tags/Koopman-Operator/" style="color: #00a596">Koopman Operator</a>
             </span>
             
         </span>
@@ -432,10 +435,10 @@ process，这个翻译也是没谁了)</h4>
     
     
     
-    
     <div id="comment">
-        <div id="giscus-container" class="giscus"></div>
+        <div id="gitalk-container"></div>
     </div>
+    
     
     
     
@@ -473,23 +476,24 @@ process，这个翻译也是没谁了)</h4>
         <script src="/js/main.js"></script>
         
         
+<script>
+    let clientID = "687e760e080fe80a4308",
+        clientSecret = "42e0ab633bd94122a6eae2d2081c42480bf4dee5";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "Comments",
+        owner: "EricZhang1412",
+        admin: ["EricZhang1412"],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: false,
+        
+    })
+    gitalk.render("gitalk-container");
+</script>
 
-<script
-    src="https://giscus.app/client.js"
-    data-repo="EricZhang1412/EricZhang1412.github.io"
-    data-repo-id="R_kgDOJOMYsw"
-    data-category="Q&A"
-    data-category-id="DIC_kwDOJOMYs84CVWp"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="light_protanopia"
-    data-lang="zh-CN"
-    crossorigin
-    async
-></script>
 
 
 

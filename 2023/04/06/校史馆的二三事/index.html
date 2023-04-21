@@ -32,6 +32,9 @@
 
 
 
+<script src="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.css" />
+
 
 
 
@@ -163,7 +166,7 @@
             
             <span class="tag">
                 
-                <a href="/tags/%E6%A0%A1%E5%8F%B2/" style="color: #ff7d73">校史</a>
+                <a href="/tags/%E6%A0%A1%E5%8F%B2/" style="color: #00bcd4">校史</a>
             </span>
             
         </span>
@@ -651,10 +654,10 @@ Biology）这一单项最高荣誉。</p>
     
     
     
-    
     <div id="comment">
-        <div id="giscus-container" class="giscus"></div>
+        <div id="gitalk-container"></div>
     </div>
+    
     
     
     
@@ -692,23 +695,24 @@ Biology）这一单项最高荣誉。</p>
         <script src="/js/main.js"></script>
         
         
+<script>
+    let clientID = "687e760e080fe80a4308",
+        clientSecret = "42e0ab633bd94122a6eae2d2081c42480bf4dee5";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "Comments",
+        owner: "EricZhang1412",
+        admin: ["EricZhang1412"],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: false,
+        
+    })
+    gitalk.render("gitalk-container");
+</script>
 
-<script
-    src="https://giscus.app/client.js"
-    data-repo="EricZhang1412/EricZhang1412.github.io"
-    data-repo-id="R_kgDOJOMYsw"
-    data-category="Q&A"
-    data-category-id="DIC_kwDOJOMYs84CVWp"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="light_protanopia"
-    data-lang="zh-CN"
-    crossorigin
-    async
-></script>
 
 
 

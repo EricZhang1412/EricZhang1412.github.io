@@ -32,6 +32,9 @@
 
 
 
+<script src="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.css" />
+
 
 
 
@@ -275,12 +278,12 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/OneOS/" style="color: #03a9f4">OneOS</a>
+                <a href="/tags/OneOS/" style="color: #00bcd4">OneOS</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/ESP8266/" style="color: #ffa2c4">ESP8266</a>
+                <a href="/tags/ESP8266/" style="color: #03a9f4">ESP8266</a>
             </span>
             
         </span>
@@ -298,10 +301,10 @@ mjx-container[display="true"] + br {
     
     
     
-    
     <div id="comment">
-        <div id="giscus-container" class="giscus"></div>
+        <div id="gitalk-container"></div>
     </div>
+    
     
     
     
@@ -339,23 +342,24 @@ mjx-container[display="true"] + br {
         <script src="/js/main.js"></script>
         
         
+<script>
+    let clientID = "687e760e080fe80a4308",
+        clientSecret = "42e0ab633bd94122a6eae2d2081c42480bf4dee5";
+    
+    const gitalk = new Gitalk({
+        clientID: clientID,
+        clientSecret: clientSecret,
+        repo: "Comments",
+        owner: "EricZhang1412",
+        admin: ["EricZhang1412"],
+        language: "zh-CN",
+        id: location.pathname,
+        distractionFreeMode: false,
+        
+    })
+    gitalk.render("gitalk-container");
+</script>
 
-<script
-    src="https://giscus.app/client.js"
-    data-repo="EricZhang1412/EricZhang1412.github.io"
-    data-repo-id="R_kgDOJOMYsw"
-    data-category="Q&A"
-    data-category-id="DIC_kwDOJOMYs84CVWp"
-    data-mapping="pathname"
-    data-strict="0"
-    data-reactions-enabled="1"
-    data-emit-metadata="0"
-    data-input-position="bottom"
-    data-theme="light_protanopia"
-    data-lang="zh-CN"
-    crossorigin
-    async
-></script>
 
 
 
