@@ -1,0 +1,873 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <title>EZ0328</title>
+        <meta name="author" content="Eric Zhang" />
+        <meta name="description" content="Be creative, be innovative" />
+        <meta name="keywords" content="" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <link rel="icon" href="/images/avatar.jpg" />
+        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
+<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
+<link rel="stylesheet" href="/css/fonts.min.css" />
+<script> const mixins = {}; </script>
+
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
+<link
+    rel="stylesheet"
+    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
+/>
+<script src="/js/lib/highlight.js"></script>
+
+
+
+<script src="/js/lib/preview.js"></script>
+
+
+
+
+
+<script src="/js/lib/home.js"></script>
+
+<link rel="stylesheet" href="/css/main.css" />
+
+    <meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+  direction: ltr;
+}
+
+mjx-container[jax="SVG"] > svg {
+  overflow: visible;
+}
+
+mjx-container[jax="SVG"][display="true"] {
+  display: block;
+  text-align: center;
+  margin: 1em 0;
+}
+
+mjx-container[jax="SVG"][justify="left"] {
+  text-align: left;
+}
+
+mjx-container[jax="SVG"][justify="right"] {
+  text-align: right;
+}
+
+g[data-mml-node="merror"] > g {
+  fill: red;
+  stroke: red;
+}
+
+g[data-mml-node="merror"] > rect[data-background] {
+  fill: yellow;
+  stroke: none;
+}
+
+g[data-mml-node="mtable"] > line[data-line] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > rect[data-frame] {
+  stroke-width: 70px;
+  fill: none;
+}
+
+g[data-mml-node="mtable"] > .mjx-dashed {
+  stroke-dasharray: 140;
+}
+
+g[data-mml-node="mtable"] > .mjx-dotted {
+  stroke-linecap: round;
+  stroke-dasharray: 0,140;
+}
+
+g[data-mml-node="mtable"] > svg {
+  overflow: visible;
+}
+
+[jax="SVG"] mjx-tool {
+  display: inline-block;
+  position: relative;
+  width: 0;
+  height: 0;
+}
+
+[jax="SVG"] mjx-tool > mjx-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+mjx-tool > mjx-tip {
+  display: inline-block;
+  padding: .2em;
+  border: 1px solid #888;
+  font-size: 70%;
+  background-color: #F8F8F8;
+  color: black;
+  box-shadow: 2px 2px 5px #AAAAAA;
+}
+
+g[data-mml-node="maction"][data-toggle] {
+  cursor: pointer;
+}
+
+mjx-status {
+  display: block;
+  position: fixed;
+  left: 1em;
+  bottom: 1em;
+  min-width: 25%;
+  padding: .2em .4em;
+  border: 1px solid #888;
+  font-size: 90%;
+  background-color: #F8F8F8;
+  color: black;
+}
+
+foreignObject[data-mjx-xml] {
+  font-family: initial;
+  line-height: normal;
+  overflow: visible;
+}
+
+.MathJax path {
+  stroke-width: 3;
+}
+
+mjx-container[display="true"] {
+  overflow: auto hidden;
+}
+
+mjx-container[display="true"] + br {
+  display: none;
+}
+</style></head>
+    <body>
+        <div id="layout">
+            <transition name="fade">
+            <div id="loading" v-show="loading">
+                <div id="loading-circle">
+                    <h2>LOADING</h2>
+                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
+                    <img src="/images/loading.gif" />
+                </div>
+            </div>
+            </transition>
+            <transition name="into">
+            <div id="main" v-show="!loading">
+                <nav id="menu" ref="menu">
+    <div class="desktop-menu">
+        <a class="title" href="/">
+            <span>EZ0328</span>
+        </a>
+        
+        <a href="/">
+            <i class="fa-solid fa-house fa-fw"></i>
+            <span>&ensp;Home</span>
+        </a>
+        
+        <a href="/about">
+            <i class="fa-solid fa-id-card fa-fw"></i>
+            <span>&ensp;About</span>
+        </a>
+        
+        <a href="/archives">
+            <i class="fa-solid fa-box-archive fa-fw"></i>
+            <span>&ensp;Archives</span>
+        </a>
+        
+        <a href="/categories">
+            <i class="fa-solid fa-bookmark fa-fw"></i>
+            <span>&ensp;Categories</span>
+        </a>
+        
+        <a href="/tags">
+            <i class="fa-solid fa-tags fa-fw"></i>
+            <span>&ensp;Tags</span>
+        </a>
+        
+    </div>
+    <div id="mobile-menu">
+        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
+        <div class="title" @click="showMenu = !showMenu">
+            <i class="fa-solid fa-bars fa-fw"></i>
+            <span>&emsp;EZ0328</span>
+        </div>
+        <transition name="slide">
+        <div class="items" v-show="showMenu">
+            
+            <a href="/">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-house fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
+                </div>
+            </a>
+            
+            <a href="/about">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-id-card fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
+                </div>
+            </a>
+            
+            <a href="/archives">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-box-archive fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
+                </div>
+            </a>
+            
+            <a href="/categories">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-bookmark fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
+                </div>
+            </a>
+            
+            <a href="/tags">
+                <div class="item">
+                    <div style="min-width: 20px; max-width: 50px; width: 10%">
+                        <i class="fa-solid fa-tags fa-fw"></i>
+                    </div>
+                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
+                </div>
+            </a>
+            
+        </div>
+        </transition>
+    </div>
+</nav>
+
+                <div id="home-head">
+    <div id="home-background" ref="homeBackground" data-image="/images/bg2.png,/images/bg1.jpg"></div>
+    
+    <div id="home-info" @click="homeClick">
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="loop"></span>
+        <span class="info">
+            <div class="wrap">
+                <h1>EZ0328</h1>
+                <h3></h3>
+                <h5>Be creative, be innovative</h5>
+            </div>
+        </span>
+    </div>
+    
+</div>
+<div id="home-posts-wrap"  ref="homePostsWrap">
+    <div id="home-posts">
+        <div id="posts">
+            
+
+<div class="post">
+    <a href="/2023/04/16/%E5%85%B3%E4%BA%8E%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF/">
+        <h2 class="post-title">关于振荡电路</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/4/16
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/04/16/%E5%85%B3%E4%BA%8E%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/04/06/%E6%98%8E%E6%9C%88%E6%B9%96/">
+        <h2 class="post-title">明月湖二三事</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/4/6
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="学院派创业者面临的挑战"><strong>学院派创业者</strong>面临的<strong>挑战</strong></h1>
+<h2 id="where-is-the-challenge">Where is the Challenge？</h2>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%88%9B%E4%B8%9A/" style="color: #00bcd4">
+                创业
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/04/06/%E6%98%8E%E6%9C%88%E6%B9%96/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/04/06/%E6%A0%A1%E5%8F%B2%E9%A6%86%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/">
+        <h2 class="post-title">校史馆的二三事</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/4/6
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="校史馆解说词2023-年-3-月">校史馆解说词(2023 年 3 月)</h1>
+<p>欢迎大家来到电子科技大学校史馆。下面由我给大家介绍一下电子科技大学从建校至今
+60 多年来的发展历程。整个校史馆共 432
+个平方米，由三个厅组成。整个展览有五个组成部分，它们是：亲切关怀、殷切希望；建校初期，艰苦创业；文革十年、历经磨难；改革开放，盛世华章；新的世纪，新的跨越。</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%A0%A1%E5%8F%B2/" style="color: #ffa2c4">
+                校史
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/04/06/%E6%A0%A1%E5%8F%B2%E9%A6%86%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/04/05/%E5%85%B3%E4%BA%8EDNN%EF%BC%8CDP%EF%BC%8CEKF%EF%BC%8CFourier-Operator%EF%BC%8CKoopman-Operator/">
+        <h2 class="post-title">关于DNN，DP，EKF，Fourier Operator，Koopman Operator</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/4/5
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="英文缩写解释">英文缩写解释</h1>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">英文缩写</th>
+<th style="text-align: center;">英文解释</th>
+<th style="text-align: center;">中文解释</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">DNN</td>
+<td style="text-align: center;">Deep Neural Network</td>
+<td style="text-align: center;">深度神经网络</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">DP</td>
+<td style="text-align: center;">Deep Learning</td>
+<td style="text-align: center;">深度学习</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">EKF</td>
+<td style="text-align: center;">Extended Kalman Filter</td>
+<td style="text-align: center;">扩展卡尔曼滤波器</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">FO</td>
+<td style="text-align: center;">Fourier Operator</td>
+<td style="text-align: center;">傅里叶算子</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">KO</td>
+<td style="text-align: center;">Koopman Operator</td>
+<td style="text-align: center;">库普曼算子</td>
+</tr>
+</tbody>
+</table>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/DNN/" style="color: #ffa2c4">
+                DNN
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/DP/" style="color: #ffa2c4">
+                DP
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/EKF/" style="color: #00a596">
+                EKF
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Fourier-Operator/" style="color: #00bcd4">
+                Fourier Operator
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/Koopman-Operator/" style="color: #03a9f4">
+                Koopman Operator
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/04/05/%E5%85%B3%E4%BA%8EDNN%EF%BC%8CDP%EF%BC%8CEKF%EF%BC%8CFourier-Operator%EF%BC%8CKoopman-Operator/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/28/OneOS-%E5%90%AF%E7%89%A9-v1-2-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%9A%84Wifi%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/">
+        <h2 class="post-title">OneOS 启物 v1.2 开发板的Wifi模块开发</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/28
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="一-iar-开发环境搭建">一 IAR 开发环境搭建</h1>
+<p>不得不说，Mindmotion这家公司是真的令人迷惑，v1.0.6的固件包只有F3270，v1.0.5的固件包我能找到的只有F3273G和3273E系列，根本没有F3277的影子，所以果断弃之用IAR。</p>
+<h1 id="二-亿些使用中的问题">二 亿些使用中的问题</h1>
+<h2 id="esp8266无法连接wifi">ESP8266无法连接WiFi</h2>
+<p>因为自己的手机热点没有把AP band调成2.4GHz</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/OneOS/" style="color: #ff7d73">
+                OneOS
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/ESP8266/" style="color: #ffa2c4">
+                ESP8266
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/28/OneOS-%E5%90%AF%E7%89%A9-v1-2-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%9A%84Wifi%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+        <h2 class="post-title">《互联网设计与演化》阅读笔记</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/27
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="因特网再认识">因特网再认识</h1>
+<h2 id="沙漏模型">沙漏模型</h2>
+<p>还是第一次看见这样子描述因特网的。 <img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/01.png" alt="fig01"></p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #00a596">
+                计算机网络
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/27/03-Hi3861-Embedded-Competition/">
+        <h2 class="post-title">Hi3861开发板使用与第六届全国大学生嵌入式竞赛海思赛道</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/27
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>待填坑</p>
+
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E6%B5%B7%E6%80%9D/" style="color: #00a596">
+                海思
+            </a>
+        </span>
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #00bcd4">
+                嵌入式大赛
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/27/03-Hi3861-Embedded-Competition/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/26/02-GA/">
+        <h2 class="post-title">遗传算法与模型优化</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/26
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="概述">概述</h1>
+<p>遗传算法（GA，genetic
+algorithm）是一种基于种群的元启发式算法（metaheuristic
+algorithms）。（关于元启发式算法参见<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41313851/article/details/116045159">各种元启发式算法（Metaheuristics）介绍</a>），其灵感来自<strong>生物进化过程</strong>。</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #00bcd4">
+                大创
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/26/02-GA/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/26/01_%E5%A4%A7%E5%88%9B/">
+        <h2 class="post-title">2022-2023 大创项目——定制化汽车动力系统</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/26
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <h1 id="汽车功率需求仿真">汽车功率需求仿真</h1>
+<p>每个驾驶员有自己的驾驶习惯，不同的驾驶习惯对应不同的驾驶模式，不同的驾驶模式对应不同的功率需求。因此，我们需要对不同的驾驶模式进行仿真。</p>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        <span class="icon">
+            <i class="fa-solid fa-tags fa-fw"></i>
+        </span>
+        
+        
+        <span class="tag">
+            
+            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #ffa2c4">
+                大创
+            </a>
+        </span>
+        
+    </div>
+    <a href="/2023/03/26/01_%E5%A4%A7%E5%88%9B/" class="go-post">阅读全文</a>
+</div>
+
+<div class="post">
+    <a href="/2023/03/25/hello-world/">
+        <h2 class="post-title">For Starters——WELCOME! and some basic operations of Hexo</h2>
+    </a>
+    <div class="category-and-date">
+        
+        <span class="date">
+            <span class="icon">
+                <i class="fa-solid fa-calendar fa-fw"></i>
+            </span>
+            2023/3/25
+        </span>
+        
+        
+    </div>
+    <div class="description">
+        <div class="content" v-pre>
+            
+            <p>Welcome to <a href="ericzhang1412.github.io">EricZhang's
+Blog</a>!</p>
+<h2 id="quick-start">Quick Start</h2>
+            
+        </div>
+    </div>
+    <div class="post-tags">
+        
+        
+    </div>
+    <a href="/2023/03/25/hello-world/" class="go-post">阅读全文</a>
+</div>
+
+
+            <div class="page-current">
+    <div class="prev">
+        
+    </div>
+    <div class="page-index">
+        
+        <span class="current">1</span>
+        
+    </div>
+    <div class="next">
+        
+    </div>
+</div>
+
+        </div>
+    </div>
+    
+    <div id="home-card">
+        <div id="card-div">
+    <div class="card-style" style="width: 300px">
+        <div class="avatar">
+            <img src="/images/avatar.jpg" alt="avatar" />
+        </div>
+        <div class="name">Eric Zhang</div>
+        <div class="description">
+            <p>University of Electronic Science and Technology of China, School of
+Information and Communication Engineering, Department of
+Internet-of-Things.</p>
+
+        </div>
+        
+        <div class="icon-links">
+            
+            <span class="icon-link">
+                <a href="/">
+                    <i
+                        class="fa-brands fa-github fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a href="/">
+                    <i
+                        class="fa-brands fa-bilibili fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://eportal.uestc.edu.cn/new/index.html?browser=no">
+                    <i
+                        class="fa-solid fa-graduation-cap fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+            <span class="icon-link">
+                <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/mp/homepage?__biz=MzkzNDI4MTg3Nw==&hid=6&sn=9f9fddc2ce01ab44fbf63b70c273d7d6&scene=18">
+                    <i
+                        class="fa-solid fa-floppy-disk fa-fw"
+                    ></i>
+                </a>
+            </span>
+            
+        </div>
+        
+        
+        <div class="friend-links">
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://chat.openai.com/chat">ChatGPT</a>
+            </div>
+            
+            <div class="friend-link">
+                <a target="_blank" rel="noopener" href="https://touhouxingchen.github.io/">星辰の博客</a>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+    </div>
+    
+</div>
+
+                <footer id="footer">
+    <div id="footer-wrap">
+        <div>
+            &copy;
+            2023 - 2023 EZ0328
+            <span id="footer-icon">
+                <i class="fa-solid fa-font-awesome fa-fw"></i>
+            </span>
+            &commat;Eric Zhang
+        </div>
+        <div>
+            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
+            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+        </div>
+        
+    </div>
+</footer>
+
+            </div>
+            </transition>
+            
+            <transition name="fade">
+            <div id="preview" ref="preview" v-show="previewShow">
+                <img id="preview-content" ref="previewContent" />
+            </div>
+            </transition>
+            
+        </div>
+        <script src="/js/main.js"></script>
+        
+    </body>
+</html>
