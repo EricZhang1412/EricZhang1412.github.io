@@ -278,7 +278,7 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #00a596">大创</a>
+                <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #ff7d73">大创</a>
             </span>
             
         </span>
@@ -473,7 +473,7 @@ Studio 2022, 环境搭建参见Microsoft官方文档：<a target="_blank" rel="n
 <p>该工程的目录结构如下： <img src="/2023/03/26/01_%E5%A4%A7%E5%88%9B/12.png" alt="fig04"></p>
 <p>其中供用户操作的文件包括一个头文件，两个cpp，和一个ui文件。头文件中包含了用户API的声明，cpp文件中包含了用户API的实现，ui文件中包含了用户界面的设计。</p>
 <h3 id="源代码">源代码</h3>
-<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// widget.h</span></span>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// widget.h</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifndef WIDGET_H</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#define WIDGET_H</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -484,28 +484,28 @@ Studio 2022, 环境搭建参见Microsoft官方文档：<a target="_blank" rel="n
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QMessageBox&gt;</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>QT_BEGIN_NAMESPACE</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="kw">namespace</span> Ui <span class="op">{</span> <span class="kw">class</span> Widget<span class="op">;</span> <span class="op">}</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>namespace Ui <span class="op">{</span> class Widget<span class="op">;</span> <span class="op">}</span></span>
 <span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>QT_END_NAMESPACE</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Widget <span class="op">:</span> <span class="kw">public</span> <span class="ex">QWidget</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>class Widget <span class="op">:</span> public QWidget</span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="ex">Q_OBJECT</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    Q_OBJECT</span>
 <span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span><span class="op">:</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    Widget<span class="op">(</span><span class="ex">QWidget</span> <span class="op">*</span>parent <span class="op">=</span> <span class="kw">nullptr</span><span class="op">);</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>public<span class="op">:</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>    Widget<span class="op">(</span>QWidget <span class="op">*</span>parent <span class="op">=</span> nullptr<span class="op">);</span></span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">~</span>Widget<span class="op">();</span></span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span> <span class="ex">slots</span><span class="op">:</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>private slots<span class="op">:</span></span>
 <span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> on_pushButton_clicked<span class="op">();</span></span>
 <span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="kw">private</span><span class="op">:</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QTextEdit</span> <span class="op">*</span>textEdit<span class="op">;</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>private<span class="op">:</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>    QTextEdit <span class="op">*</span>textEdit<span class="op">;</span></span>
 <span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    Ui<span class="op">::</span>Widget <span class="op">*</span>ui<span class="op">;</span></span>
 <span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="op">};</span></span>
 <span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif </span><span class="co">// WIDGET_H</span></span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">//main.cpp</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">//main.cpp</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"widget.h"</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;QApplication&gt;</span></span>
@@ -514,12 +514,12 @@ Studio 2022, 环境搭建参见Microsoft官方文档：<a target="_blank" rel="n
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> main<span class="op">(</span><span class="dt">int</span> argc<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>argv<span class="op">[])</span></span>
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QApplication</span> a<span class="op">(</span>argc<span class="op">,</span> argv<span class="op">);</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    QApplication a<span class="op">(</span>argc<span class="op">,</span> argv<span class="op">);</span></span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QTranslator</span> translator<span class="op">;</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">const</span> <span class="ex">QStringList</span> uiLanguages <span class="op">=</span> <span class="ex">QLocale::</span>system<span class="op">().</span>uiLanguages<span class="op">();</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="at">const</span> <span class="ex">QString</span> <span class="op">&amp;</span>locale <span class="op">:</span> uiLanguages<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">const</span> <span class="ex">QString</span> baseName <span class="op">=</span> <span class="st">"test01_"</span> <span class="op">+</span> <span class="ex">QLocale</span><span class="op">(</span>locale<span class="op">).</span>name<span class="op">();</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    QTranslator translator<span class="op">;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="dt">const</span> QStringList uiLanguages <span class="op">=</span> QLocale<span class="op">::</span>system<span class="op">().</span>uiLanguages<span class="op">();</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">const</span> QString <span class="op">&amp;</span>locale <span class="op">:</span> uiLanguages<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">const</span> QString baseName <span class="op">=</span> <span class="st">"test01_"</span> <span class="op">+</span> QLocale<span class="op">(</span>locale<span class="op">).</span>name<span class="op">();</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>translator<span class="op">.</span>load<span class="op">(</span><span class="st">":/i18n/"</span> <span class="op">+</span> baseName<span class="op">))</span> <span class="op">{</span></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>            a<span class="op">.</span>installTranslator<span class="op">(&amp;</span>translator<span class="op">);</span></span>
 <span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>            <span class="cf">break</span><span class="op">;</span></span>
@@ -529,40 +529,40 @@ Studio 2022, 环境搭建参见Microsoft官方文档：<a target="_blank" rel="n
 <span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    w<span class="op">.</span>show<span class="op">();</span></span>
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> a<span class="op">.</span>exec<span class="op">();</span></span>
 <span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">//widget.cpp</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">//widget.cpp</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"widget.h"</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"./ui_widget.h"</span></span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>Widget<span class="op">::</span>Widget<span class="op">(</span><span class="ex">QWidget</span> <span class="op">*</span>parent<span class="op">)</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">:</span> <span class="ex">QWidget</span><span class="op">(</span>parent<span class="op">)</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">,</span> ui<span class="op">(</span><span class="kw">new</span> Ui<span class="op">::</span>Widget<span class="op">)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>Widget<span class="op">::</span>Widget<span class="op">(</span>QWidget <span class="op">*</span>parent<span class="op">)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">:</span> QWidget<span class="op">(</span>parent<span class="op">)</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">,</span> ui<span class="op">(</span>new Ui<span class="op">::</span>Widget<span class="op">)</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    ui<span class="op">-&gt;</span>setupUi<span class="op">(</span><span class="kw">this</span><span class="op">);</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    ui<span class="op">-&gt;</span>setupUi<span class="op">(</span>this<span class="op">);</span></span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>Widget<span class="op">::~</span>Widget<span class="op">()</span></span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">delete</span> ui<span class="op">;</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    delete ui<span class="op">;</span></span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> Widget<span class="op">::</span>on_pushButton_clicked<span class="op">()</span></span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QTextEdit</span> <span class="op">*</span>textEdit<span class="op">;</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QString</span> text_simulation_time <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QString</span> text_car_mass <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit_2<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QString</span> text_velocity <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit_3<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QString</span> text_angle <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit_4<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QFile</span> file<span class="op">(</span><span class="st">"D:/PERSONAL FILES/Qt_workspace/test01/testfile.txt"</span><span class="op">);</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    QTextEdit <span class="op">*</span>textEdit<span class="op">;</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    QString text_simulation_time <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    QString text_car_mass <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit_2<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    QString text_velocity <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit_3<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    QString text_angle <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit_4<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    QFile file<span class="op">(</span><span class="st">"D:/PERSONAL FILES/Qt_workspace/test01/testfile.txt"</span><span class="op">);</span></span>
 <span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>file<span class="op">.</span>open<span class="op">(</span><span class="ex">QFile::</span>WriteOnly <span class="op">|</span> <span class="ex">QFile::</span>Text<span class="op">))</span>     <span class="co">//检测文件是否打开</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>file<span class="op">.</span>open<span class="op">(</span>QFile<span class="op">::</span>WriteOnly <span class="op">|</span> QFile<span class="op">::</span>Text<span class="op">))</span>     <span class="co">//检测文件是否打开</span></span>
 <span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        <span class="ex">QMessageBox::</span>information<span class="op">(</span><span class="kw">this</span><span class="op">,</span> <span class="st">"Error Message"</span><span class="op">,</span> <span class="st">"Please Select a Text File!"</span><span class="op">);</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        QMessageBox<span class="op">::</span>information<span class="op">(</span>this<span class="op">,</span> <span class="st">"Error Message"</span><span class="op">,</span> <span class="st">"Please Select a Text File!"</span><span class="op">);</span></span>
 <span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span><span class="op">;</span></span>
 <span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QTextStream</span> out<span class="op">(&amp;</span>file<span class="op">);</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    QTextStream out<span class="op">(&amp;</span>file<span class="op">);</span></span>
 <span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    out <span class="op">&lt;&lt;</span> text_simulation_time<span class="op">;</span></span>
 <span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    out <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
 <span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    out <span class="op">&lt;&lt;</span> text_car_mass<span class="op">;</span></span>
@@ -573,22 +573,22 @@ Studio 2022, 环境搭建参见Microsoft官方文档：<a target="_blank" rel="n
 <span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>ui文件负责设计界面样式，与源代码交互是通过“槽”来实现。比如，如果想在按钮点击的时候触发某些事件，需要在'.ui'文件中右击按钮，点击“转到槽”，然后在弹出的窗口中选择“on_pushButton_clicked”这个槽，这样就将按钮和槽连接起来了。在源代码中，只需要在<strong>槽函数</strong>中实现相应的功能即可。</p>
 <p>下面是我用来实现点击按钮保存的槽函数代码部分：</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> Widget<span class="op">::</span>on_pushButton_clicked<span class="op">()</span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> Widget<span class="op">::</span>on_pushButton_clicked<span class="op">()</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QTextEdit</span> <span class="op">*</span>textEdit<span class="op">;</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QString</span> text_simulation_time <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QString</span> text_car_mass <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit_2<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QString</span> text_velocity <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit_3<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QString</span> text_angle <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit_4<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QFile</span> file<span class="op">(</span><span class="st">"D:/PERSONAL FILES/Qt_workspace/test01/testfile.txt"</span><span class="op">);</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    QTextEdit <span class="op">*</span>textEdit<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    QString text_simulation_time <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    QString text_car_mass <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit_2<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    QString text_velocity <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit_3<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    QString text_angle <span class="op">=</span> ui<span class="op">-&gt;</span>textEdit_4<span class="op">-&gt;</span>toPlainText<span class="op">();</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    QFile file<span class="op">(</span><span class="st">"D:/PERSONAL FILES/Qt_workspace/test01/testfile.txt"</span><span class="op">);</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>file<span class="op">.</span>open<span class="op">(</span><span class="ex">QFile::</span>WriteOnly <span class="op">|</span> <span class="ex">QFile::</span>Text<span class="op">))</span>     <span class="co">//检测文件是否打开</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span>file<span class="op">.</span>open<span class="op">(</span>QFile<span class="op">::</span>WriteOnly <span class="op">|</span> QFile<span class="op">::</span>Text<span class="op">))</span>     <span class="co">//检测文件是否打开</span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">{</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="ex">QMessageBox::</span>information<span class="op">(</span><span class="kw">this</span><span class="op">,</span> <span class="st">"Error Message"</span><span class="op">,</span> <span class="st">"Please Select a Text File!"</span><span class="op">);</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        QMessageBox<span class="op">::</span>information<span class="op">(</span>this<span class="op">,</span> <span class="st">"Error Message"</span><span class="op">,</span> <span class="st">"Please Select a Text File!"</span><span class="op">);</span></span>
 <span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span><span class="op">;</span></span>
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    <span class="ex">QTextStream</span> out<span class="op">(&amp;</span>file<span class="op">);</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    QTextStream out<span class="op">(&amp;</span>file<span class="op">);</span></span>
 <span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    out <span class="op">&lt;&lt;</span> text_simulation_time<span class="op">;</span></span>
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>    out <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
 <span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    out <span class="op">&lt;&lt;</span> text_car_mass<span class="op">;</span></span>
@@ -597,7 +597,10 @@ Studio 2022, 环境搭建参见Microsoft官方文档：<a target="_blank" rel="n
 <span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    out <span class="op">&lt;&lt;</span> <span class="st">"</span><span class="sc">\n</span><span class="st">"</span><span class="op">;</span></span>
 <span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>    out <span class="op">&lt;&lt;</span> text_angle<span class="op">;</span></span>
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p>下面是 # 路面状态仿真</p>
+<p>下面是初步设计的UI界面 <img src="/2023/03/26/01_%E5%A4%A7%E5%88%9B/14.png" alt="fig04"></p>
+<p>实现效果： <img src="/2023/03/26/01_%E5%A4%A7%E5%88%9B/15.png" alt="fig04"></p>
+<p>至此，初步完成了数据输入保存的操作。</p>
+<h1 id="路面状态仿真">路面状态仿真</h1>
 <h1 id="锂电池参数仿真">锂电池参数仿真</h1>
 <h1 id="氢氧燃料电池参数仿真">氢氧燃料电池参数仿真</h1>
 <h1 id="优化算法">优化算法</h1>
