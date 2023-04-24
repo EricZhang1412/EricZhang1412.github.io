@@ -278,7 +278,7 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #03a9f4">大创</a>
+                <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #ff7d73">大创</a>
             </span>
             
         </span>
@@ -600,6 +600,45 @@ Studio 2022, 环境搭建参见Microsoft官方文档：<a target="_blank" rel="n
 <p>下面是初步设计的UI界面 <img src="/2023/03/26/01_%E5%A4%A7%E5%88%9B/14.png" alt="fig04"></p>
 <p>实现效果： <img src="/2023/03/26/01_%E5%A4%A7%E5%88%9B/15.png" alt="fig04"></p>
 <p>至此，初步完成了数据输入保存的操作。</p>
+<p>数据有了，接下来的一部就是与之前的python文件结合了。以下为修改之后的用于读取生成数据的txt文件的python脚本代码：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> scipy.io <span class="im">as</span> scio</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> h5py</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os <span class="co"># 用于文件读写操作</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>file_path <span class="op">=</span> <span class="st">'D:/PERSONAL FILES/Qt_workspace/test01/testfile.txt'</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(file_path, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> file_obj: <span class="co"># open函数返回一个表示文件的对象，python会将这个对象存储在我们的变量file_obj中</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    lines <span class="op">=</span> file_obj.readlines()</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> line <span class="kw">in</span> lines:</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(line.rstrip())</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>simin_time <span class="op">=</span> <span class="bu">int</span>(lines[<span class="dv">0</span>])</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>list_simin_v <span class="op">=</span> lines[<span class="dv">2</span>].strip().split(<span class="st">','</span>)</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>list_simin_v_0 <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: <span class="bu">int</span>(x), list_simin_v))</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>list_simin_mass <span class="op">=</span> <span class="bu">list</span>(<span class="bu">int</span>(lines[<span class="dv">1</span>]) <span class="op">*</span> np.ones(simin_time))</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>list_simin_theta <span class="op">=</span> [<span class="bu">int</span>(lines[<span class="dv">3</span>])]</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>list_simin_theta_0 <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(<span class="kw">lambda</span> x: <span class="bu">int</span>(x), list_simin_theta))</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">" simin_time:</span><span class="sc">%s</span><span class="st">;</span><span class="ch">\n</span><span class="st"> car mass:</span><span class="sc">%s</span><span class="st">;</span><span class="ch">\n</span><span class="st"> car velocity:</span><span class="sc">%s</span><span class="st">;</span><span class="ch">\n</span><span class="st"> road angle:</span><span class="sc">%s</span><span class="ch">\n</span><span class="st">"</span> <span class="op">%</span> (simin_time, <span class="bu">int</span>(lines[<span class="dv">1</span>]), list_simin_v_0, <span class="bu">int</span>(lines[<span class="dv">3</span>])))</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(list_simin_v_0)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(list_simin_mass)</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(list_simin_theta_0)</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>h5file <span class="op">=</span> h5py.File(<span class="st">"./dataset/data_v.h5"</span>, <span class="st">'w'</span>)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>h5file.create_dataset(<span class="st">'simin_v'</span>, data<span class="op">=</span>list_simin_v_0)</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>h5file <span class="op">=</span> h5py.File(<span class="st">"./dataset/data_mass.h5"</span>, <span class="st">'w'</span>)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>h5file.create_dataset(<span class="st">'simin_mass'</span>, data<span class="op">=</span>list_simin_mass)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>h5file <span class="op">=</span> h5py.File(<span class="st">"./dataset/data_theta.h5"</span>, <span class="st">'w'</span>)</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>h5file.create_dataset(<span class="st">'simin_theta'</span>, data<span class="op">=</span>list_simin_theta_0)</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>h5file.close</span></code></pre></div>
 <h1 id="路面状态仿真">路面状态仿真</h1>
 <h1 id="锂电池参数仿真">锂电池参数仿真</h1>
 <h1 id="氢氧燃料电池参数仿真">氢氧燃料电池参数仿真</h1>
