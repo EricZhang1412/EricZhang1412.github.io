@@ -283,7 +283,7 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #ffa2c4">嵌入式大赛</a>
+                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #ff7d73">嵌入式大赛</a>
             </span>
             
         </span>
@@ -291,32 +291,35 @@ mjx-container[display="true"] + br {
     </div>
     
     <div class="content" v-pre>
-        <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>海思技术论坛注册：<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all">https://developer.hisilicon.com/forum/all</a></p>
-<p>嵌入式物联网学习资料总入口：<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/postDetail?tid=0206112614830760003">https://developer.hisilicon.com/postDetail?tid=0206112614830760003</a></p>
-<p>海思技术论坛<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all">https://developer.hisilicon.com/forum/all</a></p>
-<h1 id="工程结构分析"><a href="#工程结构分析" class="headerlink" title="工程结构分析"></a>工程结构分析</h1><h2 id="工程目录"><a href="#工程目录" class="headerlink" title="工程目录"></a>工程目录</h2><pre><code class="bash">.
-└── applications
-    └── sample
-        └── wifi-iot
-            └── app
-                │── my_first_app     //业务my_first_app文件夹
-                │  │── hello_world.c //业务代码
-                │  └── BUILD.gn      //编译脚本
-                └── BUILD.gn
-</code></pre>
-<h2 id="hello-world-c文件代码结构"><a href="#hello-world-c文件代码结构" class="headerlink" title="hello_world.c文件代码结构"></a>hello_world.c文件代码结构</h2><pre><code class="C">#include &lt;stdio.h&gt;
-#include "ohos_init.h"
-#include "ohos_types.h"
-
-void HelloWorld(void)
-{
-    printf("___________&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; [DEMO] Hello world.\n");
-}
-SYS_RUN(HelloWorld);
-</code></pre>
+        <h1 id="参考资料">参考资料</h1>
+<p>海思技术论坛注册：<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all" class="uri">https://developer.hisilicon.com/forum/all</a></p>
+<p>嵌入式物联网学习资料总入口：<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/postDetail?tid=0206112614830760003" class="uri">https://developer.hisilicon.com/postDetail?tid=0206112614830760003</a></p>
+<p>海思技术论坛<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all" class="uri">https://developer.hisilicon.com/forum/all</a></p>
+<h1 id="工程结构分析">工程结构分析</h1>
+<h2 id="工程目录">工程目录</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> applications</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> sample</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="ex">└──</span> wifi-iot</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="ex">└──</span> app</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                <span class="ex">│──</span> my_first_app     //业务my_first_app文件夹</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                <span class="ex">│</span>  │── hello_world.c //业务代码</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                <span class="ex">│</span>  └── BUILD.gn      //编译脚本</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                <span class="ex">└──</span> BUILD.gn</span></code></pre></div>
+<h2 id="hello_world.c文件代码结构">hello_world.c文件代码结构</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"ohos_init.h"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"ohos_types.h"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> HelloWorld<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"___________&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; [DEMO] Hello world.</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>SYS_RUN<span class="op">(</span>HelloWorld<span class="op">);</span></span></code></pre></div>
 <p>SYS_RUN定义在ohos_init.h文件中，是<strong>HarmonyOS启动恢复模块接口启动业务</strong>。</p>
-<h2 id="用于将业务构建成静态库的BUILD-gn文件代码结构"><a href="#用于将业务构建成静态库的BUILD-gn文件代码结构" class="headerlink" title="用于将业务构建成静态库的BUILD.gn文件代码结构"></a><em>用于将业务构建成静态库</em>的BUILD.gn文件代码结构</h2><p>路径：./applications/sample/wifi-iot/app/my_first_app/BUILD.gn（与下面的模块编译build.gn不一样，请格外注意）</p>
-<pre><code class="gn">//目标业务
+<h2 id="用于将业务构建成静态库的build.gn文件代码结构"><em>用于将业务构建成静态库</em>的BUILD.gn文件代码结构</h2>
+<p>路径：./applications/sample/wifi-iot/app/my_first_app/BUILD.gn（与下面的模块编译build.gn不一样，请格外注意）</p>
+<pre class="gn"><code>//目标业务
 static_library("myapp") { 
     //源文件路径
     sources = [
@@ -326,10 +329,10 @@ static_library("myapp") {
     include_dirs = [
         "//utils/native/lite/include"
     ]
-}
-</code></pre>
-<h2 id="指定需参与构建的特性模块的BUILD-gn文件代码结构"><a href="#指定需参与构建的特性模块的BUILD-gn文件代码结构" class="headerlink" title="指定需参与构建的特性模块的BUILD.gn文件代码结构"></a><em>指定需参与构建的特性模块</em>的BUILD.gn文件代码结构</h2><p>路径：./applications/sample/wifi-iot/app/BUILD.gn</p>
-<pre><code class="gn">import("//build/lite/config/component/lite_component.gni")
+}</code></pre>
+<h2 id="指定需参与构建的特性模块的build.gn文件代码结构"><em>指定需参与构建的特性模块</em>的BUILD.gn文件代码结构</h2>
+<p>路径：./applications/sample/wifi-iot/app/BUILD.gn</p>
+<pre class="gn"><code>import("//build/lite/config/component/lite_component.gni")
 
 
 lite_component("app") {
@@ -337,8 +340,7 @@ lite_component("app") {
         "my_first_app:myapp",
     ]
 
-}
-</code></pre>
+}</code></pre>
 
     </div>
     
