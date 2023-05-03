@@ -349,7 +349,7 @@ mjx-container[display="true"] + br {
         
         <span class="tag">
             
-            <a href="/tags/%E5%88%9B%E4%B8%9A/" style="color: #ffa2c4">
+            <a href="/tags/%E5%88%9B%E4%B8%9A/" style="color: #00a596">
                 创业
             </a>
         </span>
@@ -392,7 +392,7 @@ mjx-container[display="true"] + br {
         
         <span class="tag">
             
-            <a href="/tags/%E6%A0%A1%E5%8F%B2/" style="color: #ff7d73">
+            <a href="/tags/%E6%A0%A1%E5%8F%B2/" style="color: #ffa2c4">
                 校史
             </a>
         </span>
@@ -468,35 +468,35 @@ mjx-container[display="true"] + br {
         
         <span class="tag">
             
-            <a href="/tags/DNN/" style="color: #00bcd4">
+            <a href="/tags/DNN/" style="color: #00a596">
                 DNN
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/DP/" style="color: #00a596">
+            <a href="/tags/DP/" style="color: #ff7d73">
                 DP
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/EKF/" style="color: #ffa2c4">
+            <a href="/tags/EKF/" style="color: #00bcd4">
                 EKF
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/Fourier-Operator/" style="color: #ffa2c4">
+            <a href="/tags/Fourier-Operator/" style="color: #03a9f4">
                 Fourier Operator
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/Koopman-Operator/" style="color: #00bcd4">
+            <a href="/tags/Koopman-Operator/" style="color: #00a596">
                 Koopman Operator
             </a>
         </span>
@@ -541,14 +541,14 @@ mjx-container[display="true"] + br {
         
         <span class="tag">
             
-            <a href="/tags/OneOS/" style="color: #03a9f4">
+            <a href="/tags/OneOS/" style="color: #00a596">
                 OneOS
             </a>
         </span>
         
         <span class="tag">
             
-            <a href="/tags/ESP8266/" style="color: #ffa2c4">
+            <a href="/tags/ESP8266/" style="color: #00a596">
                 ESP8266
             </a>
         </span>
@@ -628,10 +628,45 @@ mjx-container[display="true"] + br {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> sample</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="ex">└──</span> wifi-iot</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="ex">└──</span> app</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                <span class="ex">│──</span> my_first_app</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                <span class="ex">│</span>  │── hello_world.c</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                <span class="ex">│</span>  └── BUILD.gn</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                <span class="ex">│──</span> my_first_app     //业务my_first_app文件夹</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                <span class="ex">│</span>  │── hello_world.c //业务代码</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                <span class="ex">│</span>  └── BUILD.gn      //编译脚本</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                <span class="ex">└──</span> BUILD.gn</span></code></pre></div>
+<h2 id="hello_world.c文件代码结构">hello_world.c文件代码结构</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"ohos_init.h"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"ohos_types.h"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> HelloWorld<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"___________&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; [DEMO] Hello world.</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>SYS_RUN<span class="op">(</span>HelloWorld<span class="op">);</span></span></code></pre></div>
+<p>SYS_RUN定义在ohos_init.h文件中，是<strong>HarmonyOS启动恢复模块接口启动业务</strong>。</p>
+<h2 id="用于将业务构建成静态库的build.gn文件代码结构"><em>用于将业务构建成静态库</em>的BUILD.gn文件代码结构</h2>
+<p>路径：./applications/sample/wifi-iot/app/my_first_app/BUILD.gn（与下面的模块编译build.gn不一样，请格外注意）</p>
+<pre class="gn"><code>//目标业务
+static_library("myapp") { 
+    //源文件路径
+    sources = [
+        "hello_world.c"
+    ]
+    //头文件路径
+    include_dirs = [
+        "//utils/native/lite/include"
+    ]
+}</code></pre>
+<h2 id="指定需参与构建的特性模块的build.gn文件代码结构"><em>指定需参与构建的特性模块</em>的BUILD.gn文件代码结构</h2>
+<p>路径：./applications/sample/wifi-iot/app/BUILD.gn</p>
+<pre class="gn"><code>import("//build/lite/config/component/lite_component.gni")
+
+
+lite_component("app") {
+    features = [
+        "my_first_app:myapp",
+    ]
+
+}</code></pre>
 
             
         </div>
@@ -652,7 +687,7 @@ mjx-container[display="true"] + br {
         
         <span class="tag">
             
-            <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #00bcd4">
+            <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #ff7d73">
                 嵌入式大赛
             </a>
         </span>
@@ -695,7 +730,7 @@ algorithms）。（关于元启发式算法参见<a target="_blank" rel="noopene
         
         <span class="tag">
             
-            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #00a596">
+            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #00bcd4">
                 大创
             </a>
         </span>
@@ -737,7 +772,7 @@ algorithms）。（关于元启发式算法参见<a target="_blank" rel="noopene
         
         <span class="tag">
             
-            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #03a9f4">
+            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #ffa2c4">
                 大创
             </a>
         </span>
