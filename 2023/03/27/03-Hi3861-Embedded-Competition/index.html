@@ -278,12 +278,12 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/%E6%B5%B7%E6%80%9D/" style="color: #ff7d73">海思</a>
+                <a href="/tags/%E6%B5%B7%E6%80%9D/" style="color: #ffa2c4">海思</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #ff7d73">嵌入式大赛</a>
+                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #03a9f4">嵌入式大赛</a>
             </span>
             
         </span>
@@ -548,7 +548,8 @@ lite_component("app") {
 <span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
 <span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>    OHOS_Main<span class="op">();</span></span>
 <span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p>最后一行调用OHOS_Main()代码： 路径：._pegasus_liteos_app</p>
+<p>最后一行调用OHOS_Main()代码：</p>
+<p>路径：._pegasus_liteos_app</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> OHOS_Main<span class="op">()</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#if defined(CONFIG_AT_COMMAND) || defined(CONFIG_FACTORY_TEST_MODE)</span></span>
@@ -563,8 +564,8 @@ lite_component("app") {
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
 <span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    OHOS_SystemInit<span class="op">();</span></span>
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<p>OHOS_SystemInit函数进行鸿蒙系统的初始化。
-路径：D:_test_lite_init.c</p>
+<p>OHOS_SystemInit函数进行鸿蒙系统的初始化。</p>
+<p>路径：D:_test_lite_init.c</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> OHOS_SystemInit<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    MODULE_INIT<span class="op">(</span>bsp<span class="op">);</span></span>
@@ -576,6 +577,15 @@ lite_component("app") {
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    SAMGR_Bootstrap<span class="op">();</span></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>主要是初始化了一些相关模块、系统，包括有bsp、device（设备）。其中最终的是MODULE_INIT(run)；负责调用所有run段的代码：<strong>前面application中使用SYS_RUN()宏设置的函数名</strong>。</p>
+<h1 id="作品设想">作品设想</h1>
+<h2 id="作品功能">1. 作品功能</h2>
+<h3 id="a.基础设施智能化建设解决方案">A.基础设施智能化建设解决方案</h3>
+<p>将小区分为社区门口、单元门、电梯间、入户门、停车场、公共区域、设备间7
+个重点区域，对门禁、道闸、对讲、梯控、视频监控、周界防范、信息发布、停车管理、设备检测等进行基础设施智能化开发与建设，为智慧社区整体方案提供支撑，基础设施见图：
+<img src="/2023/03/27/03-Hi3861-Embedded-Competition/01.jpg" alt="fig01"></p>
+<h3 id="b.物业综合服务平台">B.物业综合服务平台</h3>
+<p>该平台用于：完成人员管理、养老服务、卫生服务、信息发布、收缴费管理、报事报修、车辆管理、便民服务等功能开发；为物业提供社区基础数据、日常业务管理工具，通过数据共享和应用聚合向政府提供社区管理通道、向居民提供社区服务。平台服务与应用见图4：
+<img src="/2023/03/27/03-Hi3861-Embedded-Competition/02.jpg" alt="fig02"></p>
 
     </div>
     
