@@ -453,6 +453,43 @@ PC2向PC1发送数据包时，也需要沿途的路由器查询路由表，以�
 <h1 id="快递系统的设计">快递系统的设计</h1>
 <h2 id="如果主营高校之间的小包裹快递怎么利用现有的快递系统赚钱">如果主营高校之间的小包裹快递，怎么利用现有的快递系统赚钱？</h2>
 <h2 id="人联网如何实现路由转发">人联网如何实现路由/转发</h2>
+<p>Android
+蓝牙聊天室：仅支持一对一实时通信、文件传输、好友添加、好友分组、好友在线状态更新等功能，其中消息发送支持文本、表情等方式。</p>
+<h3 id="将传统的蓝牙聊天室改造成可以一对多的会话形式">将传统的蓝牙聊天室改造成可以一对多的会话形式</h3>
+<p>大部分手机与移动装置所使用的是 Class
+B（Class2），标准传输距离10米;而高功率的Class
+A（Class1）则是将传输距离提升到100-300米，两种版本都支持A2DP立体声传输协议，可与立体声耳机互联。一般而言，手机与蓝牙耳机的距离不会太远，如果中间没有大的障碍物，在7米之内传输质量都很好，超过8米将出现断点!超过10米将蓝牙设备之间将失去连接。</p>
+<p>一台手机仅支持5-7台<strong>不同类型</strong>的设备同时连接。</p>
+<h3 id="场景假设">场景假设</h3>
+<p>每2个教室/每3个寝室为一个聊天室，教室外区域根据相邻教室的最近距离归并到同一个聊天室。让聊天室的概念与物理上的空间一一对应。
+（学校其他区域的聊天室划分有待商讨）</p>
+<p>人员不流动下，在通信过程中，收发双方位置固定且在可蓝牙通信的聊天室内。</p>
+<p>人员流动下，通信过程中，发送方位置固定（确保能发出去信息），且不需要知道接收方是否收到信息。</p>
+<h3 id="发现的问题">发现的问题</h3>
+<p>如果人员流动时，发送方不能广播信息，只能一个一个发（发了就断，断了再换节点发），该功能是否下放到代码层面实现未知。</p>
+<p>聊天室和聊天室之间的通信，是否需要一个中间节点来转发信息？中间节点只能用人代替。</p>
+<h2 id="android-开发的一些基础">Android 开发的一些基础</h2>
+<h3 id="socket">Socket</h3>
+<p>A socket is an endpoint for communication between two machines.</p>
+<h4 id="bluetoothsocket">BluetoothSocket</h4>
+<p>REF:<a target="_blank" rel="noopener" href="https://developer.android.google.cn/guide/topics/connectivity/bluetooth?hl=zh-cn#java" class="uri">https://developer.android.google.cn/guide/topics/connectivity/bluetooth?hl=zh-cn#java</a></p>
+<p>利用
+BluetoothAdapter，通过设备发现或查询配对设备的列表来查找远程蓝牙设备。</p>
+<p>Android 应用可通过 Bluetooth API 执行以下操作：</p>
+<ul>
+<li>扫描其他蓝牙设备</li>
+<li>查询本地蓝牙适配器的配对蓝牙设备</li>
+<li>建立 RFCOMM 通道</li>
+<li>通过服务发现连接到其他设备</li>
+<li>与其他设备进行双向数据传输</li>
+<li>管理多个连接</li>
+</ul>
+<p>请注意，被配对与被连接之间存在区别：
+被配对是指两台设备知晓彼此的存在，具有可用于身份验证的共享链路密钥，并且能够与彼此建立加密连接。
+被连接是指设备当前共享一个 RFCOMM 通道，并且能够向彼此传输数据。当前的
+Android Bluetooth API 要求规定，只有先对设备进行配对，然后才能建立
+RFCOMM 连接。在使用 Bluetooth API
+发起加密连接时，系统会自动执行配对。</p>
 <h1 id="how-to-enhance-my-social-network">HOW TO Enhance my social
 network?</h1>
 <h2 id="exp1-明月湖minicamp">Exp1: 明月湖MiniCamp</h2>
