@@ -278,7 +278,7 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #00bcd4">计算机网络</a>
+                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #ffa2c4">计算机网络</a>
             </span>
             
         </span>
@@ -286,53 +286,89 @@ mjx-container[display="true"] + br {
     </div>
     
     <div class="content" v-pre>
-        <h1 id="从因特网到交际"><a href="#从因特网到交际" class="headerlink" title="从因特网到交际"></a>从因特网到交际</h1><h2 id="沙漏模型"><a href="#沙漏模型" class="headerlink" title="沙漏模型"></a>沙漏模型</h2><p>还是第一次看见这样子描述因特网的。<br><img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/01.png" alt="fig01"></p>
-<span id="more"></span>
-<h2 id="因特网的基本通信模型"><a href="#因特网的基本通信模型" class="headerlink" title="因特网的基本通信模型"></a>因特网的基本通信模型</h2><p>两大部分：<strong>地址</strong>（who+where）+<strong>传输协议</strong>（what+how+when）</p>
-<h3 id="尽力而为-or-补偿"><a href="#尽力而为-or-补偿" class="headerlink" title="尽力而为 or 补偿"></a>尽力而为 or 补偿</h3><p>网络将其收到的，要传送的数据尽力传送到目的节点，但不保证数据率、传输延迟、丢包率</p>
+        <h1 id="从因特网到交际">从因特网到交际</h1>
+<h2 id="沙漏模型">沙漏模型</h2>
+<p>还是第一次看见这样子描述因特网的。 <img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/01.png" alt="fig01">
+<span id="more"></span> ## 因特网的基本通信模型
+两大部分：<strong>地址</strong>（who+where）+<strong>传输协议</strong>（what+how+when）</p>
+<h3 id="尽力而为-or-补偿">尽力而为 or 补偿</h3>
+<p>网络将其收到的，要传送的数据尽力传送到目的节点，但不保证数据率、传输延迟、丢包率</p>
 <p>“尽力而为”并不是很好，因为有服务总比没有服务好。我们可以舍弃一些获取将就的数据传输业务</p>
-<h3 id="路由器的ROLE"><a href="#路由器的ROLE" class="headerlink" title="路由器的ROLE"></a>路由器的ROLE</h3><p>实现包的“跳传”</p>
-<p><strong>应用不可知</strong>：路由等设备不关心我的应用本身是什么，应用遵循着相同的通信协议，网络设备只需要遵从协议收发。<br>应用不可知的实现方式是：路由器不提供具体应用服务，而是根据包头转发数据包</p>
+<h3 id="路由器的role">路由器的ROLE</h3>
+<p>实现包的“跳传”</p>
+<p><strong>应用不可知</strong>：路由等设备不关心我的应用本身是什么，应用遵循着相同的通信协议，网络设备只需要遵从协议收发。
+应用不可知的实现方式是：路由器不提供具体应用服务，而是根据包头转发数据包</p>
 <p><strong>深度数据包检查</strong>：路由器试图窥视数据包里的内容，总而改变他们的行为</p>
 <p><strong>跟踪、记忆</strong></p>
-<h3 id="关于“状态”"><a href="#关于“状态”" class="headerlink" title="关于“状态”"></a>关于“状态”</h3><p>定义：设备基于存储的信息来处于不同的状态，这些信息可以反映过于发生过的事情（和SS中的因果系统/记忆性系统很像）。</p>
+<h3 id="关于状态">关于“状态”</h3>
+<p>定义：设备基于存储的信息来处于不同的状态，这些信息可以反映过于发生过的事情（和SS中的因果系统/记忆性系统很像）。</p>
 <p>对于路由器，如果不记录其转发日志，则被视为无记忆的/无状态的</p>
-<h3 id="端节点上的应用支撑：数据包乱传怎么办"><a href="#端节点上的应用支撑：数据包乱传怎么办" class="headerlink" title="端节点上的应用支撑：数据包乱传怎么办"></a>端节点上的应用支撑：数据包乱传怎么办</h3><p>因特网协议中运行在基本因特网服务之上的传输服务，试图监测校正错误。——TCP的由来</p>
+<h3 id="端节点上的应用支撑数据包乱传怎么办">端节点上的应用支撑：数据包乱传怎么办</h3>
+<p>因特网协议中运行在基本因特网服务之上的传输服务，试图监测校正错误。——TCP的由来</p>
 <p>服务内容：Sender将数据给TCP，TCP将数据有序、准确地送达Receiver一次。TCP软件负责将数据拆分成数据包，对其编号以检测丢失、重排序、重传丢失的数据包，直到其最终送达。</p>
-<h4 id="TCP与IP的责任划分"><a href="#TCP与IP的责任划分" class="headerlink" title="TCP与IP的责任划分"></a>TCP与IP的责任划分</h4><p>TCP运行在端节点上，而非路由器内。原则上，路由器在转发的时候只能看到IP信息，只有终端节点会查看包中的TCP信息。</p>
+<h4 id="tcp与ip的责任划分">TCP与IP的责任划分</h4>
+<p>TCP运行在端节点上，而非路由器内。原则上，路由器在转发的时候只能看到IP信息，只有终端节点会查看包中的TCP信息。</p>
 <p><strong>“端到端”的观点</strong>：因特网的设计原则是尽可能简化网络承担的功能，把那些功能放到终端节点实现。其优势在于不需要修改路由器的情况下，可以根据自己的需求创建新应用挥着新的支撑服务。这种观点也催化了因特网的迅猛发展。</p>
-<h2 id="路由转发技术"><a href="#路由转发技术" class="headerlink" title="路由转发技术"></a>路由转发技术</h2><p>路由表的构建：不断计算最佳路径。</p>
+<h2 id="路由转发技术">路由转发技术</h2>
+<p>路由表的构建：不断计算最佳路径。</p>
 <p>SDN：使用集中的控制器，为该区域的路由器计算正确的路由信息。（进一步简化了路由器的功能）</p>
-<h2 id="因特网的区域"><a href="#因特网的区域" class="headerlink" title="因特网的区域"></a>因特网的区域</h2><p><strong>自治系统（AS）</strong>：<br><strong>边界网关协议（BGP）</strong>：</p>
+<h2 id="因特网的区域">因特网的区域</h2>
+<p><strong>自治系统（AS）</strong>：
+<strong>边界网关协议（BGP）</strong>：</p>
 <p>嵌套结构：BGP-&gt;AS-&gt;端节点</p>
-<h2 id="域名系统（DNS）"><a href="#域名系统（DNS）" class="headerlink" title="域名系统（DNS）"></a>域名系统（DNS）</h2><p>背景：因特网路由器的地址用户记不住，用起来太麻烦了。</p>
-<p>  分层命名：<br>    - 顶级名字：组织类型（.edu）<br>    - 二级名字：各个机构（mit.edu）<br>    - …</p>
+<h2 id="域名系统dns">域名系统（DNS）</h2>
+<p>背景：因特网路由器的地址用户记不住，用起来太麻烦了。</p>
+<p>分层命名： - 顶级名字：组织类型（.edu） -
+二级名字：各个机构（mit.edu） - ...</p>
 <p>DNS通过服务器实现，服务器分层与DNS命名分层一一对应。</p>
-<h3 id="例子1：万维网协议"><a href="#例子1：万维网协议" class="headerlink" title="例子1：万维网协议"></a>例子1：万维网协议</h3><p>CS架构：Web客户端、Web服务器<br>Web服务器存储网页，这些页面具有的名字称为<strong>URL（统一资源定位器）</strong></p>
-<p>依赖的主要协议：<br>1.HTTP：提供请求Web页面的报文规则（与页面本身的格式没有关系，可以是图片、文字、视频等等）<br>2.TCP<br>3.IP</p>
-<h3 id="例子2：email"><a href="#例子2：email" class="headerlink" title="例子2：email"></a>例子2：email</h3><p>不是每个时间点两个人都同时在线，所以利用服务器储存邮件。<br>sender-&gt;send.server-&gt;receiver.server-&gt;receiver</p>
-<h1 id="因特网发展史"><a href="#因特网发展史" class="headerlink" title="因特网发展史"></a>因特网发展史</h1><h2 id="1960s：发明与憧憬"><a href="#1960s：发明与憧憬" class="headerlink" title="1960s：发明与憧憬"></a>1960s：发明与憧憬</h2><p>1.分组交换技术提出，但是目的不同。</p>
-<p>2.ARPAnet广域分组交换网（DARPA）<br>将计算机和人连接在一起的应用：人与人的通信<br>广泛获取信息</p>
+<h3 id="例子1万维网协议">例子1：万维网协议</h3>
+<p>CS架构：Web客户端、Web服务器
+Web服务器存储网页，这些页面具有的名字称为<strong>URL（统一资源定位器）</strong></p>
+<p>依赖的主要协议：
+1.HTTP：提供请求Web页面的报文规则（与页面本身的格式没有关系，可以是图片、文字、视频等等）
+2.TCP 3.IP</p>
+<h3 id="例子2email">例子2：email</h3>
+<p>不是每个时间点两个人都同时在线，所以利用服务器储存邮件。
+sender-&gt;send.server-&gt;receiver.server-&gt;receiver</p>
+<h1 id="因特网发展史">因特网发展史</h1>
+<h2 id="s发明与憧憬">1960s：发明与憧憬</h2>
+<p>1.分组交换技术提出，但是目的不同。</p>
+<p>2.ARPAnet广域分组交换网（DARPA）
+将计算机和人连接在一起的应用：人与人的通信 广泛获取信息</p>
 <p>(前途一片大好啊）</p>
 <p><img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/02.png" alt="fig02">???</p>
-<h2 id="1970s：证明与探索"><a href="#1970s：证明与探索" class="headerlink" title="1970s：证明与探索"></a>1970s：证明与探索</h2><p>ARPAnet-&gt;SATnet-&gt;PRnet<br>怎么将不同网络连接在一起？<br>TCP、IP标准的提出</p>
-<h2 id="1980s：成长与标准制定"><a href="#1980s：成长与标准制定" class="headerlink" title="1980s：成长与标准制定"></a>1980s：成长与标准制定</h2><p>ICCB组建（现为IAB）：解决如何将因特网的路由方案扩展到万亿级别的规模</p>
-<p>IETF成立。<br>DNS开发：终端节点扩展更加便捷。</p>
+<h2 id="s证明与探索">1970s：证明与探索</h2>
+<p>ARPAnet-&gt;SATnet-&gt;PRnet 怎么将不同网络连接在一起？
+TCP、IP标准的提出</p>
+<h2 id="s成长与标准制定">1980s：成长与标准制定</h2>
+<p>ICCB组建（现为IAB）：解决如何将因特网的路由方案扩展到万亿级别的规模</p>
+<p>IETF成立。 DNS开发：终端节点扩展更加便捷。</p>
 <p>NSFnet的开发：淘汰掉了旧日的ARPAnet，运行成本过高。</p>
 <p><strong>其他协议套件的竞争</strong>：XNS、OSI。（OSI工作在竞争期之后就慢慢消逝了）</p>
 <p>异步传输模式（ATM）产生</p>
 <p>Email的产生</p>
-<h2 id="1990s：商业化-amp-万维网-amp-光纤技术"><a href="#1990s：商业化-amp-万维网-amp-光纤技术" class="headerlink" title="1990s：商业化&万维网&光纤技术"></a>1990s：商业化&amp;万维网&amp;光纤技术</h2><p>nSFnet退役，取而代之的是商业网络提供商的网路。存储式音乐网站、亚马逊的崛起。</p>
+<h2 id="s商业化万维网光纤技术">1990s：商业化&amp;万维网&amp;光纤技术</h2>
+<p>nSFnet退役，取而代之的是商业网络提供商的网路。存储式音乐网站、亚马逊的崛起。</p>
 <p>寻址结构的改进：提出IPv6</p>
 <p>网络地址变换（NAT）设备：很多设备接入一个链路，这条链路连接到因特网。然后为这些节点分配本地地址。每个NAT设备会被赋予一个或者少数可全局路由的因特网地址，当数据包离开机群就重写包的地址。</p>
 <p>多播概念的提出</p>
-<h2 id="2000s：享受宽带的十年"><a href="#2000s：享受宽带的十年" class="headerlink" title="2000s：享受宽带的十年"></a>2000s：享受宽带的十年</h2><p>宽带服务：</p>
+<h2 id="s享受宽带的十年">2000s：享受宽带的十年</h2>
+<p>宽带服务：</p>
 <p>两种计算机病毒的释放：Melissa、ILOVEYOU</p>
 <p>移动智能手机</p>
 <p>电子商务</p>
-<h2 id="2010s：流媒体视频和社交媒体"><a href="#2010s：流媒体视频和社交媒体" class="headerlink" title="2010s：流媒体视频和社交媒体"></a>2010s：流媒体视频和社交媒体</h2><h1 id="网络的实质？"><a href="#网络的实质？" class="headerlink" title="网络的实质？"></a>网络的实质？</h1><table>
+<h2 id="s流媒体视频和社交媒体">2010s：流媒体视频和社交媒体</h2>
+<h1 id="网络的实质">网络的实质？</h1>
+<table>
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th>Categories</th>
 <th>Express System</th>
 <th>Metro Network</th>
@@ -340,77 +376,105 @@ mjx-container[display="true"] + br {
 <th>Social Network</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr class="odd">
 <td>Hierarchy</td>
 <td>Y</td>
 <td>N</td>
 <td>Y</td>
 <td>Y</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Desicion</td>
 <td>Human</td>
 <td>Human</td>
 <td>Gateway</td>
 <td>Human</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Multi-Media</td>
 <td>Y</td>
 <td>N</td>
 <td>Y</td>
 <td>Y</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Packet switching</td>
 <td>Y</td>
 <td>N?</td>
 <td>Y</td>
 <td>Y</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Countable Resources</td>
 <td>Y</td>
 <td>Y</td>
 <td>Y</td>
 <td>Y</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Security/Stability/Robustness</td>
 <td>Y</td>
 <td>Y</td>
 <td>Y</td>
 <td>Y</td>
 </tr>
-<tr>
+<tr class="odd">
 <td>Emergency Plans</td>
 <td>Y</td>
 <td>N</td>
 <td>Y</td>
 <td>Y</td>
 </tr>
-<tr>
+<tr class="even">
 <td>Extension flexibility</td>
 <td>N?</td>
 <td>N?</td>
 <td>Y</td>
 <td>Y?</td>
 </tr>
-</tbody></table>
-<h1 id="通信网络分析与设计"><a href="#通信网络分析与设计" class="headerlink" title="通信网络分析与设计"></a>通信网络分析与设计</h1><h2 id="电信网络如何路由-x2F-转发"><a href="#电信网络如何路由-x2F-转发" class="headerlink" title="电信网络如何路由/转发"></a>电信网络如何路由/转发</h2><p>手机会通过<strong>基站系统（BSS）</strong>接入到<strong>网络子系统（NSS）</strong>。网络子系统的一个重要部件是<strong>移动通信交换中心（MSC）</strong>，它建立了<em><strong>移动呼叫路由</strong></em>，连接到另外一个MSC。由此以上述相反的方式往下通讯，就找到了拨打号码的终端。<br><img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/03.jpg" alt="fig02"></p>
-<h2 id="IP网络如何路由-x2F-转发"><a href="#IP网络如何路由-x2F-转发" class="headerlink" title="IP网络如何路由/转发"></a>IP网络如何路由/转发</h2><p>PC1向PC2发送一个源IP地址为11.1.1.2、目的IP地址为12.1.1.2的数据包。 Router R1收到报文，查看路由表，发现路由到12.1.1.0/24网段，下一跳到172.16.0.2，所以报文从Router R1的接口GE 0/0/0发送到路由器 R2；路由器R2收到后查看路由表，发现有到12.1.1.0/24网段的路由，下一跳到172.16.1.2，所以从接口GE 0/0/1发出路由器 R2 到路由器 R3；路由器R3收到报文后，查看路由表，发现路由到12.1.1.0/24网段，下一跳为12.1.1.1，也就是路由器R3的接口GE 0/0/1的地址，所以数据包从GE 0/0/1发出，最后到达PC2。 PC2向PC1发送数据包时，也需要沿途的路由器查询路由表，以确定转发路径。</p>
-<p>需要说明的是，如果路由表项的下一跳IP地址是出接口的IP地址，则表示该接口直连路由表项所指示的目的网络。另外需要注意的是，下一跳IP地址对应的主机接口必须和出接口在同一个二层网络（二层广播域）。<br><img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/04.jpg" alt="fig02"></p>
-<h1 id="快递系统的设计"><a href="#快递系统的设计" class="headerlink" title="快递系统的设计"></a>快递系统的设计</h1><h2 id="如果主营高校之间的小包裹快递，怎么利用现有的快递系统赚钱？"><a href="#如果主营高校之间的小包裹快递，怎么利用现有的快递系统赚钱？" class="headerlink" title="如果主营高校之间的小包裹快递，怎么利用现有的快递系统赚钱？"></a>如果主营高校之间的小包裹快递，怎么利用现有的快递系统赚钱？</h2><h2 id="人联网如何实现路由-x2F-转发"><a href="#人联网如何实现路由-x2F-转发" class="headerlink" title="人联网如何实现路由/转发"></a>人联网如何实现路由/转发</h2><p>Android 蓝牙聊天室：仅支持一对一实时通信、文件传输、好友添加、好友分组、好友在线状态更新等功能，其中消息发送支持文本、表情等方式。</p>
-<h3 id="将传统的蓝牙聊天室改造成可以一对多的会话形式"><a href="#将传统的蓝牙聊天室改造成可以一对多的会话形式" class="headerlink" title="将传统的蓝牙聊天室改造成可以一对多的会话形式"></a>将传统的蓝牙聊天室改造成可以一对多的会话形式</h3><p>大部分手机与移动装置所使用的是 Class B（Class2），标准传输距离10米;而高功率的Class A（Class1）则是将传输距离提升到100-300米，两种版本都支持A2DP立体声传输协议，可与立体声耳机互联。一般而言，手机与蓝牙耳机的距离不会太远，如果中间没有大的障碍物，在7米之内传输质量都很好，超过8米将出现断点!超过10米将蓝牙设备之间将失去连接。</p>
+</tbody>
+</table>
+<h1 id="通信网络分析与设计">通信网络分析与设计</h1>
+<h2 id="电信网络如何路由转发">电信网络如何路由/转发</h2>
+<p>手机会通过<strong>基站系统（BSS）</strong>接入到<strong>网络子系统（NSS）</strong>。网络子系统的一个重要部件是<strong>移动通信交换中心（MSC）</strong>，它建立了<strong><em>移动呼叫路由</em></strong>，连接到另外一个MSC。由此以上述相反的方式往下通讯，就找到了拨打号码的终端。
+<img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/03.jpg" alt="fig02"> ## IP网络如何路由/转发
+PC1向PC2发送一个源IP地址为11.1.1.2、目的IP地址为12.1.1.2的数据包。
+Router
+R1收到报文，查看路由表，发现路由到12.1.1.0/24网段，下一跳到172.16.0.2，所以报文从Router
+R1的接口GE 0/0/0发送到路由器
+R2；路由器R2收到后查看路由表，发现有到12.1.1.0/24网段的路由，下一跳到172.16.1.2，所以从接口GE
+0/0/1发出路由器 R2 到路由器
+R3；路由器R3收到报文后，查看路由表，发现路由到12.1.1.0/24网段，下一跳为12.1.1.1，也就是路由器R3的接口GE
+0/0/1的地址，所以数据包从GE 0/0/1发出，最后到达PC2。
+PC2向PC1发送数据包时，也需要沿途的路由器查询路由表，以确定转发路径。</p>
+<p>需要说明的是，如果路由表项的下一跳IP地址是出接口的IP地址，则表示该接口直连路由表项所指示的目的网络。另外需要注意的是，下一跳IP地址对应的主机接口必须和出接口在同一个二层网络（二层广播域）。
+<img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/04.jpg" alt="fig02"></p>
+<h1 id="快递系统的设计">快递系统的设计</h1>
+<h2 id="如果主营高校之间的小包裹快递怎么利用现有的快递系统赚钱">如果主营高校之间的小包裹快递，怎么利用现有的快递系统赚钱？</h2>
+<h2 id="人联网如何实现路由转发">人联网如何实现路由/转发</h2>
+<p>Android
+蓝牙聊天室：仅支持一对一实时通信、文件传输、好友添加、好友分组、好友在线状态更新等功能，其中消息发送支持文本、表情等方式。</p>
+<h3 id="将传统的蓝牙聊天室改造成可以一对多的会话形式">将传统的蓝牙聊天室改造成可以一对多的会话形式</h3>
+<p>大部分手机与移动装置所使用的是 Class
+B（Class2），标准传输距离10米;而高功率的Class
+A（Class1）则是将传输距离提升到100-300米，两种版本都支持A2DP立体声传输协议，可与立体声耳机互联。一般而言，手机与蓝牙耳机的距离不会太远，如果中间没有大的障碍物，在7米之内传输质量都很好，超过8米将出现断点!超过10米将蓝牙设备之间将失去连接。</p>
 <p>一台手机仅支持5-7台<strong>不同类型</strong>的设备同时连接。</p>
-<h3 id="场景假设"><a href="#场景假设" class="headerlink" title="场景假设"></a>场景假设</h3><p>每2个教室/每3个寝室为一个聊天室，教室外区域根据相邻教室的最近距离归并到同一个聊天室。让聊天室的概念与物理上的空间一一对应。<br>（学校其他区域的聊天室划分有待商讨）</p>
+<h3 id="场景假设">场景假设</h3>
+<p>每2个教室/每3个寝室为一个聊天室，教室外区域根据相邻教室的最近距离归并到同一个聊天室。让聊天室的概念与物理上的空间一一对应。
+（学校其他区域的聊天室划分有待商讨）</p>
 <p>人员不流动下，在通信过程中，收发双方位置固定且在可蓝牙通信的聊天室内。</p>
 <p>人员流动下，通信过程中，发送方位置固定（确保能发出去信息），且不需要知道接收方是否收到信息。</p>
-<h3 id="发现的问题"><a href="#发现的问题" class="headerlink" title="发现的问题"></a>发现的问题</h3><p>如果人员流动时，发送方不能广播信息，只能一个一个发（发了就断，断了再换节点发），该功能是否下放到代码层面实现未知。</p>
+<h3 id="发现的问题">发现的问题</h3>
+<p>如果人员流动时，发送方不能广播信息，只能一个一个发（发了就断，断了再换节点发），该功能是否下放到代码层面实现未知。</p>
 <p>聊天室和聊天室之间的通信，是否需要一个中间节点来转发信息？中间节点只能用人代替。</p>
-<h2 id="Android-开发的一些基础"><a href="#Android-开发的一些基础" class="headerlink" title="Android 开发的一些基础"></a>Android 开发的一些基础</h2><h3 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h3><p>A socket is an endpoint for communication between two machines.</p>
-<h4 id="BluetoothSocket"><a href="#BluetoothSocket" class="headerlink" title="BluetoothSocket"></a>BluetoothSocket</h4><p>REF:<a target="_blank" rel="noopener" href="https://developer.android.google.cn/guide/topics/connectivity/bluetooth?hl=zh-cn#java">https://developer.android.google.cn/guide/topics/connectivity/bluetooth?hl=zh-cn#java</a></p>
-<p>利用 BluetoothAdapter，通过设备发现或查询配对设备的列表来查找远程蓝牙设备。</p>
+<h2 id="android-开发的一些基础">Android 开发的一些基础</h2>
+<h3 id="socket">Socket</h3>
+<p>A socket is an endpoint for communication between two machines.</p>
+<h4 id="bluetoothsocket">BluetoothSocket</h4>
+<p>REF:<a target="_blank" rel="noopener" href="https://developer.android.google.cn/guide/topics/connectivity/bluetooth?hl=zh-cn#java" class="uri">https://developer.android.google.cn/guide/topics/connectivity/bluetooth?hl=zh-cn#java</a></p>
+<p>利用
+BluetoothAdapter，通过设备发现或查询配对设备的列表来查找远程蓝牙设备。</p>
 <p>Android 应用可通过 Bluetooth API 执行以下操作：</p>
 <ul>
 <li>扫描其他蓝牙设备</li>
@@ -423,12 +487,22 @@ mjx-container[display="true"] + br {
 <p>请注意，被配对与被连接之间存在区别：</p>
 <ul>
 <li>被配对是指两台设备知晓彼此的存在，具有可用于身份验证的共享链路密钥，并且能够与彼此建立加密连接。</li>
-<li>被连接是指设备当前共享一个 RFCOMM 通道，并且能够向彼此传输数据。当前的 Android Bluetooth API 要求规定，只有先对设备进行配对，然后才能建立 RFCOMM 连接。在使用 Bluetooth API 发起加密连接时，系统会自动执行配对。</li>
+<li>被连接是指设备当前共享一个 RFCOMM
+通道，并且能够向彼此传输数据。当前的 Android Bluetooth API
+要求规定，只有先对设备进行配对，然后才能建立 RFCOMM 连接。在使用
+Bluetooth API 发起加密连接时，系统会自动执行配对。</li>
 </ul>
-<h3 id="RFCOMM"><a href="#RFCOMM" class="headerlink" title="RFCOMM"></a>RFCOMM</h3><p>一个以连接为导向的，通过蓝牙的流媒体传输。also known as the Serial Port Profile 串口协议(SPP)。</p>
-<h2 id="endpoint-ID"><a href="#endpoint-ID" class="headerlink" title="endpoint ID"></a>endpoint ID</h2><p>学院+姓名</p>
-<h1 id="HOW-TO-Enhance-my-social-network"><a href="#HOW-TO-Enhance-my-social-network" class="headerlink" title="HOW TO Enhance my social network?"></a>HOW TO Enhance my social network?</h1><h2 id="Exp1-明月湖MiniCamp"><a href="#Exp1-明月湖MiniCamp" class="headerlink" title="Exp1: 明月湖MiniCamp"></a>Exp1: 明月湖MiniCamp</h2><p>如何发言让主办方舒服？与其说“可能我不会走向创业这条路……”，不如这样开头“无论我是否走向创业……”。</p>
-<p>对比entrepreneurship和intrapreneurship：<br>前者是外向的牵头创业，后者则是企业内部或者组织内部的创业。从entre到intra，是对创业理解的改变，换言之，也就是一种成长。视角从外部转向内部之后，能够得到一样的在这个组织内的资源。</p>
+<h3 id="rfcomm">RFCOMM</h3>
+<p>一个以连接为导向的，通过蓝牙的流媒体传输。also known as the Serial
+Port Profile 串口协议(SPP)。</p>
+<h2 id="endpoint-id">endpoint ID</h2>
+<p>学院+姓名</p>
+<h1 id="how-to-enhance-my-social-network">HOW TO Enhance my social
+network?</h1>
+<h2 id="exp1-明月湖minicamp">Exp1: 明月湖MiniCamp</h2>
+<p>如何发言让主办方舒服？与其说“可能我不会走向创业这条路……”，不如这样开头“无论我是否走向创业……”。</p>
+<p>对比entrepreneurship和intrapreneurship：
+前者是外向的牵头创业，后者则是企业内部或者组织内部的创业。从entre到intra，是对创业理解的改变，换言之，也就是一种成长。视角从外部转向内部之后，能够得到一样的在这个组织内的资源。</p>
 
     </div>
     

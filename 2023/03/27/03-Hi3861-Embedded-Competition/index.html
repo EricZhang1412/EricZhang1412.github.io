@@ -278,12 +278,12 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/%E6%B5%B7%E6%80%9D/" style="color: #ffa2c4">海思</a>
+                <a href="/tags/%E6%B5%B7%E6%80%9D/" style="color: #00a596">海思</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #ffa2c4">嵌入式大赛</a>
+                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #03a9f4">嵌入式大赛</a>
             </span>
             
         </span>
@@ -291,33 +291,35 @@ mjx-container[display="true"] + br {
     </div>
     
     <div class="content" v-pre>
-        <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>海思技术论坛注册：<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all">https://developer.hisilicon.com/forum/all</a></p>
-<p>嵌入式物联网学习资料总入口：<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/postDetail?tid=0206112614830760003">https://developer.hisilicon.com/postDetail?tid=0206112614830760003</a></p>
-<p>海思技术论坛<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all">https://developer.hisilicon.com/forum/all</a></p>
-<span id="more"></span>
-<h1 id="工程结构分析"><a href="#工程结构分析" class="headerlink" title="工程结构分析"></a>工程结构分析</h1><h2 id="工程目录"><a href="#工程目录" class="headerlink" title="工程目录"></a>工程目录</h2><pre><code class="bash">.
-└── applications
-    └── sample
-        └── wifi-iot
-            └── app
-                │── my_first_app     //业务my_first_app文件夹
-                │  │── hello_world.c //业务代码
-                │  └── BUILD.gn      //编译脚本
-                └── BUILD.gn
-</code></pre>
-<h2 id="hello-world-c文件代码结构"><a href="#hello-world-c文件代码结构" class="headerlink" title="hello_world.c文件代码结构"></a>hello_world.c文件代码结构</h2><pre><code class="C">#include &lt;stdio.h&gt;
-#include "ohos_init.h"
-#include "ohos_types.h"
-
-void HelloWorld(void)
-{
-    printf("___________&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; [DEMO] Hello world.\n");
-}
-SYS_RUN(HelloWorld);
-</code></pre>
+        <h1 id="参考资料">参考资料</h1>
+<p>海思技术论坛注册：<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all" class="uri">https://developer.hisilicon.com/forum/all</a></p>
+<p>嵌入式物联网学习资料总入口：<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/postDetail?tid=0206112614830760003" class="uri">https://developer.hisilicon.com/postDetail?tid=0206112614830760003</a></p>
+<p>海思技术论坛<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all" class="uri">https://developer.hisilicon.com/forum/all</a> <span id="more"></span> #
+工程结构分析</p>
+<h2 id="工程目录">工程目录</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">.</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">└──</span> applications</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="ex">└──</span> sample</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="ex">└──</span> wifi-iot</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="ex">└──</span> app</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>                <span class="ex">│──</span> my_first_app     //业务my_first_app文件夹</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>                <span class="ex">│</span>  │── hello_world.c //业务代码</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>                <span class="ex">│</span>  └── BUILD.gn      //编译脚本</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>                <span class="ex">└──</span> BUILD.gn</span></code></pre></div>
+<h2 id="hello_world.c文件代码结构">hello_world.c文件代码结构</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&lt;stdio.h&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"ohos_init.h"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">"ohos_types.h"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> HelloWorld<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"___________&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; [DEMO] Hello world.</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>SYS_RUN<span class="op">(</span>HelloWorld<span class="op">);</span></span></code></pre></div>
 <p>SYS_RUN定义在ohos_init.h文件中，是<strong>HarmonyOS启动恢复模块接口启动业务</strong>。</p>
-<h2 id="用于将业务构建成静态库的BUILD-gn文件代码结构"><a href="#用于将业务构建成静态库的BUILD-gn文件代码结构" class="headerlink" title="用于将业务构建成静态库的BUILD.gn文件代码结构"></a><em>用于将业务构建成静态库</em>的BUILD.gn文件代码结构</h2><p>路径：./applications/sample/wifi-iot/app/my_first_app/BUILD.gn（与下面的模块编译build.gn不一样，请格外注意）</p>
-<pre><code class="gn">//目标业务
+<h2 id="用于将业务构建成静态库的build.gn文件代码结构"><em>用于将业务构建成静态库</em>的BUILD.gn文件代码结构</h2>
+<p>路径：./applications/sample/wifi-iot/app/my_first_app/BUILD.gn（与下面的模块编译build.gn不一样，请格外注意）</p>
+<pre class="gn"><code>//目标业务
 static_library("myapp") { 
     //源文件路径
     sources = [
@@ -327,10 +329,10 @@ static_library("myapp") {
     include_dirs = [
         "//utils/native/lite/include"
     ]
-}
-</code></pre>
-<h2 id="指定需参与构建的特性模块的BUILD-gn文件代码结构"><a href="#指定需参与构建的特性模块的BUILD-gn文件代码结构" class="headerlink" title="指定需参与构建的特性模块的BUILD.gn文件代码结构"></a><em>指定需参与构建的特性模块</em>的BUILD.gn文件代码结构</h2><p>路径：./applications/sample/wifi-iot/app/BUILD.gn</p>
-<pre><code class="gn">import("//build/lite/config/component/lite_component.gni")
+}</code></pre>
+<h2 id="指定需参与构建的特性模块的build.gn文件代码结构"><em>指定需参与构建的特性模块</em>的BUILD.gn文件代码结构</h2>
+<p>路径：./applications/sample/wifi-iot/app/BUILD.gn</p>
+<pre class="gn"><code>import("//build/lite/config/component/lite_component.gni")
 
 
 lite_component("app") {
@@ -338,248 +340,257 @@ lite_component("app") {
         "my_first_app:myapp",
     ]
 
-}
-</code></pre>
+}</code></pre>
 <p>my_first_app是相对路径，指向./applications/sample/wifi-iot/app/my_first_app/BUILD.gn。</p>
-<p>myapp是目标，指向./applications/sample/wifi-iot/app/my_first_app/BUILD.gn中的static_library(“myapp”)。</p>
-<h1 id="Hi3861其他代码结构"><a href="#Hi3861其他代码结构" class="headerlink" title="Hi3861其他代码结构"></a>Hi3861其他代码结构</h1><h2 id="Hi3861平台配置文件"><a href="#Hi3861平台配置文件" class="headerlink" title="Hi3861平台配置文件"></a>Hi3861平台配置文件</h2><p>hi3861平台配置文件位于：vendor\hisilicon\hispark_pegasus\config.json</p>
-<pre><code class="json">{
-    "product_name": "wifiiot_hispark_pegasus",
-    "ohos_version": "OpenHarmony 1.0",
-    "device_company": "hisilicon",
-    "board": "hispark_pegasus",
-    "kernel_type": "liteos_m",
-    "kernel_version": "",
-    "subsystems": [
-      {
-        //应用子系统,存放了hi3681编写的应用程序代码
-        "subsystem": "applications",
-        "components": [
-          { "component": "wifi_iot_sample_app", "features":[] }
-        ]
-      },
-      {
-        //硬件驱动子系统,存放了hi3681的硬件驱动代码
-        "subsystem": "iot_hardware",
-        "components": [
-          { "component": "iot_controller", "features":[] }
-        ]
-      },
-      {
-        //
-        "subsystem": "hiviewdfx",
-        "components": [
-          { "component": "hilog_lite", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "distributed_schedule",
-        "components": [
-          { "component": "samgr_lite", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "security",
-        "components": [
-          { "component": "hichainsdk", "features":[] },
-          { "component": "deviceauth_lite", "features":[] },
-          { "component": "huks", "features":
-            [
-              "disable_huks_binary = false",
-              "disable_authenticate = false",
-              "huks_use_lite_storage = true",
-              "huks_use_hardware_root_key = true",
-              "huks_config_file = \"hks_config_lite.h\"",
-              "huks_mbedtls_path = \"//device/hisilicon/hispark_pegasus/sdk_liteos/third_party/mbedtls/include/\""
-            ]
-          }
-        ]
-      },
-      {
-        "subsystem": "startup",
-        "components": [
-          { "component": "bootstrap_lite", "features":[] },
-          { "component": "syspara_lite", "features":
-            [
-              "enable_ohos_startup_syspara_lite_use_thirdparty_mbedtls = false"
-            ]
-          }
-        ]
-      },
-      {
-        "subsystem": "communication",
-        "components": [
-          { "component": "wifi_lite", "features":[] },
-          { "component": "softbus_lite", "features":[] },
-          { "component": "wifi_aware", "features":[]}
-        ]
-      },
-      {
-        "subsystem": "update",
-        "components": [
-          { "component": "ota_lite", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "iot",
-        "components": [
-          { "component": "iot_link", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "utils",
-        "components": [
-          { "component": "file", "features":[] },
-          { "component": "kv_store", "features":[] },
-          { "component": "os_dump", "features":[] }
-        ]
-      },
-      {
-        "subsystem": "vendor",
-        "components": [
-          { "component": "hi3861_sdk", "target": "//device/hisilicon/hispark_pegasus/sdk_liteos:wifiiot_sdk", "features":[] }
-        ]
-      }
-    ],
-    "third_party_dir": "//device/hisilicon/hispark_pegasus/sdk_liteos/third_party",
-    "product_adapter_dir": "//vendor/hisilicon/hispark_pegasus/hals"
-  }
-</code></pre>
+<p>myapp是目标，指向./applications/sample/wifi-iot/app/my_first_app/BUILD.gn中的static_library("myapp")。</p>
+<h1 id="hi3861其他代码结构">Hi3861其他代码结构</h1>
+<h2 id="hi3861平台配置文件">Hi3861平台配置文件</h2>
+<p>hi3861平台配置文件位于：vendor_pegasus.json</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"product_name"</span><span class="fu">:</span> <span class="st">"wifiiot_hispark_pegasus"</span><span class="fu">,</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"ohos_version"</span><span class="fu">:</span> <span class="st">"OpenHarmony 1.0"</span><span class="fu">,</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"device_company"</span><span class="fu">:</span> <span class="st">"hisilicon"</span><span class="fu">,</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"board"</span><span class="fu">:</span> <span class="st">"hispark_pegasus"</span><span class="fu">,</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"kernel_type"</span><span class="fu">:</span> <span class="st">"liteos_m"</span><span class="fu">,</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"kernel_version"</span><span class="fu">:</span> <span class="st">""</span><span class="fu">,</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"subsystems"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="er">//应用子系统</span><span class="fu">,</span><span class="er">存放了hi3681编写的应用程序代码</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"subsystem"</span><span class="fu">:</span> <span class="st">"applications"</span><span class="fu">,</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"wifi_iot_sample_app"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        <span class="er">//硬件驱动子系统</span><span class="fu">,</span><span class="er">存放了hi3681的硬件驱动代码</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"subsystem"</span><span class="fu">:</span> <span class="st">"iot_hardware"</span><span class="fu">,</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"iot_controller"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"subsystem"</span><span class="fu">:</span> <span class="st">"hiviewdfx"</span><span class="fu">,</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"hilog_lite"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"subsystem"</span><span class="fu">:</span> <span class="st">"distributed_schedule"</span><span class="fu">,</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"samgr_lite"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"subsystem"</span><span class="fu">:</span> <span class="st">"security"</span><span class="fu">,</span></span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"hichainsdk"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"deviceauth_lite"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"huks"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>            <span class="ot">[</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>              <span class="st">"disable_huks_binary = false"</span><span class="ot">,</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>              <span class="st">"disable_authenticate = false"</span><span class="ot">,</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>              <span class="st">"huks_use_lite_storage = true"</span><span class="ot">,</span></span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>              <span class="st">"huks_use_hardware_root_key = true"</span><span class="ot">,</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>              <span class="st">"huks_config_file = </span><span class="ch">\"</span><span class="st">hks_config_lite.h</span><span class="ch">\"</span><span class="st">"</span><span class="ot">,</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>              <span class="st">"huks_mbedtls_path = </span><span class="ch">\"</span><span class="st">//device/hisilicon/hispark_pegasus/sdk_liteos/third_party/mbedtls/include/</span><span class="ch">\"</span><span class="st">"</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>            <span class="ot">]</span></span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>          <span class="fu">}</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"subsystem"</span><span class="fu">:</span> <span class="st">"startup"</span><span class="fu">,</span></span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"bootstrap_lite"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"syspara_lite"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>            <span class="ot">[</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>              <span class="st">"enable_ohos_startup_syspara_lite_use_thirdparty_mbedtls = false"</span></span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>            <span class="ot">]</span></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a>          <span class="fu">}</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"subsystem"</span><span class="fu">:</span> <span class="st">"communication"</span><span class="fu">,</span></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"wifi_lite"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"softbus_lite"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"wifi_aware"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span><span class="fu">}</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"subsystem"</span><span class="fu">:</span> <span class="st">"update"</span><span class="fu">,</span></span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"ota_lite"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"subsystem"</span><span class="fu">:</span> <span class="st">"iot"</span><span class="fu">,</span></span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"iot_link"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span></span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"subsystem"</span><span class="fu">:</span> <span class="st">"utils"</span><span class="fu">,</span></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"file"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"kv_store"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"os_dump"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>      <span class="fu">{</span></span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"subsystem"</span><span class="fu">:</span> <span class="st">"vendor"</span><span class="fu">,</span></span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>        <span class="dt">"components"</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>          <span class="fu">{</span> <span class="dt">"component"</span><span class="fu">:</span> <span class="st">"hi3861_sdk"</span><span class="fu">,</span> <span class="dt">"target"</span><span class="fu">:</span> <span class="st">"//device/hisilicon/hispark_pegasus/sdk_liteos:wifiiot_sdk"</span><span class="fu">,</span> <span class="dt">"features"</span><span class="fu">:</span><span class="ot">[]</span> <span class="fu">}</span></span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"third_party_dir"</span><span class="fu">:</span> <span class="st">"//device/hisilicon/hispark_pegasus/sdk_liteos/third_party"</span><span class="fu">,</span></span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"product_adapter_dir"</span><span class="fu">:</span> <span class="st">"//vendor/hisilicon/hispark_pegasus/hals"</span></span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span></code></pre></div>
 <p>hi3861用的是<strong>liteos-m</strong>内核，但是目前hi3681的liteos-m被<strong>芯片rom化</strong>了，固化在芯片内部了。所以在harmonyOS代码是找不到hi3861的内核部分。</p>
-<h1 id="Hi3861启动流程"><a href="#Hi3861启动流程" class="headerlink" title="Hi3861启动流程"></a>Hi3861启动流程</h1><h2 id="第一个入口函数"><a href="#第一个入口函数" class="headerlink" title="第一个入口函数"></a>第一个入口函数</h2><p>路径:.\src\device\hisilicon\hispark_pegasus\sdk_liteos\app\wifiiot_app\app_main.c</p>
-<pre><code class="c">hi_void app_main(hi_void)
-{
-#ifdef CONFIG_FACTORY_TEST_MODE
-        printf("factory test mode!\r\n");
-#endif
-
-    const hi_char* sdk_ver = hi_get_sdk_version();
-    printf("sdk ver:%s\r\n", sdk_ver);
-
-    hi_flash_partition_table *ptable = HI_NULL;
-
-    peripheral_init();
-    peripheral_init_no_sleep();
-
-#ifndef CONFIG_FACTORY_TEST_MODE
-    hi_lpc_register_wakeup_entry(peripheral_init);
-#endif
-
-    hi_u32 ret = hi_factory_nv_init(HI_FNV_DEFAULT_ADDR, HI_NV_DEFAULT_TOTAL_SIZE, HI_NV_DEFAULT_BLOCK_SIZE);
-    if (ret != HI_ERR_SUCCESS) {
-        printf("factory nv init fail\r\n");
-    }
-
-    /* partion table should init after factory nv init. */
-    ret = hi_flash_partition_init();
-    if (ret != HI_ERR_SUCCESS) {
-        printf("flash partition table init fail:0x%x \r\n", ret);
-    }
-    ptable = hi_get_partition_table();
-
-    ret = hi_nv_init(ptable-&gt;table[HI_FLASH_PARTITON_NORMAL_NV].addr, ptable-&gt;table[HI_FLASH_PARTITON_NORMAL_NV].size,
-        HI_NV_DEFAULT_BLOCK_SIZE);
-    if (ret != HI_ERR_SUCCESS) {
-        printf("nv init fail\r\n");
-    }
-
-#ifndef CONFIG_FACTORY_TEST_MODE
-    hi_upg_init();
-#endif
-
-    /* if not use file system, there is no need init it */
-    hi_fs_init();
-
-    (hi_void)hi_event_init(APP_INIT_EVENT_NUM, HI_NULL);
-    hi_sal_init();
-    /* 此处设为TRUE后中断中看门狗复位会显示复位时PC值，但有复位不完全风险，量产版本请务必设为FALSE */
-    hi_syserr_watchdog_debug(HI_FALSE);
-    /* 默认记录宕机信息到FLASH，根据应用场景，可不记录，避免频繁异常宕机情况损耗FLASH寿命 */
-    hi_syserr_record_crash_info(HI_TRUE);
-
-    hi_lpc_init();
-    hi_lpc_register_hw_handler(config_before_sleep, config_after_sleep);
-
-#if defined(CONFIG_AT_COMMAND) || defined(CONFIG_FACTORY_TEST_MODE)
-    ret = hi_at_init();
-    if (ret == HI_ERR_SUCCESS) {
-        hi_at_sys_cmd_register();
-    }
-#endif
-
-    /* 如果不需要使用Histudio查看WIFI驱动运行日志等，无需初始化diag */
-    /* if not use histudio for diagnostic, diag initialization is unnecessary */
-    /* Shell and Diag use the same uart port, only one of them can be selected */
-#ifndef CONFIG_FACTORY_TEST_MODE
-
-#ifndef ENABLE_SHELL_DEBUG
-#ifdef CONFIG_DIAG_SUPPORT
-    (hi_void)hi_diag_init();
-#endif
-#else
-    (hi_void)hi_shell_init();
-#endif
-
-    tcpip_init(NULL, NULL);
-#endif
-
-    ret = hi_wifi_init(APP_INIT_VAP_NUM, APP_INIT_USR_NUM);
-    if (ret != HISI_OK) {
-        printf("wifi init failed!\n");
-    } else {
-        printf("wifi init success!\n");
-    }
-    app_demo_task_release_mem(); /* 释放系统栈内存所使用任务 */
-
-#ifndef CONFIG_FACTORY_TEST_MODE
-    app_demo_upg_init();
-#ifdef CONFIG_HILINK
-    ret = hilink_main();
-    if (ret != HISI_OK) {
-        printf("hilink init failed!\n");
-    } else {
-        printf("hilink init success!\n");
-    }
-#endif
-#endif
-    OHOS_Main();
-}
-</code></pre>
+<h1 id="hi3861启动流程">Hi3861启动流程</h1>
+<h2 id="第一个入口函数">第一个入口函数</h2>
+<p>路径:._pegasus_liteos_app_main.c</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>hi_void app_main<span class="op">(</span>hi_void<span class="op">)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifdef CONFIG_FACTORY_TEST_MODE</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"factory test mode!</span><span class="sc">\r\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">const</span> hi_char<span class="op">*</span> sdk_ver <span class="op">=</span> hi_get_sdk_version<span class="op">();</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">"sdk ver:%s</span><span class="sc">\r\n</span><span class="st">"</span><span class="op">,</span> sdk_ver<span class="op">);</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    hi_flash_partition_table <span class="op">*</span>ptable <span class="op">=</span> HI_NULL<span class="op">;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    peripheral_init<span class="op">();</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    peripheral_init_no_sleep<span class="op">();</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifndef CONFIG_FACTORY_TEST_MODE</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    hi_lpc_register_wakeup_entry<span class="op">(</span>peripheral_init<span class="op">);</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>    hi_u32 ret <span class="op">=</span> hi_factory_nv_init<span class="op">(</span>HI_FNV_DEFAULT_ADDR<span class="op">,</span> HI_NV_DEFAULT_TOTAL_SIZE<span class="op">,</span> HI_NV_DEFAULT_BLOCK_SIZE<span class="op">);</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>ret <span class="op">!=</span> HI_ERR_SUCCESS<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"factory nv init fail</span><span class="sc">\r\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* partion table should init after factory nv init. */</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    ret <span class="op">=</span> hi_flash_partition_init<span class="op">();</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>ret <span class="op">!=</span> HI_ERR_SUCCESS<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"flash partition table init fail:0x%x </span><span class="sc">\r\n</span><span class="st">"</span><span class="op">,</span> ret<span class="op">);</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    ptable <span class="op">=</span> hi_get_partition_table<span class="op">();</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    ret <span class="op">=</span> hi_nv_init<span class="op">(</span>ptable<span class="op">-&gt;</span>table<span class="op">[</span>HI_FLASH_PARTITON_NORMAL_NV<span class="op">].</span>addr<span class="op">,</span> ptable<span class="op">-&gt;</span>table<span class="op">[</span>HI_FLASH_PARTITON_NORMAL_NV<span class="op">].</span>size<span class="op">,</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>        HI_NV_DEFAULT_BLOCK_SIZE<span class="op">);</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>ret <span class="op">!=</span> HI_ERR_SUCCESS<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"nv init fail</span><span class="sc">\r\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifndef CONFIG_FACTORY_TEST_MODE</span></span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>    hi_upg_init<span class="op">();</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* if not use file system, there is no need init it */</span></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>    hi_fs_init<span class="op">();</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>    <span class="op">(</span>hi_void<span class="op">)</span>hi_event_init<span class="op">(</span>APP_INIT_EVENT_NUM<span class="op">,</span> HI_NULL<span class="op">);</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>    hi_sal_init<span class="op">();</span></span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* 此处设为TRUE后中断中看门狗复位会显示复位时PC值，但有复位不完全风险，量产版本请务必设为FALSE */</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>    hi_syserr_watchdog_debug<span class="op">(</span>HI_FALSE<span class="op">);</span></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* 默认记录宕机信息到FLASH，根据应用场景，可不记录，避免频繁异常宕机情况损耗FLASH寿命 */</span></span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>    hi_syserr_record_crash_info<span class="op">(</span>HI_TRUE<span class="op">);</span></span>
+<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>    hi_lpc_init<span class="op">();</span></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a>    hi_lpc_register_hw_handler<span class="op">(</span>config_before_sleep<span class="op">,</span> config_after_sleep<span class="op">);</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="pp">#if defined(CONFIG_AT_COMMAND) || defined(CONFIG_FACTORY_TEST_MODE)</span></span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>    ret <span class="op">=</span> hi_at_init<span class="op">();</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>ret <span class="op">==</span> HI_ERR_SUCCESS<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>        hi_at_sys_cmd_register<span class="op">();</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* 如果不需要使用Histudio查看WIFI驱动运行日志等，无需初始化diag */</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* if not use histudio for diagnostic, diag initialization is unnecessary */</span></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>    <span class="co">/* Shell and Diag use the same uart port, only one of them can be selected */</span></span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifndef CONFIG_FACTORY_TEST_MODE</span></span>
+<span id="cb6-65"><a href="#cb6-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-66"><a href="#cb6-66" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifndef ENABLE_SHELL_DEBUG</span></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifdef CONFIG_DIAG_SUPPORT</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a>    <span class="op">(</span>hi_void<span class="op">)</span>hi_diag_init<span class="op">();</span></span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="pp">#else</span></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>    <span class="op">(</span>hi_void<span class="op">)</span>hi_shell_init<span class="op">();</span></span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a>    tcpip_init<span class="op">(</span>NULL<span class="op">,</span> NULL<span class="op">);</span></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a>    ret <span class="op">=</span> hi_wifi_init<span class="op">(</span>APP_INIT_VAP_NUM<span class="op">,</span> APP_INIT_USR_NUM<span class="op">);</span></span>
+<span id="cb6-78"><a href="#cb6-78" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>ret <span class="op">!=</span> HISI_OK<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-79"><a href="#cb6-79" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"wifi init failed!</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"wifi init success!</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a>    app_demo_task_release_mem<span class="op">();</span> <span class="co">/* 释放系统栈内存所使用任务 */</span></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifndef CONFIG_FACTORY_TEST_MODE</span></span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>    app_demo_upg_init<span class="op">();</span></span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifdef CONFIG_HILINK</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>    ret <span class="op">=</span> hilink_main<span class="op">();</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>ret <span class="op">!=</span> HISI_OK<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"hilink init failed!</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"hilink init success!</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a>    OHOS_Main<span class="op">();</span></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>最后一行调用OHOS_Main()代码：</p>
-<p>路径：.\src\device\hisilicon\hispark_pegasus\sdk_liteos\app\wifiiot_app\src</p>
-<pre><code class="c">void OHOS_Main()
-{
-#if defined(CONFIG_AT_COMMAND) || defined(CONFIG_FACTORY_TEST_MODE)
-    hi_u32 ret;
-    ret = hi_at_init();
-    if (ret == HI_ERR_SUCCESS) {
-        hi_u32 ret2 = hi_at_register_cmd(G_OHOS_AT_FUNC_TBL, OHOS_AT_FUNC_NUM);
-        if (ret2 != HI_ERR_SUCCESS) {
-            printf("Register ohos failed!\n");
-        }
-    }
-#endif
-    OHOS_SystemInit();
-}
-</code></pre>
+<p>路径：._pegasus_liteos_app</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> OHOS_Main<span class="op">()</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#if defined(CONFIG_AT_COMMAND) || defined(CONFIG_FACTORY_TEST_MODE)</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    hi_u32 ret<span class="op">;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    ret <span class="op">=</span> hi_at_init<span class="op">();</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>ret <span class="op">==</span> HI_ERR_SUCCESS<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        hi_u32 ret2 <span class="op">=</span> hi_at_register_cmd<span class="op">(</span>G_OHOS_AT_FUNC_TBL<span class="op">,</span> OHOS_AT_FUNC_NUM<span class="op">);</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>ret2 <span class="op">!=</span> HI_ERR_SUCCESS<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>            printf<span class="op">(</span><span class="st">"Register ohos failed!</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    OHOS_SystemInit<span class="op">();</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>OHOS_SystemInit函数进行鸿蒙系统的初始化。</p>
-<p>路径：D:\DevEcoProjects\first_test\src\base\startup\bootstrap_lite\services\source\system_init.c</p>
-<pre><code class="c">void OHOS_SystemInit(void)
-{
-    MODULE_INIT(bsp);
-    MODULE_INIT(device);
-    MODULE_INIT(core);
-    SYS_INIT(service);
-    SYS_INIT(feature);
-    MODULE_INIT(run);
-    SAMGR_Bootstrap();
-}
-</code></pre>
+<p>路径：D:_test_lite_init.c</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> OHOS_SystemInit<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    MODULE_INIT<span class="op">(</span>bsp<span class="op">);</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    MODULE_INIT<span class="op">(</span>device<span class="op">);</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    MODULE_INIT<span class="op">(</span>core<span class="op">);</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>    SYS_INIT<span class="op">(</span>service<span class="op">);</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    SYS_INIT<span class="op">(</span>feature<span class="op">);</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    MODULE_INIT<span class="op">(</span>run<span class="op">);</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    SAMGR_Bootstrap<span class="op">();</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>主要是初始化了一些相关模块、系统，包括有bsp、device（设备）。其中最终的是MODULE_INIT(run)；负责调用所有run段的代码：<strong>前面application中使用SYS_RUN()宏设置的函数名</strong>。</p>
-<h1 id="作品设想"><a href="#作品设想" class="headerlink" title="作品设想"></a>作品设想</h1><h2 id="1-作品功能"><a href="#1-作品功能" class="headerlink" title="1. 作品功能"></a>1. 作品功能</h2><h3 id="A-基础设施智能化建设解决方案"><a href="#A-基础设施智能化建设解决方案" class="headerlink" title="A.基础设施智能化建设解决方案"></a>A.基础设施智能化建设解决方案</h3><p>将小区分为社区门口、单元门、电梯间、入户门、停车场、公共区域、设备间7 个重点区域，对门禁、道闸、对讲、梯控、视频监控、周界防范、信息发布、停车管理、设备检测等进行基础设施智能化开发与建设，为智慧社区整体方案提供支撑，基础设施见图：<br><img src="/2023/03/27/03-Hi3861-Embedded-Competition/01.jpg" alt="fig01"></p>
-<p>最终敲定功能：<br>小区设备综合管控：供电监测、水暖系统、排水系统、通风系统的设备情况实时监测<br>人脸、车牌识别：<br>电梯设备状态监控：<br>与市气象站数据整合，小区植被喷淋系统</p>
+<h1 id="作品设想">作品设想</h1>
+<h2 id="作品功能">1. 作品功能</h2>
+<h3 id="a.基础设施智能化建设解决方案">A.基础设施智能化建设解决方案</h3>
+<p>将小区分为社区门口、单元门、电梯间、入户门、停车场、公共区域、设备间7
+个重点区域，对门禁、道闸、对讲、梯控、视频监控、周界防范、信息发布、停车管理、设备检测等进行基础设施智能化开发与建设，为智慧社区整体方案提供支撑，基础设施见图：
+<img src="/2023/03/27/03-Hi3861-Embedded-Competition/01.jpg" alt="fig01"></p>
+<p>最终敲定功能：
+小区设备综合管控：供电监测、水暖系统、排水系统、通风系统的设备情况实时监测
+人脸、车牌识别： 电梯设备状态监控：
+与市气象站数据整合，小区植被喷淋系统</p>
 <p>主要工作：Hi3861开发板学习、各种传感器选型、解决方案敲定等。</p>
-<h3 id="B-物业综合服务平台"><a href="#B-物业综合服务平台" class="headerlink" title="B.物业综合服务平台"></a>B.物业综合服务平台</h3><p>该平台用于：完成人员管理、养老服务、卫生服务、信息发布、收缴费管理、报事报修、车辆管理、便民服务等功能开发；为物业提供社区基础数据、日常业务管理工具，通过数据共享和应用聚合向政府提供社区管理通道、向居民提供社区服务。平台服务与应用见图4：<br><img src="/2023/03/27/03-Hi3861-Embedded-Competition/02.jpg" alt="fig02"></p>
+<h3 id="b.物业综合服务平台">B.物业综合服务平台</h3>
+<p>该平台用于：完成人员管理、养老服务、卫生服务、信息发布、收缴费管理、报事报修、车辆管理、便民服务等功能开发；为物业提供社区基础数据、日常业务管理工具，通过数据共享和应用聚合向政府提供社区管理通道、向居民提供社区服务。平台服务与应用见图4：
+<img src="/2023/03/27/03-Hi3861-Embedded-Competition/02.jpg" alt="fig02"></p>
 <p>主要工作：华为云服务的学习与配置，物业综合服务平台的开发。</p>
 
     </div>
