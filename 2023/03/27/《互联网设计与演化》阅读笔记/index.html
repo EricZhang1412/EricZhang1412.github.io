@@ -278,7 +278,7 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #ffa2c4">计算机网络</a>
+                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #00a596">计算机网络</a>
             </span>
             
         </span>
@@ -433,6 +433,21 @@ mjx-container[display="true"] + br {
 <h3 id="RFCOMM"><a href="#RFCOMM" class="headerlink" title="RFCOMM"></a>RFCOMM</h3><p>一个以连接为导向的，通过蓝牙的流媒体传输。also known as the Serial Port Profile 串口协议(SPP)。</p>
 <h2 id="endpoint-ID"><a href="#endpoint-ID" class="headerlink" title="endpoint ID"></a>endpoint ID</h2><p>学院+姓名</p>
 <hr>
+<h1 id="新方法：蓝牙PAN技术构建Ad-Hoc"><a href="#新方法：蓝牙PAN技术构建Ad-Hoc" class="headerlink" title="新方法：蓝牙PAN技术构建Ad Hoc"></a>新方法：蓝牙PAN技术构建Ad Hoc</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><h3 id="蓝牙网络功能要求："><a href="#蓝牙网络功能要求：" class="headerlink" title="蓝牙网络功能要求："></a>蓝牙网络功能要求：</h3><ol>
+<li>定义/引用基于 IP 的动态临时个人网络</li>
+<li>必须独立于操作系统、语言和设备</li>
+<li>提供对 IPv4 和 IPv6 等常见网络协议的支持。对于其他现有的网络协议，可能会或可能不会提供支持。</li>
+<li>为网络接入点提供支持，其中网络可以是企业 LAN、GSM 和其他数据网络。</li>
+<li>在内存、处理能力和用户界面方面适应资源较为匮乏的小型设备。</li>
+</ol>
+<h2 id="蓝牙网络封装协议（BNEP）"><a href="#蓝牙网络封装协议（BNEP）" class="headerlink" title="蓝牙网络封装协议（BNEP）"></a>蓝牙网络封装协议（BNEP）</h2><h3 id="Group-PA-Ad-hoc-N-GN"><a href="#Group-PA-Ad-hoc-N-GN" class="headerlink" title="Group PA(Ad-hoc)N (GN)"></a>Group PA(Ad-hoc)N (GN)</h3><p><img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/06.png" alt="fig02"></p>
+<p>主机最多支持7个从设备连接，这是由<strong>蓝牙主动成员寻址方案</strong> (Bluetooth active<br>member-addressing scheme)所决定的</p>
+<p>至于<strong>自组织网络</strong>(Group Ad-hoc network)，则是一组计算设备互相交互形成一个独立的网络。该网络不需要额外的硬件网络设备支撑</p>
+<h3 id="PANU-PANU"><a href="#PANU-PANU" class="headerlink" title="PANU-PANU"></a>PANU-PANU</h3><p>仅允许PANU-PANU两个节点之间的直接通信。</p>
+<h3 id="网络接入点-Network-Access-Points-NAP"><a href="#网络接入点-Network-Access-Points-NAP" class="headerlink" title="网络接入点(Network Access Points,NAP)"></a>网络接入点(Network Access Points,NAP)</h3><p><img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/07.png" alt="fig02"></p>
+<p>网络接入点是包含一个或多个蓝牙无线电设备的单元，充当蓝牙网络和其他一些网络技术（10BASE-T、GSM 等）之间的桥梁、代理或路由器。对于连接到接入点的计算设备，接入点的无线电和主机控制器具有到网络接入设备的直接总线连接。</p>
+<h2 id="PAN-配置文件场景"><a href="#PAN-配置文件场景" class="headerlink" title="PAN 配置文件场景"></a>PAN 配置文件场景</h2><p>NAP 为每个连接的蓝牙设备提供网络服务。<br>GN 允许两个或多个蓝牙设备成为 ad-hoc 网络的一部分。</p>
+<p>Group Ad-hoc Network Profile Stack for Phase I<br><img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/08.png" alt="Group Ad-hoc Network Profile Stack for Phase I"><br>Baseband, LMP, L2CAP位于OSI第一层和第二层。</p>
 
     </div>
     
