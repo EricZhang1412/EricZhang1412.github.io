@@ -278,12 +278,12 @@ mjx-container[display="true"] + br {
             
             <span class="tag">
                 
-                <a href="/tags/%E6%B5%B7%E6%80%9D/" style="color: #ff7d73">海思</a>
+                <a href="/tags/%E6%B5%B7%E6%80%9D/" style="color: #00bcd4">海思</a>
             </span>
             
             <span class="tag">
                 
-                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #00bcd4">嵌入式大赛</a>
+                <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #ffa2c4">嵌入式大赛</a>
             </span>
             
         </span>
@@ -295,7 +295,8 @@ mjx-container[display="true"] + br {
 <p>海思技术论坛注册：<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all" class="uri">https://developer.hisilicon.com/forum/all</a></p>
 <p>嵌入式物联网学习资料总入口：<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/postDetail?tid=0206112614830760003" class="uri">https://developer.hisilicon.com/postDetail?tid=0206112614830760003</a></p>
 <p>海思技术论坛<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all" class="uri">https://developer.hisilicon.com/forum/all</a></p>
-<p>2023海思嵌入式大赛学习文档仓库Gitee：<a target="_blank" rel="noopener" href="https://gitee.com/HiSpark/HiSpark_NICU2023" class="uri">https://gitee.com/HiSpark/HiSpark_NICU2023</a>
+<p>2023海思嵌入式大赛学习文档仓库Gitee：<a target="_blank" rel="noopener" href="https://gitee.com/HiSpark/HiSpark_NICU2023" class="uri">https://gitee.com/HiSpark/HiSpark_NICU2023</a></p>
+<p>HUAWEI_Cloud与Android Studio开发联动：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43351158/article/details/124476656" class="uri">https://blog.csdn.net/weixin_43351158/article/details/124476656</a>
 <span id="more"></span></p>
 <h1 id="工程结构分析">工程结构分析</h1>
 <h2 id="工程目录">工程目录</h2>
@@ -579,6 +580,284 @@ lite_component("app") {
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    SAMGR_Bootstrap<span class="op">();</span></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <p>主要是初始化了一些相关模块、系统，包括有bsp、device（设备）。其中最终的是MODULE_INIT(run)；负责调用所有run段的代码：<strong>前面application中使用SYS_RUN()宏设置的函数名</strong>。</p>
+<h1 id="一gpio的使用">一、GPIO的使用</h1>
+<h2 id="api说明">API说明</h2>
+<h3 id="iotgpioinit">1. IoTGpioInit()</h3>
+<p>作用：初始化指定的IO口 示例：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">// LED3的GPIO初始化 GPIO initialization of LED3</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    IoTGpioInit<span class="op">(</span>IOT_IO_NAME_GPIO_9<span class="op">);</span></span></code></pre></div>
+<p>依赖库：src_hardware_gpio.h, 说明如下</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@brief</span><span class="co"> Initializes a GPIO device.</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"> *</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@param</span><span class="co"> </span><span class="cv">id</span><span class="co"> Indicates the GPIO pin number.</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@return</span><span class="co"> Returns {</span><span class="an">@link</span><span class="co"> </span><span class="cv">IOT_SUCCESS}</span><span class="co"> if the GPIO device is initialized;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"> * returns {</span><span class="an">@link</span><span class="co"> </span><span class="cv">IOT_FAILURE}</span><span class="co"> otherwise. For details about other return values, see the chip description.</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@since</span><span class="co"> 2.2</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@version</span><span class="co"> </span><span class="cv">2.2</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="dt">unsigned</span> <span class="dt">int</span> IoTGpioInit<span class="op">(</span><span class="dt">unsigned</span> <span class="dt">int</span> id<span class="op">);</span></span></code></pre></div>
+<h3 id="iosetfunc">2. IoSetFunc()</h3>
+<p>作用：配置指定IO的复用功能 示例：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 设置GPIO9的管脚复用关系为GPIO Set the pin reuse relationship of GPIO9 to GPIO</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    IoSetFunc<span class="op">(</span>IOT_IO_NAME_GPIO_9<span class="op">,</span> IOT_IO_FUNC_GPIO_9_GPIO<span class="op">);</span></span></code></pre></div>
+<p>依赖库：src-iot_demo_iot_gpio_ex.c 说明如下：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">unsigned</span> <span class="dt">int</span> IoSetFunc<span class="op">(</span><span class="dt">unsigned</span> <span class="dt">int</span> id<span class="op">,</span> <span class="dt">unsigned</span> <span class="dt">char</span> val<span class="op">)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>id <span class="op">&gt;=</span> HI_GPIO_IDX_MAX<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> IOT_FAILURE<span class="op">;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> hi_io_set_func<span class="op">((</span>hi_io_name<span class="op">)</span>id<span class="op">,</span> val<span class="op">);</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 id="iotgpiosetdir">3. IoTGpioSetDir()</h3>
+<p>作用：设置指定IO的管脚方向 示例：</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">// GPIO方向设置为输出 GPIO direction set to output</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    IoTGpioSetDir<span class="op">(</span>IOT_IO_NAME_GPIO_9<span class="op">,</span> IOT_GPIO_DIR_OUT<span class="op">);</span></span></code></pre></div>
+<p>依赖库：src_hardware_gpio.h, 说明如下</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co">/**</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@brief</span><span class="co"> Sets the direction for a GPIO pin.</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="co"> *</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@param</span><span class="co"> </span><span class="cv">id</span><span class="co"> Indicates the GPIO pin number.</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@param</span><span class="co"> </span><span class="cv">dir</span><span class="co"> Indicates the GPIO input/output direction.</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@return</span><span class="co"> Returns {</span><span class="an">@link</span><span class="co"> </span><span class="cv">IOT_SUCCESS}</span><span class="co"> if the direction is set;</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="co"> * returns {</span><span class="an">@link</span><span class="co"> </span><span class="cv">IOT_FAILURE}</span><span class="co"> otherwise. For details about other return values, see the chip description.</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@since</span><span class="co"> 2.2</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"> * </span><span class="an">@version</span><span class="co"> </span><span class="cv">2.2</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="dt">unsigned</span> <span class="dt">int</span> IoTGpioSetDir<span class="op">(</span><span class="dt">unsigned</span> <span class="dt">int</span> id<span class="op">,</span> IotGpioDir dir<span class="op">);</span></span></code></pre></div>
+<h3 id="iotgpiosetoutputval">4. IoTGpioSetOutputVal()</h3>
+<p>作用：设置指定IO的输出电平 示例：</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>      <span class="co">/* 设置GPIO09输出低电平</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="co">      * Set GPIO09 output high level to turn on red traffic light LED 3</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="co">      * VALUE0: low level</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co">      * VALUE1: high level</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co">      */</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    IoTGpioSetOutputVal<span class="op">(</span>IOT_IO_NAME_GPIO_9<span class="op">,</span> IOT_GPIO_VALUE0<span class="op">);</span></span></code></pre></div>
+<h1 id="二gpio使用进阶">二、GPIO使用进阶</h1>
+<h2 id="api说明-1">API说明</h2>
+<h3 id="iosetpull">1. IoSetPull()</h3>
+<p>作用：设置指定IO的上下拉电阻 示例：</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">     * 设置GPIO0为上拉功能</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="co">     * Set GPIO0 as pull-up function</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co">     */</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    IoSetPull<span class="op">(</span>IOT_IO_NAME_GPIO_0<span class="op">,</span> IOT_IO_PULL_UP<span class="op">);</span></span></code></pre></div>
+<p>依赖库：src-iot_demo_iot_gpio_ex.c 对第二个参数说明如下：</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">/** No pull */</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>    IOT_IO_PULL_NONE<span class="op">,</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">/** Pull-up */</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    IOT_IO_PULL_UP<span class="op">,</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">/** Pull-down */</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    IOT_IO_PULL_DOWN<span class="op">,</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">/** Maximum value */</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>    IOT_IO_PULL_MAX</span></code></pre></div>
+<h3 id="iotgpioregisterisrfunc">2. IoTGpioRegisterIsrFunc()</h3>
+<p>作用：设置指定GPIO的中断功能 示例：</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">/*</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">     * 使能GPIO0的中断功能, 上升沿触发中断，LeftBCounterHandler为中断的回调函数</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">     * Enable the interrupt function of GPIO0, the rising edge triggers</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">     * the interrupt, and LeftBCounterHandler is the interrupt callback function</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">     */</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    IoTGpioRegisterIsrFunc<span class="op">(</span>IOT_IO_NAME_GPIO_0<span class="op">,</span> IOT_INT_TYPE_EDGE<span class="op">,</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                           IOT_GPIO_EDGE_RISE_LEVEL_HIGH<span class="op">,</span> LeftBCounterHandler<span class="op">,</span> NULL<span class="op">);</span></span></code></pre></div>
+<p>依赖库：src_hardware_gpio.h,
+第二个参数<code>IotGpioIntType intType</code>说明如下</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">/** Level-sensitive interrupt */</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    IOT_INT_TYPE_LEVEL <span class="op">=</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">/** Edge-sensitive interrupt */</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    IOT_INT_TYPE_EDGE</span></code></pre></div>
+<p>第三个参数<code>IotGpioIntPolarity intPolarity</code>说明如下：</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">/** Interrupt at a low level or falling edge */</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>    IOT_GPIO_EDGE_FALL_LEVEL_LOW <span class="op">=</span> <span class="dv">0</span><span class="op">,</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">/** Interrupt at a high level or rising edge */</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    IOT_GPIO_EDGE_RISE_LEVEL_HIGH</span></code></pre></div>
+<p>第四个参数<code>GpioIsrCallbackFunc func</code>，为自己编写的中断触发时的回调函数名，第五个参数<code>char *arg</code>为中断回调函数中使用的参数的指针。</p>
+<h3 id="iotgpiogetinputval">IoTGpioGetInputVal()</h3>
+<p>作用：读取指定GPIO的电平 示例：</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>   <span class="co">/*</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">    * 获取GPIO8的输入电平状态</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">    * Get the input level status of GPIO8</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co">    */</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    IoTGpioGetInputVal<span class="op">(</span>IOT_IO_NAME_GPIO_8<span class="op">,</span> <span class="op">&amp;</span>value<span class="op">);</span></span></code></pre></div>
+<p>依赖库：src_hardware_gpio.h,
+IOT_GPIO_VALUE1为高电平，IOT_GPIO_VALUE0为低电平。</p>
+<h2 id="i2c总线开发">I2C总线开发</h2>
+<h3 id="i2c总线开发基础">1. I2C总线开发基础</h3>
+<p>I2C通信中，主机通过时钟线SCL发送时钟信号，通过数据线SDA发送数据（包括从机地址、指令、数据包等），在发送完一帧数据后，需要等待从机的响应，才能继续发送下一帧数据，因此I2C属于同步通信。</p>
+<h3 id="单i2c轮询">2. 单I2C轮询</h3>
+<h4 id="ioti2cinit">（1）IoTI2cInit()</h4>
+<p>作用：以指定的波特率初始化I2C设备。 示例：</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define IOT_I2C_IDX_BAUDRATE (400 * 1000) </span><span class="co">//指定的I2C波特率</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define CW2015_I2C_IDX 0 </span><span class="co">//I2C设备ID</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="co">//初始化I2C设备0，并指定波特率为400k</span></span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>IoTI2cInit<span class="op">(</span>CW2015_I2C_IDX<span class="op">,</span> IOT_I2C_IDX_BAUDRATE<span class="op">);</span></span></code></pre></div>
+<p>依赖库：src_hardware_i2c.h</p>
+<h4 id="ioti2cdeinit">（2）IoTI2cDeinit()</h4>
+<p>作用：关闭/去初始化指定的I2C设备。 定义：</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="dt">unsigned</span> <span class="dt">int</span> IoTI2cDeinit<span class="op">(</span><span class="dt">unsigned</span> <span class="dt">int</span> id<span class="op">);</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">//参数：I2C设备ID</span></span></code></pre></div>
+<p>依赖库：src_hardware_i2c.h</p>
+<h4 id="ioti2cwrite">（3）IoTI2cWrite()</h4>
+<p>作用：向指定的I2C设备写入数据。 示例：</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#define LSM6DS_I2C_IDX 0</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="dt">uint32_t</span> retval <span class="op">=</span> IoTI2cWrite<span class="op">(</span>LSM6DS_I2C_IDX<span class="op">,</span> LSM6DS_WRITE_ADDR<span class="op">,</span> buffer<span class="op">,</span> buffLen<span class="op">);</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co">//参数1：I2C设备id</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co">//参数2：I2C设备（从机）地址</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co">//参数3：指向要写入的数据的指针</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="co">//参数4：要写入的数据的长度</span></span></code></pre></div>
+<p>依赖库：src_hardware_i2c.h</p>
+<h4 id="ioti2cread">（4）IoTI2cRead()</h4>
+<p>作用：从指定的I2C设备读取数据。
+注：未找到相应的示例，猜测该函数可能在驱动层面使用 定义：</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="dt">unsigned</span> <span class="dt">int</span> IoTI2cRead<span class="op">(</span><span class="dt">unsigned</span> <span class="dt">int</span> id<span class="op">,</span> <span class="dt">unsigned</span> <span class="dt">short</span> deviceAddr<span class="op">,</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="dt">unsigned</span> <span class="dt">char</span> <span class="op">*</span>data<span class="op">,</span> <span class="dt">unsigned</span> <span class="dt">int</span> dataLen<span class="op">);</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="co">//参数1：I2C设备id</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a><span class="co">//参数2：I2C设备（从机）地址</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co">//参数3：指向要读取的数据的指针</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="co">//参数4：要读取的数据的长度</span></span></code></pre></div>
+<p>依赖库：src_hardware_i2c.h</p>
+<h4 id="ioti2csetbaudrate">（5）IoTI2cSetBaudrate()</h4>
+<p>作用：设置指定I2C设备的波特率。 定义：</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="dt">unsigned</span> <span class="dt">int</span> IoTI2cSetBaudrate<span class="op">(</span><span class="dt">unsigned</span> <span class="dt">int</span> id<span class="op">,</span> <span class="dt">unsigned</span> <span class="dt">int</span> baudrate<span class="op">);</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">//参数1：I2C设备id</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">//参数2：指定的波特率</span></span></code></pre></div>
+<p>依赖库：src_hardware_i2c.h</p>
+<h3 id="i2c中断触发">3. I2C中断触发</h3>
+<p>示例：</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="dv">195</span> <span class="dt">void</span> I2CBusExampleEntry<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="dv">196</span> <span class="op">{</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="dv">197</span>     osThreadAttr_t attr<span class="op">;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="dv">198</span> </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="dv">199</span>     I2CBusInit<span class="op">();</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="dv">200</span>     IoTWatchDogDisable<span class="op">();</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="dv">201</span> </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="dv">202</span>     attr<span class="op">.</span>name <span class="op">=</span> <span class="st">"NFCTask"</span><span class="op">;</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="dv">203</span>     attr<span class="op">.</span>attr_bits <span class="op">=</span> <span class="dv">0</span><span class="bu">U</span><span class="op">;</span></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a><span class="dv">204</span>     attr<span class="op">.</span>cb_mem <span class="op">=</span> NULL<span class="op">;</span></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a><span class="dv">205</span>     attr<span class="op">.</span>cb_size <span class="op">=</span> <span class="dv">0</span><span class="bu">U</span><span class="op">;</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a><span class="dv">206</span>     attr<span class="op">.</span>stack_mem <span class="op">=</span> NULL<span class="op">;</span></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="dv">207</span>     attr<span class="op">.</span>stack_size <span class="op">=</span> <span class="dv">5</span> <span class="op">*</span> <span class="dv">1024</span><span class="op">;</span> <span class="co">// 5*1024</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="dv">208</span>     attr<span class="op">.</span>priority <span class="op">=</span> osPriorityNormal<span class="op">;</span></span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a><span class="dv">209</span> </span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a><span class="dv">210</span>     <span class="co">// NFC</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a><span class="dv">211</span>     <span class="cf">if</span> <span class="op">(</span>osThreadNew<span class="op">((</span>osThreadFunc_t<span class="op">)</span>NFCTask<span class="op">,</span> NULL<span class="op">,</span> <span class="op">&amp;</span>attr<span class="op">)</span> <span class="op">==</span> NULL<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a><span class="dv">212</span>         printf<span class="op">(</span><span class="st">"[NFCTask] Failed to create NFCTask!</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a><span class="dv">213</span>     <span class="op">}</span></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a><span class="dv">214</span> </span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a><span class="dv">215</span>     <span class="co">// 电量监测</span></span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a><span class="dv">216</span>     attr<span class="op">.</span>name <span class="op">=</span> <span class="st">"CW2015Task"</span><span class="op">;</span></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a><span class="dv">217</span>     <span class="cf">if</span> <span class="op">(</span>osThreadNew<span class="op">((</span>osThreadFunc_t<span class="op">)</span>CW2015Task<span class="op">,</span> NULL<span class="op">,</span> <span class="op">&amp;</span>attr<span class="op">)</span> <span class="op">==</span> NULL<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a><span class="dv">218</span>         printf<span class="op">(</span><span class="st">"[CW2015Task] Failed to create CW2015Task!</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a><span class="dv">219</span>     <span class="op">}</span></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a><span class="dv">220</span> </span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a><span class="dv">221</span>     <span class="co">// 功能按键</span></span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a><span class="dv">222</span>     attr<span class="op">.</span>name <span class="op">=</span> <span class="st">"FunKeyTask"</span><span class="op">;</span></span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a><span class="dv">223</span>     <span class="cf">if</span> <span class="op">(</span>osThreadNew<span class="op">((</span>osThreadFunc_t<span class="op">)</span>FunKeyTask<span class="op">,</span> NULL<span class="op">,</span> <span class="op">&amp;</span>attr<span class="op">)</span> <span class="op">==</span> NULL<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a><span class="dv">224</span>         printf<span class="op">(</span><span class="st">"[FunKeyTask] Failed to create FunKeyTask!</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a><span class="dv">225</span>     <span class="op">}</span></span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a><span class="dv">226</span> </span>
+<span id="cb27-33"><a href="#cb27-33" aria-hidden="true" tabindex="-1"></a><span class="dv">227</span>     <span class="co">// 陀螺仪</span></span>
+<span id="cb27-34"><a href="#cb27-34" aria-hidden="true" tabindex="-1"></a><span class="dv">228</span>     attr<span class="op">.</span>name <span class="op">=</span> <span class="st">"LSM6DSTask"</span><span class="op">;</span></span>
+<span id="cb27-35"><a href="#cb27-35" aria-hidden="true" tabindex="-1"></a><span class="dv">229</span>     <span class="cf">if</span> <span class="op">(</span>osThreadNew<span class="op">((</span>osThreadFunc_t<span class="op">)</span>LSM6DSTask<span class="op">,</span> NULL<span class="op">,</span> <span class="op">&amp;</span>attr<span class="op">)</span> <span class="op">==</span> NULL<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb27-36"><a href="#cb27-36" aria-hidden="true" tabindex="-1"></a><span class="dv">230</span>         printf<span class="op">(</span><span class="st">"[LSM6DSTask] Failed to create LSM6DSTask!</span><span class="sc">\n</span><span class="st">"</span><span class="op">);</span></span>
+<span id="cb27-37"><a href="#cb27-37" aria-hidden="true" tabindex="-1"></a><span class="dv">231</span>     <span class="op">}</span></span>
+<span id="cb27-38"><a href="#cb27-38" aria-hidden="true" tabindex="-1"></a><span class="dv">232</span> <span class="op">}</span></span>
+<span id="cb27-39"><a href="#cb27-39" aria-hidden="true" tabindex="-1"></a><span class="dv">233</span> </span>
+<span id="cb27-40"><a href="#cb27-40" aria-hidden="true" tabindex="-1"></a><span class="dv">234</span> APP_FEATURE_INIT<span class="op">(</span>I2CBusExampleEntry<span class="op">);</span></span></code></pre></div>
+<p>软件烧录成功后，按一下开发板的RESET按键复位开发板，可以在OLED屏幕上面看到陀螺仪方向角实时数据以及电池电量数据，当手机靠近小车的NFC模块时，NFC会拉起手机的淘宝应用，且可以通过S1、S2、S3功能按键来控制三个交通灯的亮灭，说明我们使用I2C总线，实现同时轮询多个设备的实验成功。</p>
+<h2 id="pwm接口开发">PWM接口开发</h2>
+<h3 id="iotpwminit">1. IoTPwmInit()</h3>
+<p>作用：初始化指定PWM端口 示例：</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>   <span class="pp">#define IOT_PWM_PORT_PWM1   1</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// 初始化PWM1 Initialize PWM1</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  IoTPwmInit<span class="op">(</span>IOT_PWM_PORT_PWM1<span class="op">);</span></span></code></pre></div>
+<p>依赖库：src_hardware_pwm.h 返回值：<br>
+IOT_SUCCESS：初始化成功 IOT_FAILURE：初始化失败</p>
+<h3 id="iotpwmstart">2. IoTPwmStart()</h3>
+<p>作用：启动PWM信号输出 示例：</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#define IOT_PWM_PORT_PWM2   2</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#define IOT_FREQ            65535</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#define IOT_DUTY            50</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  IoTPwmStart<span class="op">(</span>IOT_PWM_PORT_PWM2<span class="op">,</span> IOT_DUTY<span class="op">,</span> IOT_FREQ<span class="op">);</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">//参数1：指定的PWM端口</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">//参数2：PWM输出占空比，范围1-99</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">//参数3：PWM输出频率，范围1-65535</span></span></code></pre></div>
+<p>依赖库：src_hardware_pwm.h</p>
+<h3 id="iotpwmstop">3. IoTPwmStop()</h3>
+<p>作用：停止PWM信号输出 示例：</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#define IOT_PWM_PORT_PWM2   2</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  IoTPwmStop<span class="op">(</span>IOT_PWM_PORT_PWM2<span class="op">);</span></span></code></pre></div>
+<p>依赖库：src_hardware_pwm.h</p>
+<h3 id="iotpwmdeinit">IoTPwmDeinit()</h3>
+<p>作用：释放/去初始化指定PWM端口 示例：</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>  <span class="pp">#define IOT_PWM_PORT_PWM2   2</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  IoTPwmDeinit<span class="op">(</span>IOT_PWM_PORT_PWM2<span class="op">);</span></span></code></pre></div>
+<p>依赖库：src_hardware_pwm.h</p>
+<h2 id="gpio模拟pwm信号">GPIO模拟PWM信号</h2>
+<h3 id="sg92r舵机原理">Sg92r舵机原理</h3>
+<p>Sg92舵机的控制需要产生一个<strong>20ms</strong>的脉冲信号，以<strong>0.5ms到2.5ms</strong>的<em>高电平</em>来控制舵机的角度；高电平持续时间对应角度如下表所示。</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">高电平持续时间</th>
+<th style="text-align: center;">角度</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">0.5ms</td>
+<td style="text-align: center;">0°</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">1.0ms</td>
+<td style="text-align: center;">45°</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">1.5ms</td>
+<td style="text-align: center;">90°</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2.0ms</td>
+<td style="text-align: center;">135°</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2.5ms</td>
+<td style="text-align: center;">180°</td>
+</tr>
+</tbody>
+</table>
+<h3 id="代码核心">代码核心</h3>
+<div class="sourceCode" id="cb32"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dv">30</span> <span class="dt">void</span> SetAngle<span class="op">(</span><span class="dt">unsigned</span> <span class="dt">int</span> duty<span class="op">)</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="dv">31</span> <span class="op">{</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="dv">32</span>     <span class="dt">unsigned</span> <span class="dt">int</span> time <span class="op">=</span> FREQ_TIME<span class="op">;</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="dv">33</span> </span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="dv">34</span>     IoTGpioSetOutputVal<span class="op">(</span>IOT_IO_NAME_GPIO_2<span class="op">,</span> IOT_GPIO_VALUE1<span class="op">);</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="dv">35</span>     hi_udelay<span class="op">(</span>duty<span class="op">);</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="dv">36</span>     IoTGpioSetOutputVal<span class="op">(</span>IOT_IO_NAME_GPIO_2<span class="op">,</span> IOT_GPIO_VALUE0<span class="op">);</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="dv">37</span>     hi_udelay<span class="op">(</span>time <span class="op">-</span> duty<span class="op">);</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="dv">38</span> <span class="op">}</span></span></code></pre></div>
+<h2 id="adc开发">ADC开发</h2>
+<h3 id="adcread">1.AdcRead()</h3>
+<p>作用：根据输入参数从指定的ADC通道读取一段采样数据 示例：</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>ret <span class="op">=</span> AdcRead<span class="op">(</span>idx<span class="op">,</span> <span class="op">&amp;</span>data<span class="op">,</span> IOT_ADC_EQU_MODEL_4<span class="op">,</span> IOT_ADC_CUR_BAIS_DEFAULT<span class="op">,</span> <span class="bn">0xff</span><span class="op">);</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="co">//参数1：表示指定的ADC通道</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">//参数2：表示指向存储读取数据的地址的指针</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="co">//参数3：eqmodel表示方程模型、</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="co">//参数4：curBais表示模拟功率控制模式</span></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co">//参数5：rstCnt表示从重置到转换开始的时间计数(一次计数是334ns，其值需在0~0xFF0之间)</span></span></code></pre></div>
+<p>依赖库：src-iot_demo_adc.h</p>
+<h2 id="uart开发">UART开发</h2>
+<h3 id="iotuartinit">1. IoTUartInit()</h3>
+<p>作用：初始化指定UART端口 示例：</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>    ret <span class="op">=</span> IoTUartInit<span class="op">(</span>HI_UART_IDX_1<span class="op">,</span> <span class="op">&amp;</span>uart_attr<span class="op">);</span></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>ret <span class="op">!=</span> IOT_SUCCESS<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>        printf<span class="op">(</span><span class="st">"Init Uart1 Falied Error No : %d</span><span class="sc">\n</span><span class="st">"</span><span class="op">,</span> ret<span class="op">);</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<p>依赖库：src_hardware_uart.h</p>
 <h1 id="作品设想">作品设想</h1>
 <h2 id="作品功能">1. 作品功能</h2>
 <h3 id="a.基础设施智能化建设解决方案">A.基础设施智能化建设解决方案</h3>
