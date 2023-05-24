@@ -1,42 +1,85 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8" />
-        <title>EZ0328</title>
-        <meta name="author" content="Eric Zhang" />
-        <meta name="description" content="Be creative, be innovative" />
-        <meta name="keywords" content="" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-        <link rel="icon" href="/images/avatar.jpg" />
-        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
-<link rel="stylesheet" href="/css/fonts.min.css" />
-<script> const mixins = {}; </script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="The Redefine Team">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://ericzhang1412.github.io/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="Be creative, be innovative">
+<meta property="og:type" content="website">
+<meta property="og:title" content="EZ0328">
+<meta property="og:url" content="https://ericzhang1412.github.io/index.html">
+<meta property="og:site_name" content="EZ0328">
+<meta property="og:description" content="Be creative, be innovative">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Eric Zhang">
+<meta name="twitter:card" content="summary">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+        Theme Redefine
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    
+<link rel="stylesheet" href="/assets/fonts.css">
 
+    <!--- Font Part-->
+    
+    
+    
+    
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
+    <!--- Inject Part-->
+    
+    <script id="hexo-configurations">
+    let Global = window.Global || {};
+    Global.hexo_config = {"hostname":"ericzhang1412.github.io","root":"/","language":"zh-CN"};
+    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"static","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Theme Redefine","subtitle":{"text":[],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.1.4","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
+    Global.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    Global.data_config = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
 
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
 
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
 
-<script src="/js/lib/preview.js"></script>
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
 
-
-
-
-
-<script src="/js/lib/home.js"></script>
-
-<link rel="stylesheet" href="/css/main.css" />
-
-    <meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -149,277 +192,330 @@ mjx-container[display="true"] + br {
   display: none;
 }
 </style></head>
-    <body>
-        <div id="layout">
-            <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
-                </div>
-            </div>
-            </transition>
-            <transition name="into">
-            <div id="main" v-show="!loading">
-                <nav id="menu" ref="menu">
-    <div class="desktop-menu">
-        <a class="title" href="/">
-            <span>EZ0328</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </div>
-    <div id="mobile-menu">
-        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
-        <div class="title" @click="showMenu = !showMenu">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;EZ0328</span>
-        </div>
-        <transition name="slide">
-        <div class="items" v-show="showMenu">
-            
-            <a href="/">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-house fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                </div>
-            </a>
-            
-            <a href="/about">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-id-card fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                </div>
-            </a>
-            
-            <a href="/archives">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-box-archive fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                </div>
-            </a>
-            
-            <a href="/categories">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-bookmark fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                </div>
-            </a>
-            
-            <a href="/tags">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                </div>
-            </a>
-            
-        </div>
-        </transition>
-    </div>
-</nav>
 
-                <div id="home-head">
-    <div id="home-background" ref="homeBackground" data-image="/images/bg2.png,/images/bg1.jpg"></div>
+
+<body>
+<div class="progress-bar-container">
     
-    <div id="home-info" @click="homeClick">
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="loop"></span>
-        <span class="info">
-            <div class="wrap">
-                <h1>EZ0328</h1>
-                <h3></h3>
-                <h5>Be creative, be innovative</h5>
-            </div>
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
         </span>
-    </div>
     
 </div>
-<div id="home-posts-wrap"  ref="homePostsWrap">
-    <div id="home-posts">
-        <div id="posts">
-            
 
-<div class="post">
-    <a href="/2023/04/16/%E5%85%B3%E4%BA%8E%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF/">
-        <h2 class="post-title">关于振荡电路</h2>
-    </a>
-    <div class="category-and-date">
-        
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/4/16
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            
 
-            
+<main class="page-container">
+
+    
+        
+
+<div class="home-banner-container flex-center">
+    <div class="content flex-center">
+        <div class="description fade-in-down-animation" >
+          Theme Redefine 
+          
+            <p><i id="subtitle"></i></p>
+          
         </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/" style="color: #ff7d73">
-                电子设计
-            </a>
-        </span>
         
     </div>
-    <a href="/2023/04/16/%E5%85%B3%E4%BA%8E%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF/" class="go-post">阅读全文</a>
 </div>
 
-<div class="post">
-    <a href="/2023/04/06/%E6%98%8E%E6%9C%88%E6%B9%96/">
-        <h2 class="post-title">明月湖二三事</h2>
-    </a>
-    <div class="category-and-date">
+
+
+    
+
+    <div class="main-content-container">
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+    
+    <div class="navbar-content has-home-banner">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                <h1>
+                Theme Redefine
+                </h1>
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="active" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        首页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer">
+        <ul class="drawer-navbar-list">
+            
+                
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="active" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                首页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
+            
+
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+                <div class="home-sidebar-container fade-in-down-animation">
+    <div class="sticky-container">
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
+            
+            <div class="sidebar-content" >
+                <div class="avatar">
+                    <img src="/images/redefine-avatar.svg">
+                </div>
+                <div class="author">
+                    <div class="name">The Redefine Team</div>
+                    
+                        <div class="label">Lv2</div>
+                    
+                </div>
+                <div class="statistics">
+                    <a class="item" href="/tags">
+                        <div class="number">14</div>
+                        <div class="label">标签</div>
+                    </a>
+                    <a class="item" href="/categories">
+                        <div class="number">0</div>
+                        <div class="label">分类</div>
+                    </a>
+                    <a class="item" href="/archives">
+                        <div class="number">10</div>
+                        <div class="label">文章</div>
+                    </a>
+                </div>
+            </div>
+        
+
+    </div>
+</div>
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="home-content-container fade-in-down-animation">
+    <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/04/16/%E5%85%B3%E4%BA%8E%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF/">
+                        关于振荡电路
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        
+
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Apr 16 2023 15:22:26 GMT+0800">
+                
+                    2023-04-16
+                
             </span>
-            2023/4/6
         </span>
         
         
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E7%94%B5%E5%AD%90%E8%AE%BE%E8%AE%A1/">电子设计</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="学院派创业者面临的挑战"><strong>学院派创业者</strong>面临的<strong>挑战</strong></h1>
+
+    <a href="/2023/04/16/%E5%85%B3%E4%BA%8E%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF/">阅读全文<span class="seo-reader-text">关于振荡电路</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/04/06/%E6%98%8E%E6%9C%88%E6%B9%96/">
+                        明月湖二三事
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h1 id="学院派创业者面临的挑战"><strong>学院派创业者</strong>面临的<strong>挑战</strong></h1>
 <h2 id="where-is-the-challenge">Where is the Challenge？</h2>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Apr 06 2023 18:57:37 GMT+0800">
+                
+                    2023-04-06
+                
+            </span>
         </span>
         
         
-        <span class="tag">
-            
-            <a href="/tags/%E5%88%9B%E4%B8%9A/" style="color: #ff7d73">
-                创业
-            </a>
-        </span>
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E5%88%9B%E4%B8%9A/">创业</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
-    <a href="/2023/04/06/%E6%98%8E%E6%9C%88%E6%B9%96/" class="go-post">阅读全文</a>
+
+    <a href="/2023/04/06/%E6%98%8E%E6%9C%88%E6%B9%96/">阅读全文<span class="seo-reader-text">明月湖二三事</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
-<div class="post">
-    <a href="/2023/04/06/%E6%A0%A1%E5%8F%B2%E9%A6%86%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/">
-        <h2 class="post-title">校史馆的二三事</h2>
-    </a>
-    <div class="category-and-date">
+            </li>
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/4/6
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="校史馆解说词2023-年-3-月">校史馆解说词(2023 年 3 月)</h1>
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/04/06/%E6%A0%A1%E5%8F%B2%E9%A6%86%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/">
+                        校史馆的二三事
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h1 id="校史馆解说词2023-年-3-月">校史馆解说词(2023 年 3 月)</h1>
 <p>欢迎大家来到电子科技大学校史馆。下面由我给大家介绍一下电子科技大学从建校至今
 60 多年来的发展历程。整个校史馆共 432
 个平方米，由三个厅组成。整个展览有五个组成部分，它们是：亲切关怀、殷切希望；建校初期，艰苦创业；文革十年、历经磨难；改革开放，盛世华章；新的世纪，新的跨越。</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Thu Apr 06 2023 13:54:59 GMT+0800">
+                
+                    2023-04-06
+                
+            </span>
         </span>
         
         
-        <span class="tag">
-            
-            <a href="/tags/%E6%A0%A1%E5%8F%B2/" style="color: #00a596">
-                校史
-            </a>
-        </span>
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%A0%A1%E5%8F%B2/">校史</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
-    <a href="/2023/04/06/%E6%A0%A1%E5%8F%B2%E9%A6%86%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/" class="go-post">阅读全文</a>
+
+    <a href="/2023/04/06/%E6%A0%A1%E5%8F%B2%E9%A6%86%E7%9A%84%E4%BA%8C%E4%B8%89%E4%BA%8B/">阅读全文<span class="seo-reader-text">校史馆的二三事</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
-<div class="post">
-    <a href="/2023/04/05/%E5%85%B3%E4%BA%8EDNN%EF%BC%8CDP%EF%BC%8CEKF%EF%BC%8CFourier-Operator%EF%BC%8CKoopman-Operator/">
-        <h2 class="post-title">关于DNN，DP，EKF，Fourier Operator，Koopman Operator</h2>
-    </a>
-    <div class="category-and-date">
+            </li>
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/4/5
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="英文缩写解释">英文缩写解释</h1>
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/04/05/%E5%85%B3%E4%BA%8EDNN%EF%BC%8CDP%EF%BC%8CEKF%EF%BC%8CFourier-Operator%EF%BC%8CKoopman-Operator/">
+                        关于DNN，DP，EKF，Fourier Operator，Koopman Operator
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h1 id="英文缩写解释">英文缩写解释</h1>
 <table>
 <thead>
 <tr class="header">
@@ -456,442 +552,586 @@ mjx-container[display="true"] + br {
 </tr>
 </tbody>
 </table>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Wed Apr 05 2023 23:53:25 GMT+0800">
+                
+                    2023-04-05
+                
+            </span>
         </span>
         
         
-        <span class="tag">
-            
-            <a href="/tags/DNN/" style="color: #00bcd4">
-                DNN
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/DP/" style="color: #ffa2c4">
-                DP
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/EKF/" style="color: #00a596">
-                EKF
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/Fourier-Operator/" style="color: #00a596">
-                Fourier Operator
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/Koopman-Operator/" style="color: #ffa2c4">
-                Koopman Operator
-            </a>
-        </span>
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/DNN/">DNN</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/DP/">DP</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/EKF/">EKF</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
-    <a href="/2023/04/05/%E5%85%B3%E4%BA%8EDNN%EF%BC%8CDP%EF%BC%8CEKF%EF%BC%8CFourier-Operator%EF%BC%8CKoopman-Operator/" class="go-post">阅读全文</a>
+
+    <a href="/2023/04/05/%E5%85%B3%E4%BA%8EDNN%EF%BC%8CDP%EF%BC%8CEKF%EF%BC%8CFourier-Operator%EF%BC%8CKoopman-Operator/">阅读全文<span class="seo-reader-text">关于DNN，DP，EKF，Fourier Operator，Koopman Operator</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
-<div class="post">
-    <a href="/2023/03/28/OneOS-%E5%90%AF%E7%89%A9-v1-2-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%9A%84Wifi%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/">
-        <h2 class="post-title">OneOS 启物 v1.2 开发板的Wifi模块开发</h2>
-    </a>
-    <div class="category-and-date">
+            </li>
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/28
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="一-iar-开发环境搭建">一 IAR 开发环境搭建</h1>
-<p>不得不说，Mindmotion这家公司是真的令人迷惑，v1.0.6的固件包只有F3270，v1.0.5的固件包我能找到的只有F3273G和3273E系列，根本没有F3277的影子，所以果断弃之用IAR。</p>
-<h1 id="二-亿些使用中的问题">二 亿些使用中的问题</h1>
-<h2 id="esp8266无法连接wifi">ESP8266无法连接WiFi</h2>
-<p>因为自己的手机热点没有把AP band调成2.4GHz</p>
+            <li class="home-article-item">
 
-            
-        </div>
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/03/28/OneOS-%E5%90%AF%E7%89%A9-v1-2-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%9A%84Wifi%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/">
+                        OneOS 启物 v1.2 开发板的Wifi模块开发
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        一 IAR 开发环境搭建
+不得不说，Mindmotion这家公司是真的令人迷惑，v1.0.6的固件包只有F3270，v1.0.5的固件包我能找到的只有F3273G和3273E系列，根本没有F3277的影子，所以果断弃之用IAR。
+二 亿些使用中的...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Tue Mar 28 2023 20:53:41 GMT+0800">
+                
+                    2023-03-28
+                
+            </span>
+        </span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/OneOS/">OneOS</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/ESP8266/">ESP8266</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
     </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/OneOS/" style="color: #03a9f4">
-                OneOS
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/ESP8266/" style="color: #00bcd4">
-                ESP8266
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2023/03/28/OneOS-%E5%90%AF%E7%89%A9-v1-2-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%9A%84Wifi%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/" class="go-post">阅读全文</a>
+
+    <a href="/2023/03/28/OneOS-%E5%90%AF%E7%89%A9-v1-2-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%9A%84Wifi%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/">阅读全文<span class="seo-reader-text">OneOS 启物 v1.2 开发板的Wifi模块开发</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
-<div class="post">
-    <a href="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-        <h2 class="post-title">《互联网设计与演化》阅读笔记</h2>
-    </a>
-    <div class="category-and-date">
+            </li>
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/27
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="从因特网到交际">从因特网到交际</h1>
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+                        《互联网设计与演化》阅读笔记
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h1 id="从因特网到交际">从因特网到交际</h1>
 <h2 id="沙漏模型">沙漏模型</h2>
-<p>还是第一次看见这样子描述因特网的。 <img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/01.png" alt="fig01"></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
+<p>还是第一次看见这样子描述因特网的。 <img lazyload src="/images/loading.svg" data-src="01.png" alt="fig01"></p>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Mar 27 2023 23:22:21 GMT+0800">
+                
+                    2023-03-27
+                
+            </span>
         </span>
         
         
-        <span class="tag">
-            
-            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #00a596">
-                计算机网络
-            </a>
-        </span>
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
-    <a href="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="go-post">阅读全文</a>
+
+    <a href="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">阅读全文<span class="seo-reader-text">《互联网设计与演化》阅读笔记</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
-<div class="post">
-    <a href="/2023/03/27/03-Hi3861-Embedded-Competition/">
-        <h2 class="post-title">Hi3861开发板使用与第六届全国大学生嵌入式竞赛海思赛道</h2>
-    </a>
-    <div class="category-and-date">
+            </li>
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/03/27/03-Hi3861-Embedded-Competition/">
+                        Hi3861开发板使用与第六届全国大学生嵌入式竞赛海思赛道
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h1 id="参考资料">参考资料</h1>
+<p>海思技术论坛注册：<a class="uri" target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all">https://developer.hisilicon.com/forum/all <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>嵌入式物联网学习资料总入口：<a class="uri" target="_blank" rel="noopener" href="https://developer.hisilicon.com/postDetail?tid=0206112614830760003">https://developer.hisilicon.com/postDetail?tid=0206112614830760003 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>海思技术论坛<a class="uri" target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all">https://developer.hisilicon.com/forum/all <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>2023海思嵌入式大赛学习文档仓库Gitee：<a class="uri" target="_blank" rel="noopener" href="https://gitee.com/HiSpark/HiSpark_NICU2023">https://gitee.com/HiSpark/HiSpark_NICU2023 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<p>HUAWEI_Cloud与Android Studio开发联动：<a class="uri" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43351158/article/details/124476656">https://blog.csdn.net/weixin_43351158/article/details/124476656 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Mon Mar 27 2023 06:53:39 GMT+0800">
+                
+                    2023-03-27
+                
             </span>
-            2023/3/27
         </span>
         
+        
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%B5%B7%E6%80%9D/">海思</a>&nbsp;
+                        </li>
+                    
+                        <li>
+                            | 
+                            <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/">嵌入式大赛</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="参考资料">参考资料</h1>
-<p>海思技术论坛注册：<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all" class="uri">https://developer.hisilicon.com/forum/all</a></p>
-<p>嵌入式物联网学习资料总入口：<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/postDetail?tid=0206112614830760003" class="uri">https://developer.hisilicon.com/postDetail?tid=0206112614830760003</a></p>
-<p>海思技术论坛<a target="_blank" rel="noopener" href="https://developer.hisilicon.com/forum/all" class="uri">https://developer.hisilicon.com/forum/all</a></p>
-<p>2023海思嵌入式大赛学习文档仓库Gitee：<a target="_blank" rel="noopener" href="https://gitee.com/HiSpark/HiSpark_NICU2023" class="uri">https://gitee.com/HiSpark/HiSpark_NICU2023</a></p>
-<p>HUAWEI_Cloud与Android Studio开发联动：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43351158/article/details/124476656" class="uri">https://blog.csdn.net/weixin_43351158/article/details/124476656</a></p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
-        </span>
-        
-        
-        <span class="tag">
-            
-            <a href="/tags/%E6%B5%B7%E6%80%9D/" style="color: #03a9f4">
-                海思
-            </a>
-        </span>
-        
-        <span class="tag">
-            
-            <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%A4%A7%E8%B5%9B/" style="color: #03a9f4">
-                嵌入式大赛
-            </a>
-        </span>
-        
-    </div>
-    <a href="/2023/03/27/03-Hi3861-Embedded-Competition/" class="go-post">阅读全文</a>
+
+    <a href="/2023/03/27/03-Hi3861-Embedded-Competition/">阅读全文<span class="seo-reader-text">Hi3861开发板使用与第六届全国大学生嵌入式竞赛海思赛道</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
-<div class="post">
-    <a href="/2023/03/26/02-GA/">
-        <h2 class="post-title">遗传算法与模型优化</h2>
-    </a>
-    <div class="category-and-date">
+            </li>
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/26
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="概述">概述</h1>
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/03/26/02-GA/">
+                        遗传算法与模型优化
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h1 id="概述">概述</h1>
 <p>遗传算法（GA，genetic
 algorithm）是一种基于种群的元启发式算法（metaheuristic
-algorithms）。（关于元启发式算法参见<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41313851/article/details/116045159">各种元启发式算法（Metaheuristics）介绍</a>），其灵感来自<strong>生物进化过程</strong>。</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
+algorithms）。（关于元启发式算法参见<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41313851/article/details/116045159">各种元启发式算法（Metaheuristics）介绍 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>），其灵感来自<strong>生物进化过程</strong>。</p>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Mar 26 2023 23:38:38 GMT+0800">
+                
+                    2023-03-26
+                
+            </span>
         </span>
         
         
-        <span class="tag">
-            
-            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #ffa2c4">
-                大创
-            </a>
-        </span>
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E5%A4%A7%E5%88%9B/">大创</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
-    <a href="/2023/03/26/02-GA/" class="go-post">阅读全文</a>
+
+    <a href="/2023/03/26/02-GA/">阅读全文<span class="seo-reader-text">遗传算法与模型优化</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
-<div class="post">
-    <a href="/2023/03/26/01_%E5%A4%A7%E5%88%9B/">
-        <h2 class="post-title">2022-2023 大创项目——定制化汽车动力系统</h2>
-    </a>
-    <div class="category-and-date">
+            </li>
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/26
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <h1 id="汽车功率需求仿真">汽车功率需求仿真</h1>
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/03/26/01_%E5%A4%A7%E5%88%9B/">
+                        2022-2023 大创项目——定制化汽车动力系统
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <h1 id="汽车功率需求仿真">汽车功率需求仿真</h1>
 <h2 id="模型初步搭建与仿真验证">模型初步搭建与仿真验证</h2>
 <p>每个驾驶员有自己的驾驶习惯，不同的驾驶习惯对应不同的驾驶模式，不同的驾驶模式对应不同的功率需求。因此，我们需要对不同的驾驶模式进行仿真。</p>
-            
-        </div>
-    </div>
-    <div class="post-tags">
-        
-        <span class="icon">
-            <i class="fa-solid fa-tags fa-fw"></i>
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sun Mar 26 2023 03:33:40 GMT+0800">
+                
+                    2023-03-26
+                
+            </span>
         </span>
         
         
-        <span class="tag">
-            
-            <a href="/tags/%E5%A4%A7%E5%88%9B/" style="color: #00a596">
-                大创
-            </a>
-        </span>
+            <span class="home-article-tag">
+                <i class="fa-solid fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E5%A4%A7%E5%88%9B/">大创</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
-    <a href="/2023/03/26/01_%E5%A4%A7%E5%88%9B/" class="go-post">阅读全文</a>
+
+    <a href="/2023/03/26/01_%E5%A4%A7%E5%88%9B/">阅读全文<span class="seo-reader-text">2022-2023 大创项目——定制化汽车动力系统</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
-<div class="post">
-    <a href="/2023/03/25/hello-world/">
-        <h2 class="post-title">For Starters——WELCOME! and some basic operations of Hexo</h2>
-    </a>
-    <div class="category-and-date">
+            </li>
         
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/25
-        </span>
-        
-        
-    </div>
-    <div class="description">
-        <div class="content" v-pre>
-            
-            <p>Welcome to <a href="ericzhang1412.github.io">EricZhang's
+            <li class="home-article-item">
+
+                
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/03/25/hello-world/">
+                        For Starters——WELCOME! and some basic operations of Hexo
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        <p>Welcome to <a href="ericzhang1412.github.io">EricZhang's
 Blog</a>!</p>
 <h2 id="quick-start">Quick Start</h2>
-            
-        </div>
-    </div>
-    <div class="post-tags">
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fa-solid fa-calendars"></i>&nbsp;
+            <span class="home-article-date" data-date="Sat Mar 25 2023 21:14:29 GMT+0800">
+                
+                    2023-03-25
+                
+            </span>
+        </span>
         
         
     </div>
-    <a href="/2023/03/25/hello-world/" class="go-post">阅读全文</a>
+
+    <a href="/2023/03/25/hello-world/">阅读全文<span class="seo-reader-text">For Starters——WELCOME! and some basic operations of Hexo</span>&nbsp;<i class="fa-solid fa-angle-right"></i></a>
 </div>
 
+            </li>
+        
+    </ul>
 
-            <div class="page-current">
-    <div class="prev">
-        
-    </div>
-    <div class="page-index">
-        
-        <span class="current">1</span>
-        
-    </div>
-    <div class="next">
-        
+    <div class="home-paginator">
+        <div class="paginator">
+    <span class="page-number current">1</span>
+</div>
+
     </div>
 </div>
 
-        </div>
-    </div>
-    
-    <div id="home-card">
-        <div id="card-div">
-    <div class="card-style" style="width: 300px">
-        <div class="avatar">
-            <img src="/images/avatar.jpg" alt="avatar" />
-        </div>
-        <div class="name">Eric Zhang</div>
-        <div class="description">
-            <p>University of Electronic Science and Technology of China, School of
-Information and Communication Engineering, Department of
-Internet-of-Things.</p>
+                
 
-        </div>
-        
-        <div class="icon-links">
-            
-            <span class="icon-link">
-                <a href="/">
-                    <i
-                        class="fa-brands fa-github fa-fw"
-                    ></i>
-                </a>
-            </span>
-            
-            <span class="icon-link">
-                <a href="/">
-                    <i
-                        class="fa-brands fa-bilibili fa-fw"
-                    ></i>
-                </a>
-            </span>
-            
-            <span class="icon-link">
-                <a target="_blank" rel="noopener" href="https://eportal.uestc.edu.cn/new/index.html?browser=no">
-                    <i
-                        class="fa-solid fa-graduation-cap fa-fw"
-                    ></i>
-                </a>
-            </span>
-            
-            <span class="icon-link">
-                <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/mp/homepage?__biz=MzkzNDI4MTg3Nw==&hid=6&sn=9f9fddc2ce01ab44fbf63b70c273d7d6&scene=18">
-                    <i
-                        class="fa-solid fa-floppy-disk fa-fw"
-                    ></i>
-                </a>
-            </span>
-            
-            <span class="icon-link">
-                <a target="_blank" rel="noopener" href="https://alist.malossov.top/%E6%9C%8B%E5%8F%8B%E7%94%9F%E7%9A%84/UESTC_EZ0328_Folder">
-                    <i
-                        class="fa-solid fa-layer-group fa-fw"
-                    ></i>
-                </a>
-            </span>
-            
-        </div>
-        
-        
-        <div class="friend-links">
-            
-            <div class="friend-link">
-                <a target="_blank" rel="noopener" href="https://chat.openai.com/chat">ChatGPT</a>
             </div>
             
-            <div class="friend-link">
-                <a target="_blank" rel="noopener" href="https://touhouxingchen.github.io/">星辰の博客</a>
-            </div>
             
+
         </div>
-        
-    </div>
-</div>
 
-    </div>
-    
-</div>
-
-                <footer id="footer">
-    <div id="footer-wrap">
-        <div>
+        <div class="main-content-footer">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
             &copy;
-            2023 - 2023 EZ0328
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;Eric Zhang
-        </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">The Redefine Team</a>
         </div>
         
-    </div>
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 驱动</span>
+                <br>
+            <span class="theme-version-container">主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.1.4</a>
+        </div>
+        
+        
+        
+            <div id="start_div" style="display:none">
+                2022/8/17 11:45:14
+            </div>
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
 </footer>
-
-            </div>
-            </transition>
-            
-            <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-            </transition>
-            
         </div>
-        <script src="/js/main.js"></script>
+    </div>
+
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
         
-    </body>
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+
+</main>
+
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/layouts/navbarShrink.js"></script>
+
+<script src="/js/tools/scrollTopBottom.js"></script>
+
+<script src="/js/tools/lightDarkSwitch.js"></script>
+
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/layouts/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            Global.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            Global.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            Global.refresh();
+        });
+    });
+</script>
+
+
+
+
+</body>
 </html>

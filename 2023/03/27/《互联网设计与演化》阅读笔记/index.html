@@ -1,47 +1,99 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN">
-    <head>
-        <meta charset="UTF-8" />
-        <title>《互联网设计与演化》阅读笔记 | EZ0328</title>
-        <meta name="author" content="Eric Zhang" />
-        <meta name="description" content="Be creative, be innovative" />
-        <meta name="keywords" content="" />
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
-        <link rel="icon" href="/images/avatar.jpg" />
-        <script src="https://cdn.staticfile.org/vue/3.2.47/vue.global.prod.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/6.3.0/css/all.min.css" />
-<link rel="stylesheet" href="/css/fonts.min.css" />
-<script> const mixins = {}; </script>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="The Redefine Team">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://ericzhang1412.github.io/2023/03/27/《互联网设计与演化》阅读笔记/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="从因特网到交际 沙漏模型 还是第一次看见这样子描述因特网的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《互联网设计与演化》阅读笔记">
+<meta property="og:url" content="https://ericzhang1412.github.io/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="EZ0328">
+<meta property="og:description" content="从因特网到交际 沙漏模型 还是第一次看见这样子描述因特网的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://ericzhang1412.github.io/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/01.png">
+<meta property="og:image" content="https://ericzhang1412.github.io/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/02.png">
+<meta property="og:image" content="https://ericzhang1412.github.io/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/03.jpg">
+<meta property="og:image" content="https://ericzhang1412.github.io/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/04.jpg">
+<meta property="og:image" content="https://ericzhang1412.github.io/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/05.jpg">
+<meta property="og:image" content="https://ericzhang1412.github.io/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/06.png">
+<meta property="og:image" content="https://ericzhang1412.github.io/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/07.png">
+<meta property="og:image" content="https://ericzhang1412.github.io/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/08.png">
+<meta property="article:published_time" content="2023-03-27T15:22:21.000Z">
+<meta property="article:modified_time" content="2023-05-23T15:42:35.866Z">
+<meta property="article:author" content="Eric Zhang">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://ericzhang1412.github.io/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/01.png">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/redefine-favicon.svg" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/redefine-favicon.svg">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/redefine-favicon.svg">
+    <!--- Page Info-->
+    
+    <title>
+        
+            《互联网设计与演化》阅读笔记 -
+        
+        Theme Redefine
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
 
-<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    
+<link rel="stylesheet" href="/assets/fonts.css">
 
+    <!--- Font Part-->
+    
+    
+    
+    
 
-<script src="https://cdn.staticfile.org/highlight.js/11.7.0/highlight.min.js"></script>
-<link
-    rel="stylesheet"
-    href="https://cdn.staticfile.org/highlight.js/11.7.0/styles/github.min.css"
-/>
-<script src="/js/lib/highlight.js"></script>
+    <!--- Inject Part-->
+    
+    <script id="hexo-configurations">
+    let Global = window.Global || {};
+    Global.hexo_config = {"hostname":"ericzhang1412.github.io","root":"/","language":"zh-CN"};
+    Global.theme_config = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":true,"lazyload":true,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":true},"busuanzi_counter":{"enable":true,"site_pv":true,"site_uv":true,"post_pv":true},"pjax":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"static","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"Theme Redefine","subtitle":{"text":[],"hitokoto":{"enable":false,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":false,"family":null,"url":null},"social_links":{"enable":false,"links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null}]},"mermaid":{"enable":false,"version":"9.3.0"}},"version":"2.1.4","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"links":null},"article_date_format":"auto","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}}};
+    Global.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    Global.data_config = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
 
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
 
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
 
-<script src="/js/lib/preview.js"></script>
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
 
-
-
-
-
-<script src="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.js"></script>
-<link rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.8.0/gitalk.min.css" />
-
-
-
-
-
-<link rel="stylesheet" href="/css/main.css" />
-
-    <meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><style>mjx-container[jax="SVG"] {
   direction: ltr;
 }
 
@@ -154,141 +206,186 @@ mjx-container[display="true"] + br {
   display: none;
 }
 </style></head>
-    <body>
-        <div id="layout">
-            <transition name="fade">
-            <div id="loading" v-show="loading">
-                <div id="loading-circle">
-                    <h2>LOADING</h2>
-                    <p>加载过慢请开启缓存&ensp;浏览器默认开启</p>
-                    <img src="/images/loading.gif" />
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fa-solid fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="main-content-container">
+
+        <div class="main-content-header">
+            <header class="navbar-container">
+    
+    <div class="navbar-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                Theme Redefine
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="" 
+                                    href="/"  >
+                                    
+                                        
+                                            <i class="fa-regular fa-house"></i>
+                                        
+                                        首页
+                                    
+                                </a>
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
                 </div>
             </div>
-            </transition>
-            <transition name="into">
-            <div id="main" v-show="!loading">
-                <nav id="menu" ref="menu">
-    <div class="desktop-menu">
-        <a class="title" href="/">
-            <span>EZ0328</span>
-        </a>
-        
-        <a href="/">
-            <i class="fa-solid fa-house fa-fw"></i>
-            <span>&ensp;Home</span>
-        </a>
-        
-        <a href="/about">
-            <i class="fa-solid fa-id-card fa-fw"></i>
-            <span>&ensp;About</span>
-        </a>
-        
-        <a href="/archives">
-            <i class="fa-solid fa-box-archive fa-fw"></i>
-            <span>&ensp;Archives</span>
-        </a>
-        
-        <a href="/categories">
-            <i class="fa-solid fa-bookmark fa-fw"></i>
-            <span>&ensp;Categories</span>
-        </a>
-        
-        <a href="/tags">
-            <i class="fa-solid fa-tags fa-fw"></i>
-            <span>&ensp;Tags</span>
-        </a>
-        
-    </div>
-    <div id="mobile-menu">
-        <div class="curtain" v-show="showMenu" @click="showMenu = !showMenu"></div>
-        <div class="title" @click="showMenu = !showMenu">
-            <i class="fa-solid fa-bars fa-fw"></i>
-            <span>&emsp;EZ0328</span>
         </div>
-        <transition name="slide">
-        <div class="items" v-show="showMenu">
-            
-            <a href="/">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-house fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">Home</div>
-                </div>
-            </a>
-            
-            <a href="/about">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-id-card fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">About</div>
-                </div>
-            </a>
-            
-            <a href="/archives">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-box-archive fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">Archives</div>
-                </div>
-            </a>
-            
-            <a href="/categories">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-bookmark fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">Categories</div>
-                </div>
-            </a>
-            
-            <a href="/tags">
-                <div class="item">
-                    <div style="min-width: 20px; max-width: 50px; width: 10%">
-                        <i class="fa-solid fa-tags fa-fw"></i>
-                    </div>
-                    <div style="min-width: 100px; max-width: 150%; width: 20%">Tags</div>
-                </div>
-            </a>
-            
-        </div>
-        </transition>
     </div>
-</nav>
 
-                <div class="article">
-    <div>
-        <h1>《互联网设计与演化》阅读笔记</h1>
-    </div>
-    <div class="info">
-        <span class="date">
-            <span class="icon">
-                <i class="fa-solid fa-calendar fa-fw"></i>
-            </span>
-            2023/3/27
-        </span>
-        
-        
-        <span class="tags">
-            <span class="icon">
-                <i class="fa-solid fa-tags fa-fw"></i>
-            </span>
+    <!-- Mobile drawer -->
+    <div class="navbar-drawer">
+        <ul class="drawer-navbar-list">
             
-            <span class="tag">
                 
-                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" style="color: #ff7d73">计算机网络</a>
-            </span>
+                    <li class="drawer-navbar-item flex-center">
+                        <a class="" 
+                        href="/"  >
+                             
+                                
+                                    <i class="fa-regular fa-house"></i>
+                                
+                                首页
+                            
+                        </a>
+                    </li>
+                    <!-- Submenu -->
+                    
             
-        </span>
-        
+
+        </ul>
     </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            
+            
+                <div class="article-title">
+                    <h1 class="article-title-regular">《互联网设计与演化》阅读笔记</h1>
+                </div>
+            
+                
+            
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="/images/redefine-avatar.svg">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">The Redefine Team</span>
+                            
+                                <span class="author-label">Lv2</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-03-27 23:22:21</span>
+        <span class="mobile">2023-03-27 23:22</span>
+        <span class="hover-info">创建</span>
+    </span>
     
-    <div class="content" v-pre>
-        <h1 id="从因特网到交际">从因特网到交际</h1>
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2023-05-23 23:42:35</span>
+            <span class="mobile">2023-05-23 23:42</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fa-regular fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content markdown-body">
+                <h1 id="从因特网到交际">从因特网到交际</h1>
 <h2 id="沙漏模型">沙漏模型</h2>
-<p>还是第一次看见这样子描述因特网的。 <img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/01.png" alt="fig01">
+<p>还是第一次看见这样子描述因特网的。 <img lazyload src="/images/loading.svg" data-src="01.png" alt="fig01">
 <span id="more"></span></p>
 <h2 id="因特网的基本通信模型">因特网的基本通信模型</h2>
 <p>两大部分：<strong>地址</strong>（who+where）+<strong>传输协议</strong>（what+how+when）</p>
@@ -337,7 +434,7 @@ sender-&gt;send.server-&gt;receiver.server-&gt;receiver</p>
 <p>2.ARPAnet广域分组交换网（DARPA）
 将计算机和人连接在一起的应用：人与人的通信 广泛获取信息</p>
 <p>(前途一片大好啊）</p>
-<p><img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/02.png" alt="fig02">???</p>
+<p><img lazyload src="/images/loading.svg" data-src="02.png" alt="fig02">???</p>
 <h2 id="s证明与探索">1970s：证明与探索</h2>
 <p>ARPAnet-&gt;SATnet-&gt;PRnet 怎么将不同网络连接在一起？
 TCP、IP标准的提出</p>
@@ -439,7 +536,7 @@ TCP、IP标准的提出</p>
 <h2 id="通信网络分析与设计">通信网络分析与设计</h2>
 <h2 id="电信网络如何路由转发">电信网络如何路由/转发</h2>
 <p>手机会通过<strong>基站系统（BSS）</strong>接入到<strong>网络子系统（NSS）</strong>。网络子系统的一个重要部件是<strong>移动通信交换中心（MSC）</strong>，它建立了<strong><em>移动呼叫路由</em></strong>，连接到另外一个MSC。由此以上述相反的方式往下通讯，就找到了拨打号码的终端。
-<img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/03.jpg" alt="fig02"></p>
+<img lazyload src="/images/loading.svg" data-src="03.jpg" alt="fig02"></p>
 <h2 id="ip网络如何路由转发">IP网络如何路由/转发</h2>
 <p>PC1向PC2发送一个源IP地址为11.1.1.2、目的IP地址为12.1.1.2的数据包。
 Router
@@ -451,7 +548,7 @@ R3；路由器R3收到报文后，查看路由表，发现路由到12.1.1.0/24�
 0/0/1的地址，所以数据包从GE 0/0/1发出，最后到达PC2。
 PC2向PC1发送数据包时，也需要沿途的路由器查询路由表，以确定转发路径。</p>
 <p>需要说明的是，如果路由表项的下一跳IP地址是出接口的IP地址，则表示该接口直连路由表项所指示的目的网络。另外需要注意的是，下一跳IP地址对应的主机接口必须和出接口在同一个二层网络（二层广播域）。
-<img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/04.jpg" alt="fig02"></p>
+<img lazyload src="/images/loading.svg" data-src="04.jpg" alt="fig02"></p>
 <h2 id="exp1-明月湖minicamp">Exp1: 明月湖MiniCamp</h2>
 <p>如何发言让主办方舒服？与其说“可能我不会走向创业这条路……”，不如这样开头“无论我是否走向创业……”。</p>
 <p>对比entrepreneurship和intrapreneurship：</p>
@@ -473,7 +570,7 @@ A（Class1）则是将传输距离提升到100-300米，两种版本都支持A2D
 <p>人员不流动下，在通信过程中，收发双方位置固定且在可蓝牙通信的聊天室内（可以是不同的聊天室）。</p>
 <p>人员流动下，通信过程中，发送方位置固定（确保能发出去信息），且<strong>不需要知道接收方是否收到信息</strong>。</p>
 <figure>
-<img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/05.jpg" alt="fig02">
+<img lazyload src="/images/loading.svg" data-src="05.jpg" alt="fig02">
 <figcaption aria-hidden="true">fig02</figcaption>
 </figure>
 <h3 id="发现的问题">发现的问题</h3>
@@ -487,7 +584,7 @@ A（Class1）则是将传输距离提升到100-300米，两种版本都支持A2D
 <h3 id="socket">Socket</h3>
 <p>A socket is an endpoint for communication between two machines.</p>
 <h4 id="bluetoothsocket">BluetoothSocket</h4>
-<p>REF:<a target="_blank" rel="noopener" href="https://developer.android.google.cn/guide/topics/connectivity/bluetooth?hl=zh-cn#java" class="uri">https://developer.android.google.cn/guide/topics/connectivity/bluetooth?hl=zh-cn#java</a></p>
+<p>REF:<a class="uri" target="_blank" rel="noopener" href="https://developer.android.google.cn/guide/topics/connectivity/bluetooth?hl=zh-cn#java">https://developer.android.google.cn/guide/topics/connectivity/bluetooth?hl=zh-cn#java <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 <p>利用
 BluetoothAdapter，通过设备发现或查询配对设备的列表来查找远程蓝牙设备。</p>
 <p>Android 应用可通过 Bluetooth API 执行以下操作：</p>
@@ -527,7 +624,7 @@ Port Profile 串口协议(SPP)。</p>
 <h2 id="蓝牙网络封装协议bnep">蓝牙网络封装协议（BNEP）</h2>
 <h3 id="group-paad-hocn-gn">Group PA(Ad-hoc)N (GN)</h3>
 <figure>
-<img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/06.png" alt="fig02">
+<img lazyload src="/images/loading.svg" data-src="06.png" alt="fig02">
 <figcaption aria-hidden="true">fig02</figcaption>
 </figure>
 <p>主机最多支持7个从设备连接，这是由<strong>蓝牙主动成员寻址方案</strong>
@@ -539,7 +636,7 @@ network)，则是一组计算设备互相交互形成一个独立的网络。该
 <h3 id="网络接入点network-access-pointsnap">网络接入点(Network Access
 Points,NAP)</h3>
 <figure>
-<img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/07.png" alt="fig02">
+<img lazyload src="/images/loading.svg" data-src="07.png" alt="fig02">
 <figcaption aria-hidden="true">fig02</figcaption>
 </figure>
 <p>网络接入点是包含一个或多个蓝牙无线电设备的单元，充当蓝牙网络和其他一些网络技术（10BASE-T、GSM
@@ -547,76 +644,404 @@ Points,NAP)</h3>
 <h2 id="pan-配置文件场景">PAN 配置文件场景</h2>
 <p>NAP 为每个连接的蓝牙设备提供网络服务。 GN 允许两个或多个蓝牙设备成为
 ad-hoc 网络的一部分。</p>
-<p>Group Ad-hoc Network Profile Stack for Phase I: <img src="/2023/03/27/%E3%80%8A%E4%BA%92%E8%81%94%E7%BD%91%E8%AE%BE%E8%AE%A1%E4%B8%8E%E6%BC%94%E5%8C%96%E3%80%8B%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/08.png" alt="Group Ad-hoc Network Profile Stack for Phase I"></p>
+<p>Group Ad-hoc Network Profile Stack for Phase I: <img lazyload src="/images/loading.svg" data-src="08.png" alt="Group Ad-hoc Network Profile Stack for Phase I"></p>
 <p>Baseband, LMP, L2CAP位于OSI第一层和第二层</p>
 
+            </div>
+
+            
+                <div class="post-copyright-info">
+                    <div class="article-copyright-info-container">
+    <ul>
+        <li><strong>标题:</strong> 《互联网设计与演化》阅读笔记</li>
+        <li><strong>作者:</strong> The Redefine Team</li>
+        <li><strong>创建于:</strong> 2023-03-27 23:22:21</li>
+        
+            <li>
+                <strong>更新于:</strong> 2023-05-23 23:42:35
+            </li>
+        
+        <li>
+            <strong>链接:</strong> https://redefine.ohevan.com/2023/03/27/《互联网设计与演化》阅读笔记/
+        </li>
+        <li>
+            <strong>版权声明:</strong> 本文章采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">CC BY-NC-SA 4.0</a> 进行许可。
+        </li>
+    </ul>
+</div>
+
+                </div>
+            
+
+            
+                <ul class="post-tags-box">
+                    
+                        <li class="tag-item">
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">#计算机网络</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            
+
+            
+
+            
+                <div class="article-nav">
+                    
+                        <div class="article-prev">
+                            <a class="prev"
+                            rel="prev"
+                            href="/2023/03/28/OneOS-%E5%90%AF%E7%89%A9-v1-2-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%9A%84Wifi%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/"
+                            >
+                                <span class="left arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </span>
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">OneOS 启物 v1.2 开发板的Wifi模块开发</span>
+                                    <span class="post-nav-item">上一篇</span>
+                                </span>
+                            </a>
+                        </div>
+                    
+                    
+                        <div class="article-next">
+                            <a class="next"
+                            rel="next"
+                            href="/2023/03/27/03-Hi3861-Embedded-Competition/"
+                            >
+                                <span class="title flex-center">
+                                    <span class="post-nav-title-item">Hi3861开发板使用与第六届全国大学生嵌入式竞赛海思赛道</span>
+                                    <span class="post-nav-item">下一篇</span>
+                                </span>
+                                <span class="right arrow-icon flex-center">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </span>
+                            </a>
+                        </div>
+                    
+                </div>
+            
+
+
+            
+                <div class="comment-container">
+                    <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fa-solid fa-comments"></i>&nbsp;评论
     </div>
     
-    
-    
-    <div id="comment">
-        <div id="gitalk-container"></div>
-    </div>
-    
-    
-    
-    
+
+        
+            
+ 
+    <div id="waline"></div>
+    <script type="module"  data-pjax>
+        import { init } from 'https://evan.beee.top/js/waline.mjs';
+
+        function loadWaline() {
+            init({
+                el: '#waline',
+                serverURL: 'https://example.example.com',
+                lang: 'zh-CN',
+                dark: 'body[class~="dark-mode"]',
+                requiredMeta: ['nick','mail'], // cannot customize by theme config, change it yourself
+            });
+        }
+
+        if ('true') {
+            const loadWalineTimeout = setTimeout(() => {
+                loadWaline();
+                clearTimeout(loadWalineTimeout);
+            }, 1000);
+        } else {
+            window.addEventListener('DOMContentLoaded', loadWaline);
+        }
+        
+    </script>
+
+
+
+        
     
 </div>
 
-                <footer id="footer">
-    <div id="footer-wrap">
-        <div>
-            &copy;
-            2023 - 2023 EZ0328
-            <span id="footer-icon">
-                <i class="fa-solid fa-font-awesome fa-fw"></i>
-            </span>
-            &commat;Eric Zhang
+                </div>
+            
         </div>
-        <div>
-            Based on the <a target="_blank" rel="noopener" href="https://hexo.io">Hexo Engine</a> &amp;
-            <a target="_blank" rel="noopener" href="https://github.com/argvchs/hexo-theme-particlex">ParticleX Theme</a>
-        </div>
+
+        
+            <div class="toc-content-container">
+                <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">《互联网设计与演化》阅读笔记</div>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BB%8E%E5%9B%A0%E7%89%B9%E7%BD%91%E5%88%B0%E4%BA%A4%E9%99%85"><span class="nav-text">从因特网到交际</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B2%99%E6%BC%8F%E6%A8%A1%E5%9E%8B"><span class="nav-text">沙漏模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E5%9F%BA%E6%9C%AC%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B"><span class="nav-text">因特网的基本通信模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%BD%E5%8A%9B%E8%80%8C%E4%B8%BA-or-%E8%A1%A5%E5%81%BF"><span class="nav-text">尽力而为 or 补偿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84role"><span class="nav-text">路由器的ROLE</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%8A%B6%E6%80%81"><span class="nav-text">关于“状态”</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%AF%E8%8A%82%E7%82%B9%E4%B8%8A%E7%9A%84%E5%BA%94%E7%94%A8%E6%94%AF%E6%92%91%E6%95%B0%E6%8D%AE%E5%8C%85%E4%B9%B1%E4%BC%A0%E6%80%8E%E4%B9%88%E5%8A%9E"><span class="nav-text">端节点上的应用支撑：数据包乱传怎么办</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91%E6%8A%80%E6%9C%AF"><span class="nav-text">路由转发技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E7%9A%84%E5%8C%BA%E5%9F%9F"><span class="nav-text">因特网的区域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9Fdns"><span class="nav-text">域名系统（DNS）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%901%E4%B8%87%E7%BB%B4%E7%BD%91%E5%8D%8F%E8%AE%AE"><span class="nav-text">例子1：万维网协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BE%8B%E5%AD%902email"><span class="nav-text">例子2：email</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%A0%E7%89%B9%E7%BD%91%E5%8F%91%E5%B1%95%E5%8F%B2"><span class="nav-text">因特网发展史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#s%E5%8F%91%E6%98%8E%E4%B8%8E%E6%86%A7%E6%86%AC"><span class="nav-text">1960s：发明与憧憬</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#s%E8%AF%81%E6%98%8E%E4%B8%8E%E6%8E%A2%E7%B4%A2"><span class="nav-text">1970s：证明与探索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#s%E6%88%90%E9%95%BF%E4%B8%8E%E6%A0%87%E5%87%86%E5%88%B6%E5%AE%9A"><span class="nav-text">1980s：成长与标准制定</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#s%E5%95%86%E4%B8%9A%E5%8C%96%E4%B8%87%E7%BB%B4%E7%BD%91%E5%85%89%E7%BA%A4%E6%8A%80%E6%9C%AF"><span class="nav-text">1990s：商业化&amp;万维网&amp;光纤技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#s%E4%BA%AB%E5%8F%97%E5%AE%BD%E5%B8%A6%E7%9A%84%E5%8D%81%E5%B9%B4"><span class="nav-text">2000s：享受宽带的十年</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#s%E6%B5%81%E5%AA%92%E4%BD%93%E8%A7%86%E9%A2%91%E5%92%8C%E7%A4%BE%E4%BA%A4%E5%AA%92%E4%BD%93"><span class="nav-text">2010s：流媒体视频和社交媒体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%9A%84%E5%AE%9E%E8%B4%A8"><span class="nav-text">网络的实质？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%9A%E4%BF%A1%E7%BD%91%E7%BB%9C%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1"><span class="nav-text">通信网络分析与设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%B5%E4%BF%A1%E7%BD%91%E7%BB%9C%E5%A6%82%E4%BD%95%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91"><span class="nav-text">电信网络如何路由&#x2F;转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ip%E7%BD%91%E7%BB%9C%E5%A6%82%E4%BD%95%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91"><span class="nav-text">IP网络如何路由&#x2F;转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#exp1-%E6%98%8E%E6%9C%88%E6%B9%96minicamp"><span class="nav-text">Exp1: 明月湖MiniCamp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BF%AB%E9%80%92%E7%B3%BB%E7%BB%9F%E7%9A%84%E8%AE%BE%E8%AE%A1"><span class="nav-text">快递系统的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E4%B8%BB%E8%90%A5%E9%AB%98%E6%A0%A1%E4%B9%8B%E9%97%B4%E7%9A%84%E5%B0%8F%E5%8C%85%E8%A3%B9%E5%BF%AB%E9%80%92%E6%80%8E%E4%B9%88%E5%88%A9%E7%94%A8%E7%8E%B0%E6%9C%89%E7%9A%84%E5%BF%AB%E9%80%92%E7%B3%BB%E7%BB%9F%E8%B5%9A%E9%92%B1"><span class="nav-text">如果主营高校之间的小包裹快递，怎么利用现有的快递系统赚钱？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%BA%E8%81%94%E7%BD%91%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91"><span class="nav-text">人联网如何实现路由&#x2F;转发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B0%86%E4%BC%A0%E7%BB%9F%E7%9A%84%E8%93%9D%E7%89%99%E8%81%8A%E5%A4%A9%E5%AE%A4%E6%94%B9%E9%80%A0%E6%88%90%E5%8F%AF%E4%BB%A5%E4%B8%80%E5%AF%B9%E5%A4%9A%E7%9A%84%E4%BC%9A%E8%AF%9D%E5%BD%A2%E5%BC%8F"><span class="nav-text">将传统的蓝牙聊天室改造成可以一对多的会话形式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E5%81%87%E8%AE%BE"><span class="nav-text">场景假设</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-text">发现的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%B2%E7%9F%A5%E7%9A%84%E7%9F%A5%E8%AF%86"><span class="nav-text">已知的知识</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#android-%E5%BC%80%E5%8F%91%E7%9A%84%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80"><span class="nav-text">Android 开发的一些基础</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#socket"><span class="nav-text">Socket</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rfcomm"><span class="nav-text">RFCOMM</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#endpoint-id"><span class="nav-text">endpoint ID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%B0%E6%96%B9%E6%B3%95%E8%93%9D%E7%89%99pan%E6%8A%80%E6%9C%AF%E6%9E%84%E5%BB%BAad-hoc"><span class="nav-text">新方法：蓝牙PAN技术构建Ad Hoc</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%93%9D%E7%89%99%E7%BD%91%E7%BB%9C%E5%8A%9F%E8%83%BD%E8%A6%81%E6%B1%82"><span class="nav-text">蓝牙网络功能要求</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%93%9D%E7%89%99%E7%BD%91%E7%BB%9C%E5%B0%81%E8%A3%85%E5%8D%8F%E8%AE%AEbnep"><span class="nav-text">蓝牙网络封装协议（BNEP）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#group-paad-hocn-gn"><span class="nav-text">Group PA(Ad-hoc)N (GN)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#panu-panu"><span class="nav-text">PANU-PANU</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E6%8E%A5%E5%85%A5%E7%82%B9network-access-pointsnap"><span class="nav-text">网络接入点(Network Access
+Points,NAP)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pan-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%9C%BA%E6%99%AF"><span class="nav-text">PAN 配置文件场景</span></a></li></ol></li></ol>
+
+    </div>
+</div>
+            </div>
         
     </div>
-</footer>
+</div>
+
+
+                
 
             </div>
-            </transition>
             
-            <transition name="fade">
-            <div id="preview" ref="preview" v-show="previewShow">
-                <img id="preview-content" ref="previewContent" />
-            </div>
-            </transition>
             
+
         </div>
-        <script src="/js/main.js"></script>
+
+        <div class="main-content-footer">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2023&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">The Redefine Team</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv" class="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv" class="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv" class="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            <span class="powered-by-container">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" href="https://hexo.io">Hexo</a> 驱动</span>
+                <br>
+            <span class="theme-version-container">主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.1.4</a>
+        </div>
         
         
-<script>
-    let clientID = "687e760e080fe80a4308",
-        clientSecret = "42e0ab633bd94122a6eae2d2081c42480bf4dee5";
+        
+            <div id="start_div" style="display:none">
+                2022/8/17 11:45:14
+            </div>
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+        
+            <script async data-pjax>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
     
-    const gitalk = new Gitalk({
-        clientID: clientID,
-        clientSecret: clientSecret,
-        repo: "Comments",
-        owner: "EricZhang1412",
-        admin: ["EricZhang1412"],
-        language: "zh-CN",
-        id: location.pathname,
-        distractionFreeMode: false,
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
         
-    })
-    gitalk.render("gitalk-container");
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-expand-width flex-center">
+            <i class="fa-regular fa-expand"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/layouts/navbarShrink.js"></script>
+
+<script src="/js/tools/scrollTopBottom.js"></script>
+
+<script src="/js/tools/lightDarkSwitch.js"></script>
+
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js"></script>
+
+
+
+
+    
+<script src="/js/layouts/lazyload.js"></script>
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/layouts/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts pjax">
+    
+        
+<script src="/js/tools/tocToggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/layouts/toc.js"></script>
+
+<script src="/js/plugins/tabs.js"></script>
+
+    
+</div>
+
+
+    
+<script src="/js/libs/pjax.min.js"></script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax',
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            Global.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            Global.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            Global.refresh();
+        });
+    });
 </script>
 
 
 
 
-
-        
-    </body>
+</body>
 </html>
