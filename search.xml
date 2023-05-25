@@ -1200,6 +1200,26 @@ IOT_SUCCESS：初始化成功 IOT_FAILURE：初始化失败</p>
       </tags>
   </entry>
   <entry>
+    <title>Notes for Comp_Network</title>
+    <url>/2023/05/25/Notes-for-Comp-Network/</url>
+    <content><![CDATA[
+]]></content>
+  </entry>
+  <entry>
+    <title>OneOS 启物 v1.2 开发板的Wifi模块开发</title>
+    <url>/2023/03/28/OneOS-%E5%90%AF%E7%89%A9-v1-2-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%9A%84Wifi%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h1 id="一-iar-开发环境搭建">一 IAR 开发环境搭建</h1>
+<p>不得不说，Mindmotion这家公司是真的令人迷惑，v1.0.6的固件包只有F3270，v1.0.5的固件包我能找到的只有F3273G和3273E系列，根本没有F3277的影子，所以果断弃之用IAR。</p>
+<h1 id="二-亿些使用中的问题">二 亿些使用中的问题</h1>
+<h2 id="esp8266无法连接wifi">ESP8266无法连接WiFi</h2>
+<p>因为自己的手机热点没有把AP band调成2.4GHz</p>
+]]></content>
+      <tags>
+        <tag>OneOS</tag>
+        <tag>ESP8266</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>For Starters——WELCOME! and some basic operations of Hexo</title>
     <url>/2023/03/25/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="ericzhang1412.github.io">EricZhang's
@@ -1219,20 +1239,6 @@ Blog</a>!</p>
 <pre class="code"><code>hexo deploy</code></pre>
 <p>More info: <a class="link" href="https://hexo.io/docs/one-command-deployment.html">Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>OneOS 启物 v1.2 开发板的Wifi模块开发</title>
-    <url>/2023/03/28/OneOS-%E5%90%AF%E7%89%A9-v1-2-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%9A%84Wifi%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h1 id="一-iar-开发环境搭建">一 IAR 开发环境搭建</h1>
-<p>不得不说，Mindmotion这家公司是真的令人迷惑，v1.0.6的固件包只有F3270，v1.0.5的固件包我能找到的只有F3273G和3273E系列，根本没有F3277的影子，所以果断弃之用IAR。</p>
-<h1 id="二-亿些使用中的问题">二 亿些使用中的问题</h1>
-<h2 id="esp8266无法连接wifi">ESP8266无法连接WiFi</h2>
-<p>因为自己的手机热点没有把AP band调成2.4GHz</p>
-]]></content>
-      <tags>
-        <tag>OneOS</tag>
-        <tag>ESP8266</tag>
-      </tags>
   </entry>
   <entry>
     <title>《互联网设计与演化》阅读笔记</title>
