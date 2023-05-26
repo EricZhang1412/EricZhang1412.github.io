@@ -1,240 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>遗传算法与模型优化</title>
-    <url>/2023/03/26/02-GA/</url>
-    <content><![CDATA[<h1 id="概述">概述</h1>
-<p>遗传算法（GA，genetic
-algorithm）是一种基于种群的元启发式算法（metaheuristic
-algorithms）。（关于元启发式算法参见<a class="link" href="https://blog.csdn.net/weixin_41313851/article/details/116045159">各种元启发式算法（Metaheuristics）介绍 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>），其灵感来自<strong>生物进化过程</strong>。</p>
-<span id="more"></span>
-<h2 id="遗传算法的基本要素">遗传算法的基本要素</h2>
-<pre><code>1.染色体表示（chromosome representation），
-2.适应度选择（fitness selection），
-3.仿生算子（biological-inspired operators）</code></pre>
-<h2 id="遗传算法的工作方式">遗传算法的工作方式</h2>
-<p>问题参数编码为染色体，再利用迭代的方式进行选择，交叉以及变异等运算来交换种群中的染色体信息，生成符合优化目标的染色体。染色体即对应数据/数组（串式结构）。</p>
-<h2 id="遗传算法的基本步骤">遗传算法的基本步骤</h2>
-<pre><code>1. 编码：GA进行搜索之前对解空间的解数据表示成遗传空间的基因型串结构数据，这些串结构数据的不同组合构成了不同的点。
-2. 生成初始群体：随机产生N个初始串结构数据，每个串结构数据生成一个个体，N个个体构成一个群体。GA算法以这个群体为初始点开始进化。
-3. 适应度评估：依据实际的问题构造适应性函数。
-4. 选择：从当前群体中选出优良个体，使他们有机会作为父代为下一代繁殖子孙。（体现达尔文的适者生存法则）
-5. 交叉：（最主要的遗传操作）通过交叉操作得到新一代个体，新个体组合了父辈的个体特性，体现信息交换的思想。
-6. 变异：群体中随机选择一个个体，以一定概率随机改变串结构数据中的某个串的值。类比生物界的基因突变，GA算法的变异概率很低，通常取值很小。</code></pre>
-<h1 id="ga算法的基本结构与遗传算子">GA算法的基本结构与遗传算子</h1>
-<p>此部分将对GA算法的基本结构及其遗传算子进行讨论。</p>
-<h2 id="classical-ga-alg">Classical GA Alg</h2>
-<p>GA算法的伪代码描述如下（Hexo貌似不支持VSCode + Markdown Preview
-Enhanced +
-pseudocode.js文件魔改之后的伪代码渲染，只好放图了，显得直观些，想了解如何在markdown中写伪代码块参见<a class="link" href="https://zhuanlan.zhihu.com/p/406649966">在 Markdown
-中书写伪代码 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>） <img lazyload src="/images/loading.svg" data-src="01.png" alt="fig01: Classical Genetic Algorithm Pseuducode"></p>
-<p>简单总结：GA的过程就是生成群体-&gt;群体繁衍（交叉互换）-&gt;子代基因突变-&gt;子代成为新群体-&gt;不停迭代，是不是和生物种群的繁衍一模一样。（<del>这就是交叉学科吗</del>）</p>
-<p>那么，怎么去确定染色体交叉的概率？论文中给出了公式：<span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -1.602ex;" xmlns="http://www.w3.org/2000/svg" width="14.414ex" height="5.041ex" role="img" focusable="false" viewbox="0 -1520 6371 2228"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"/></g><g data-mml-node="mo" transform="translate(1036.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"/></g><g data-mml-node="mfrac" transform="translate(2092.6,0)"><g data-mml-node="mrow" transform="translate(220,774)"><g data-mml-node="mi"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"/></g><g data-mml-node="mo" transform="translate(1008.2,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"/></g><g data-mml-node="mn" transform="translate(2008.4,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g><g data-mml-node="msqrt" transform="translate(2508.4,0)"><g transform="translate(853,0)"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"/></g></g><g data-mml-node="mo" transform="translate(0,-114)"><path data-c="221A" d="M95 178Q89 178 81 186T72 200T103 230T169 280T207 309Q209 311 212 311H213Q219 311 227 294T281 177Q300 134 312 108L397 -77Q398 -77 501 136T707 565T814 786Q820 800 834 800Q841 800 846 794T853 782V776L620 293L385 -193Q381 -200 366 -200Q357 -200 354 -197Q352 -195 256 15L160 225L144 214Q129 202 113 190T95 178Z"/></g><rect width="477" height="60" x="853" y="626"/></g></g><g data-mml-node="mrow" transform="translate(1496.2,-686)"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"/></g><g data-mml-node="mi" transform="translate(500,0)"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"/></g></g><rect width="4038.4" height="60" x="120" y="220"/></g></g></g></svg></mjx-container></span> 参数解释：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">Variants</th>
-<th style="text-align: center;">Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="1.079ex" height="1.464ex" role="img" focusable="false" viewbox="0 -442 477 647"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"/></g></g></g></svg></mjx-container></span></td>
-<td style="text-align: center;">世代数</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="1.778ex" height="1.645ex" role="img" focusable="false" viewbox="0 -705 786 727"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"/></g></g></g></svg></mjx-container></span></td>
-<td style="text-align: center;">种群集合的进化世代总数</td>
-</tr>
-</tbody>
-</table>
-<p>在 GA
-的初始阶段，个体之间的相似性很低。R的取值要低，以保证新种群不会破坏个体优良的遗传图式。在进化的末期，个体之间的相似度很高，R
-的值也应该很高。</p>
-<h2 id="ga-算子">GA 算子</h2>
-<figure>
-<img src="/2023/03/26/02-GA/02.png" alt="fig02: GA 中使用的算子/运算规则">
-<figcaption aria-hidden="true">fig02: GA
-中使用的算子/运算规则</figcaption>
-</figure>
-<h3 id="对染色体上的基因数据串的编码方案">对染色体上的基因（数据串）的编码方案</h3>
-<p><strong>二进制</strong>、<strong>八进制</strong>、<strong>十六进制</strong>、<strong>排列</strong>、<strong>基于值</strong>和<strong>树</strong>。（注：原论文中的这一节对基因和染色体这两个概念有混用的现象，不过生物学也存在这种混用，问题不大）。几种编码方式各有优劣，具体对比见如下表格：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">编码方式</th>
-<th style="text-align: center;">优点</th>
-<th style="text-align: center;">缺点</th>
-<th style="text-align: center;">应用场景</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">二进制</td>
-<td style="text-align: center;">易于实施，执行更快</td>
-<td style="text-align: center;">不支持反转运算符</td>
-<td style="text-align: center;">支持二进制编码的问题</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">八进制</td>
-<td style="text-align: center;">易于实施</td>
-<td style="text-align: center;">不支持反转运算符</td>
-<td style="text-align: center;">受限</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">十六进制</td>
-<td style="text-align: center;">易于实施</td>
-<td style="text-align: center;">不支持反转运算符</td>
-<td style="text-align: center;">受限</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">排列</td>
-<td style="text-align: center;">支持反转算子</td>
-<td style="text-align: center;">不支持二元运算符</td>
-<td style="text-align: center;">任务排序问题</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">基于值</td>
-<td style="text-align: center;">无需数值换算</td>
-<td style="text-align: center;">需要特定的交叉和变异</td>
-<td style="text-align: center;">神经网络问题</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">基于值</td>
-<td style="text-align: center;">无需数值换算</td>
-<td style="text-align: center;">需要特定的交叉和变异</td>
-<td style="text-align: center;">神经网络找权值问题</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">树</td>
-<td style="text-align: center;">操作员可以轻松应用</td>
-<td style="text-align: center;">一些问题很难设计树</td>
-<td style="text-align: center;">不断进化/发展的问题</td>
-</tr>
-</tbody>
-</table>
-<h3 id="优良个体选择方法">优良个体选择方法</h3>
-<p>类比进化生物学，进化压力越大，生物受到“物竞天择”的强度越大。GA的收敛速度也取决于选择压力。
-常见的选择方法有：<strong>轮盘赌</strong>、<strong>等级排序</strong>、<strong>锦标赛</strong>、<strong>玻尔兹曼法</strong>、<strong>随机通用抽样</strong>。具体对比见如下表格：</p>
-<table>
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: center;">选择方式</th>
-<th style="text-align: center;">优点</th>
-<th style="text-align: center;">缺点</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">轮盘赌</td>
-<td style="text-align: center;">易于实施，简单，没有偏差</td>
-<td style="text-align: center;">有过早收敛的风险，取决于适应度函数中存在的方差</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">等级排序</td>
-<td style="text-align: center;">保持多样性，没有偏差</td>
-<td style="text-align: center;">收敛慢，需要排序，计算量大</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">锦标赛</td>
-<td style="text-align: center;">保持多样性，并行执行，无需排序</td>
-<td style="text-align: center;">锦标赛规模大时多样性的损失</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">玻尔兹曼法</td>
-<td style="text-align: center;">全局最优</td>
-<td style="text-align: center;">计算量大</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">随机通用抽样</td>
-<td style="text-align: center;">无偏差，快速</td>
-<td style="text-align: center;">需要特定的交叉和变异</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">精英主义</td>
-<td style="text-align: center;">保留种群中最好的个体</td>
-<td style="text-align: center;">由于交叉和变异算子，最佳个体可能会丢失</td>
-</tr>
-</tbody>
-</table>
-<h3 id="交叉运算">交叉运算</h3>
-<p>通过组合两个或多个父母的遗传信息来生成后代。常见的交叉运算方法有：<strong>单点交叉</strong>、<strong>两点交叉</strong>、<strong>k点交叉</strong>、<strong>均匀交叉</strong>、<strong>部分匹配交叉
-(Partially matched crossover (PMX) )</strong>、<strong>顺序交叉(Order
-crossover (OX) )</strong>、<strong>优先保留交叉(Precedence preserving
-crossover (PPX) )</strong>、<strong>随机交叉(Shuffle
-crossover)</strong>、<strong>减少代理交叉(Reduced surrogate crossover
-(RCX) )</strong>、<strong>循环交叉</strong>。具体对比见如下表格：</p>
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;">交叉运算方式</th>
-<th style="text-align: center;">优点</th>
-<th style="text-align: center;">缺点</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">单点交叉</td>
-<td style="text-align: center;">易于实施，简单</td>
-<td style="text-align: center;">不太多样化</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">两点交叉</td>
-<td style="text-align: center;">易于实施</td>
-<td style="text-align: center;">适用于小子集、不太多样化</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">减少代理交叉</td>
-<td style="text-align: center;">在小的优化问题上有更好的性能</td>
-<td style="text-align: center;">过早收敛</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">均匀交叉</td>
-<td style="text-align: center;">无偏检索、适用于大型子集、更好的重组潜力</td>
-<td style="text-align: center;">不太多样化</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">优先保留交叉</td>
-<td style="text-align: center;">更好的后代</td>
-<td style="text-align: center;">冗余</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">顺序交叉</td>
-<td style="text-align: center;">更好的探索</td>
-<td style="text-align: center;">以前个体的信息丢失</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;">循环交叉</td>
-<td style="text-align: center;">无偏检索</td>
-<td style="text-align: center;">过早收敛</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;">部分匹配交叉</td>
-<td style="text-align: center;">更好的收敛率、优于其他交叉</td>
-<td style="text-align: center;">NA</td>
-</tr>
-</tbody>
-</table>
-<h3 id="变异运算">变异运算</h3>
-<p>用于维持从一个种群到下一个种群的遗传多样性的算子。常见的交叉运算方法有：<strong>移位突变（Displacement
-mutation，DM）、单一反转突变（simple inversion
-mutation，SIM）、乱码突变（Scramble
-Mutation，SM）</strong>。具体对比见如下表格： | 变异运算方式 | 优点
-|缺点| | :-------: | :-------: | :-------: |
-|移位突变|易于实施，适用于小问题实例|有可能过早收敛|
-|单一反转突变|易于实施|过早收敛|
-|乱码突变|影响大量的基因、适用于大型问题实例|对种群干扰大、某些问题的解决方案质量下降|</p>
-]]></content>
-      <tags>
-        <tag>大创</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2022-2023 大创项目——定制化汽车动力系统</title>
     <url>/2023/03/26/01_%E5%A4%A7%E5%88%9B/</url>
     <content><![CDATA[<h1 id="汽车功率需求仿真">汽车功率需求仿真</h1>
@@ -594,6 +360,240 @@ Studio 2022, 环境搭建参见Microsoft官方文档：<a class="uri" href="http
 <h1 id="锂电池参数仿真">锂电池参数仿真</h1>
 <h1 id="氢氧燃料电池参数仿真">氢氧燃料电池参数仿真</h1>
 <h1 id="优化算法">优化算法</h1>
+]]></content>
+      <tags>
+        <tag>大创</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>遗传算法与模型优化</title>
+    <url>/2023/03/26/02-GA/</url>
+    <content><![CDATA[<h1 id="概述">概述</h1>
+<p>遗传算法（GA，genetic
+algorithm）是一种基于种群的元启发式算法（metaheuristic
+algorithms）。（关于元启发式算法参见<a class="link" href="https://blog.csdn.net/weixin_41313851/article/details/116045159">各种元启发式算法（Metaheuristics）介绍 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>），其灵感来自<strong>生物进化过程</strong>。</p>
+<span id="more"></span>
+<h2 id="遗传算法的基本要素">遗传算法的基本要素</h2>
+<pre><code>1.染色体表示（chromosome representation），
+2.适应度选择（fitness selection），
+3.仿生算子（biological-inspired operators）</code></pre>
+<h2 id="遗传算法的工作方式">遗传算法的工作方式</h2>
+<p>问题参数编码为染色体，再利用迭代的方式进行选择，交叉以及变异等运算来交换种群中的染色体信息，生成符合优化目标的染色体。染色体即对应数据/数组（串式结构）。</p>
+<h2 id="遗传算法的基本步骤">遗传算法的基本步骤</h2>
+<pre><code>1. 编码：GA进行搜索之前对解空间的解数据表示成遗传空间的基因型串结构数据，这些串结构数据的不同组合构成了不同的点。
+2. 生成初始群体：随机产生N个初始串结构数据，每个串结构数据生成一个个体，N个个体构成一个群体。GA算法以这个群体为初始点开始进化。
+3. 适应度评估：依据实际的问题构造适应性函数。
+4. 选择：从当前群体中选出优良个体，使他们有机会作为父代为下一代繁殖子孙。（体现达尔文的适者生存法则）
+5. 交叉：（最主要的遗传操作）通过交叉操作得到新一代个体，新个体组合了父辈的个体特性，体现信息交换的思想。
+6. 变异：群体中随机选择一个个体，以一定概率随机改变串结构数据中的某个串的值。类比生物界的基因突变，GA算法的变异概率很低，通常取值很小。</code></pre>
+<h1 id="ga算法的基本结构与遗传算子">GA算法的基本结构与遗传算子</h1>
+<p>此部分将对GA算法的基本结构及其遗传算子进行讨论。</p>
+<h2 id="classical-ga-alg">Classical GA Alg</h2>
+<p>GA算法的伪代码描述如下（Hexo貌似不支持VSCode + Markdown Preview
+Enhanced +
+pseudocode.js文件魔改之后的伪代码渲染，只好放图了，显得直观些，想了解如何在markdown中写伪代码块参见<a class="link" href="https://zhuanlan.zhihu.com/p/406649966">在 Markdown
+中书写伪代码 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>） <img lazyload src="/images/loading.svg" data-src="01.png" alt="fig01: Classical Genetic Algorithm Pseuducode"></p>
+<p>简单总结：GA的过程就是生成群体-&gt;群体繁衍（交叉互换）-&gt;子代基因突变-&gt;子代成为新群体-&gt;不停迭代，是不是和生物种群的繁衍一模一样。（<del>这就是交叉学科吗</del>）</p>
+<p>那么，怎么去确定染色体交叉的概率？论文中给出了公式：<span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -1.602ex;" xmlns="http://www.w3.org/2000/svg" width="14.414ex" height="5.041ex" role="img" focusable="false" viewbox="0 -1520 6371 2228"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"/></g><g data-mml-node="mo" transform="translate(1036.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"/></g><g data-mml-node="mfrac" transform="translate(2092.6,0)"><g data-mml-node="mrow" transform="translate(220,774)"><g data-mml-node="mi"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"/></g><g data-mml-node="mo" transform="translate(1008.2,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"/></g><g data-mml-node="mn" transform="translate(2008.4,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g><g data-mml-node="msqrt" transform="translate(2508.4,0)"><g transform="translate(853,0)"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"/></g></g><g data-mml-node="mo" transform="translate(0,-114)"><path data-c="221A" d="M95 178Q89 178 81 186T72 200T103 230T169 280T207 309Q209 311 212 311H213Q219 311 227 294T281 177Q300 134 312 108L397 -77Q398 -77 501 136T707 565T814 786Q820 800 834 800Q841 800 846 794T853 782V776L620 293L385 -193Q381 -200 366 -200Q357 -200 354 -197Q352 -195 256 15L160 225L144 214Q129 202 113 190T95 178Z"/></g><rect width="477" height="60" x="853" y="626"/></g></g><g data-mml-node="mrow" transform="translate(1496.2,-686)"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"/></g><g data-mml-node="mi" transform="translate(500,0)"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"/></g></g><rect width="4038.4" height="60" x="120" y="220"/></g></g></g></svg></mjx-container></span> 参数解释：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Variants</th>
+<th style="text-align: center;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="1.079ex" height="1.464ex" role="img" focusable="false" viewbox="0 -442 477 647"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"/></g></g></g></svg></mjx-container></span></td>
+<td style="text-align: center;">世代数</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="1.778ex" height="1.645ex" role="img" focusable="false" viewbox="0 -705 786 727"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"/></g></g></g></svg></mjx-container></span></td>
+<td style="text-align: center;">种群集合的进化世代总数</td>
+</tr>
+</tbody>
+</table>
+<p>在 GA
+的初始阶段，个体之间的相似性很低。R的取值要低，以保证新种群不会破坏个体优良的遗传图式。在进化的末期，个体之间的相似度很高，R
+的值也应该很高。</p>
+<h2 id="ga-算子">GA 算子</h2>
+<figure>
+<img src="/2023/03/26/02-GA/02.png" alt="fig02: GA 中使用的算子/运算规则">
+<figcaption aria-hidden="true">fig02: GA
+中使用的算子/运算规则</figcaption>
+</figure>
+<h3 id="对染色体上的基因数据串的编码方案">对染色体上的基因（数据串）的编码方案</h3>
+<p><strong>二进制</strong>、<strong>八进制</strong>、<strong>十六进制</strong>、<strong>排列</strong>、<strong>基于值</strong>和<strong>树</strong>。（注：原论文中的这一节对基因和染色体这两个概念有混用的现象，不过生物学也存在这种混用，问题不大）。几种编码方式各有优劣，具体对比见如下表格：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">编码方式</th>
+<th style="text-align: center;">优点</th>
+<th style="text-align: center;">缺点</th>
+<th style="text-align: center;">应用场景</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">二进制</td>
+<td style="text-align: center;">易于实施，执行更快</td>
+<td style="text-align: center;">不支持反转运算符</td>
+<td style="text-align: center;">支持二进制编码的问题</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">八进制</td>
+<td style="text-align: center;">易于实施</td>
+<td style="text-align: center;">不支持反转运算符</td>
+<td style="text-align: center;">受限</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">十六进制</td>
+<td style="text-align: center;">易于实施</td>
+<td style="text-align: center;">不支持反转运算符</td>
+<td style="text-align: center;">受限</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">排列</td>
+<td style="text-align: center;">支持反转算子</td>
+<td style="text-align: center;">不支持二元运算符</td>
+<td style="text-align: center;">任务排序问题</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">基于值</td>
+<td style="text-align: center;">无需数值换算</td>
+<td style="text-align: center;">需要特定的交叉和变异</td>
+<td style="text-align: center;">神经网络问题</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">基于值</td>
+<td style="text-align: center;">无需数值换算</td>
+<td style="text-align: center;">需要特定的交叉和变异</td>
+<td style="text-align: center;">神经网络找权值问题</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">树</td>
+<td style="text-align: center;">操作员可以轻松应用</td>
+<td style="text-align: center;">一些问题很难设计树</td>
+<td style="text-align: center;">不断进化/发展的问题</td>
+</tr>
+</tbody>
+</table>
+<h3 id="优良个体选择方法">优良个体选择方法</h3>
+<p>类比进化生物学，进化压力越大，生物受到“物竞天择”的强度越大。GA的收敛速度也取决于选择压力。
+常见的选择方法有：<strong>轮盘赌</strong>、<strong>等级排序</strong>、<strong>锦标赛</strong>、<strong>玻尔兹曼法</strong>、<strong>随机通用抽样</strong>。具体对比见如下表格：</p>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">选择方式</th>
+<th style="text-align: center;">优点</th>
+<th style="text-align: center;">缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">轮盘赌</td>
+<td style="text-align: center;">易于实施，简单，没有偏差</td>
+<td style="text-align: center;">有过早收敛的风险，取决于适应度函数中存在的方差</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">等级排序</td>
+<td style="text-align: center;">保持多样性，没有偏差</td>
+<td style="text-align: center;">收敛慢，需要排序，计算量大</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">锦标赛</td>
+<td style="text-align: center;">保持多样性，并行执行，无需排序</td>
+<td style="text-align: center;">锦标赛规模大时多样性的损失</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">玻尔兹曼法</td>
+<td style="text-align: center;">全局最优</td>
+<td style="text-align: center;">计算量大</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">随机通用抽样</td>
+<td style="text-align: center;">无偏差，快速</td>
+<td style="text-align: center;">需要特定的交叉和变异</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">精英主义</td>
+<td style="text-align: center;">保留种群中最好的个体</td>
+<td style="text-align: center;">由于交叉和变异算子，最佳个体可能会丢失</td>
+</tr>
+</tbody>
+</table>
+<h3 id="交叉运算">交叉运算</h3>
+<p>通过组合两个或多个父母的遗传信息来生成后代。常见的交叉运算方法有：<strong>单点交叉</strong>、<strong>两点交叉</strong>、<strong>k点交叉</strong>、<strong>均匀交叉</strong>、<strong>部分匹配交叉
+(Partially matched crossover (PMX) )</strong>、<strong>顺序交叉(Order
+crossover (OX) )</strong>、<strong>优先保留交叉(Precedence preserving
+crossover (PPX) )</strong>、<strong>随机交叉(Shuffle
+crossover)</strong>、<strong>减少代理交叉(Reduced surrogate crossover
+(RCX) )</strong>、<strong>循环交叉</strong>。具体对比见如下表格：</p>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">交叉运算方式</th>
+<th style="text-align: center;">优点</th>
+<th style="text-align: center;">缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">单点交叉</td>
+<td style="text-align: center;">易于实施，简单</td>
+<td style="text-align: center;">不太多样化</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">两点交叉</td>
+<td style="text-align: center;">易于实施</td>
+<td style="text-align: center;">适用于小子集、不太多样化</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">减少代理交叉</td>
+<td style="text-align: center;">在小的优化问题上有更好的性能</td>
+<td style="text-align: center;">过早收敛</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">均匀交叉</td>
+<td style="text-align: center;">无偏检索、适用于大型子集、更好的重组潜力</td>
+<td style="text-align: center;">不太多样化</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">优先保留交叉</td>
+<td style="text-align: center;">更好的后代</td>
+<td style="text-align: center;">冗余</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">顺序交叉</td>
+<td style="text-align: center;">更好的探索</td>
+<td style="text-align: center;">以前个体的信息丢失</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">循环交叉</td>
+<td style="text-align: center;">无偏检索</td>
+<td style="text-align: center;">过早收敛</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">部分匹配交叉</td>
+<td style="text-align: center;">更好的收敛率、优于其他交叉</td>
+<td style="text-align: center;">NA</td>
+</tr>
+</tbody>
+</table>
+<h3 id="变异运算">变异运算</h3>
+<p>用于维持从一个种群到下一个种群的遗传多样性的算子。常见的交叉运算方法有：<strong>移位突变（Displacement
+mutation，DM）、单一反转突变（simple inversion
+mutation，SIM）、乱码突变（Scramble
+Mutation，SM）</strong>。具体对比见如下表格： | 变异运算方式 | 优点
+|缺点| | :-------: | :-------: | :-------: |
+|移位突变|易于实施，适用于小问题实例|有可能过早收敛|
+|单一反转突变|易于实施|过早收敛|
+|乱码突变|影响大量的基因、适用于大型问题实例|对种群干扰大、某些问题的解决方案质量下降|</p>
 ]]></content>
       <tags>
         <tag>大创</tag>
@@ -1237,7 +1237,7 @@ IOT_SUCCESS：初始化成功 IOT_FAILURE：初始化失败</p>
 <p>光纤通信最常用的三个波段：0.85um, 1.3um,
 1.55um；所有这些波段带宽都在25000-30000GHz</p>
 <p>接收端的光电二极管（光电转换）决定了光纤通信速率上限：100Gbps左右</p>
-<h3 id="无线传输">2.3 无线传输</h3>
+<h2 id="无线传输">2.3 无线传输</h2>
 <h3 id="电磁频谱">2.3.1 电磁频谱</h3>
 <p>光速、频率和波长的关系：<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="5.241ex" height="2.059ex" role="img" focusable="false" viewbox="0 -705 2316.6 910"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D450" d="M34 159Q34 268 120 355T306 442Q362 442 394 418T427 355Q427 326 408 306T360 285Q341 285 330 295T319 325T330 359T352 380T366 386H367Q367 388 361 392T340 400T306 404Q276 404 249 390Q228 381 206 359Q162 315 142 235T121 119Q121 73 147 50Q169 26 205 26H209Q321 26 394 111Q403 121 406 121Q410 121 419 112T429 98T420 83T391 55T346 25T282 0T202 -11Q127 -11 81 37T34 159Z"/></g><g data-mml-node="mo" transform="translate(710.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"/></g><g data-mml-node="mi" transform="translate(1766.6,0)"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"/></g></g></g></svg></mjx-container></p>
 <figure>
@@ -1248,24 +1248,81 @@ IOT_SUCCESS：初始化成功 IOT_FAILURE：初始化失败</p>
 直接序列扩频：：码分多址（CDMA） 超宽带通信：UWB</p>
 <h3 id="无线电传输">2.3.2 无线电传输</h3>
 <p>路径损耗公式：<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.566ex;" xmlns="http://www.w3.org/2000/svg" width="33.854ex" height="2.262ex" role="img" focusable="false" viewbox="0 -750 14963.7 1000"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"/></g><g data-mml-node="mo" transform="translate(958.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"/></g><g data-mml-node="mn" transform="translate(2014.6,0)"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"/><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z" transform="translate(500,0)"/><path data-c="2E" d="M78 60Q78 84 95 102T138 120Q162 120 180 104T199 61Q199 36 182 18T139 0T96 17T78 60Z" transform="translate(1000,0)"/><path data-c="34" d="M462 0Q444 3 333 3Q217 3 199 0H190V46H221Q241 46 248 46T265 48T279 53T286 61Q287 63 287 115V165H28V211L179 442Q332 674 334 675Q336 677 355 677H373L379 671V211H471V165H379V114Q379 73 379 66T385 54Q393 47 442 46H471V0H462ZM293 211V545L74 212L183 211H293Z" transform="translate(1278,0)"/></g><g data-mml-node="mo" transform="translate(4014.8,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"/></g><g data-mml-node="mn" transform="translate(5015,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"/></g><g data-mml-node="mi" transform="translate(6015,0)"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"/></g><g data-mml-node="mi" transform="translate(6313,0)"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"/></g><g data-mml-node="msub" transform="translate(6798,0)"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"/></g><g data-mml-node="TeXAtom" transform="translate(510,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"/></g></g></g><g data-mml-node="mo" transform="translate(8065.1,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/></g><g data-mml-node="mi" transform="translate(8454.1,0)"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"/></g><g data-mml-node="mo" transform="translate(8974.1,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></g><g data-mml-node="mo" transform="translate(9585.3,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"/></g><g data-mml-node="mn" transform="translate(10585.6,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"/></g><g data-mml-node="mi" transform="translate(11585.6,0)"><path data-c="1D459" d="M117 59Q117 26 142 26Q179 26 205 131Q211 151 215 152Q217 153 225 153H229Q238 153 241 153T246 151T248 144Q247 138 245 128T234 90T214 43T183 6T137 -11Q101 -11 70 11T38 85Q38 97 39 102L104 360Q167 615 167 623Q167 626 166 628T162 632T157 634T149 635T141 636T132 637T122 637Q112 637 109 637T101 638T95 641T94 647Q94 649 96 661Q101 680 107 682T179 688Q194 689 213 690T243 693T254 694Q266 694 266 686Q266 675 193 386T118 83Q118 81 118 75T117 65V59Z"/></g><g data-mml-node="mi" transform="translate(11883.6,0)"><path data-c="1D45C" d="M201 -11Q126 -11 80 38T34 156Q34 221 64 279T146 380Q222 441 301 441Q333 441 341 440Q354 437 367 433T402 417T438 387T464 338T476 268Q476 161 390 75T201 -11ZM121 120Q121 70 147 48T206 26Q250 26 289 58T351 142Q360 163 374 216T388 308Q388 352 370 375Q346 405 306 405Q243 405 195 347Q158 303 140 230T121 120Z"/></g><g data-mml-node="msub" transform="translate(12368.6,0)"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"/></g><g data-mml-node="TeXAtom" transform="translate(510,-150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mn"><path data-c="31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"/><path data-c="30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z" transform="translate(500,0)"/></g></g></g><g data-mml-node="mo" transform="translate(13635.7,0)"><path data-c="28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"/></g><g data-mml-node="mi" transform="translate(14024.7,0)"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"/></g><g data-mml-node="mo" transform="translate(14574.7,0)"><path data-c="29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"/></g></g></g></svg></mjx-container>
-参数解释：$ L <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.452ex;" xmlns="http://www.w3.org/2000/svg" width="13.575ex" height="2.149ex" role="img" focusable="false" viewbox="0 -750 6000 950"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">为</text></g><g data-mml-node="mi" transform="translate(1000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">路</text></g><g data-mml-node="mi" transform="translate(2000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">径</text></g><g data-mml-node="mi" transform="translate(3000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">损</text></g><g data-mml-node="mi" transform="translate(4000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">耗</text></g><g data-mml-node="mi" transform="translate(5000,0)"><text data-variant="italic" transform="scale(1,-1)" font-size="884px" font-family="serif" font-style="italic">，</text></g></g></g></svg></mjx-container></span> d <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.452ex;" xmlns="http://www.w3.org/2000/svg" width="13.575ex" height="2.149ex" role="img" focusable="false" viewbox="0 -750 6000 950"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">为</text></g><g data-mml-node="mi" transform="translate(1000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">传</text></g><g data-mml-node="mi" transform="translate(2000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">输</text></g><g data-mml-node="mi" transform="translate(3000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">距</text></g><g data-mml-node="mi" transform="translate(4000,0)"><text data-variant="normal" transform="scale(1,-1)" font-size="884px" font-family="serif">离</text></g><g data-mml-node="mi" transform="translate(5000,0)"><text data-variant="italic" transform="scale(1,-1)" font-size="884px" font-family="serif" font-style="italic">，</text></g></g></g></svg></mjx-container></span> f $为信号频率</p>
+参数解释：<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0;" xmlns="http://www.w3.org/2000/svg" width="1.541ex" height="1.545ex" role="img" focusable="false" viewbox="0 -683 681 683"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43F" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"/></g></g></g></svg></mjx-container> 为路径损耗，<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.023ex;" xmlns="http://www.w3.org/2000/svg" width="1.176ex" height="1.593ex" role="img" focusable="false" viewbox="0 -694 520 704"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D451" d="M366 683Q367 683 438 688T511 694Q523 694 523 686Q523 679 450 384T375 83T374 68Q374 26 402 26Q411 27 422 35Q443 55 463 131Q469 151 473 152Q475 153 483 153H487H491Q506 153 506 145Q506 140 503 129Q490 79 473 48T445 8T417 -8Q409 -10 393 -10Q359 -10 336 5T306 36L300 51Q299 52 296 50Q294 48 292 46Q233 -10 172 -10Q117 -10 75 30T33 157Q33 205 53 255T101 341Q148 398 195 420T280 442Q336 442 364 400Q369 394 369 396Q370 400 396 505T424 616Q424 629 417 632T378 637H357Q351 643 351 645T353 664Q358 683 366 683ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"/></g></g></g></svg></mjx-container> 为传输距离，<mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="1.244ex" height="2.059ex" role="img" focusable="false" viewbox="0 -705 550 910"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D453" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"/></g></g></g></svg></mjx-container> 为信号频率;</p>
+<h3 id="微波传输">2.3.3 微波传输</h3>
+<p>多径衰落：信号在传输过程中，由于反射、折射、散射等原因，到达接收端的信号有多个路径，这些信号的相位不同，导致信号干扰，使得接收端无法正确解码。</p>
+<h3 id="红外传输">2.3.4 红外传输</h3>
+<h3 id="光通信">2.3.5 光通信</h3>
+<h2 id="卫星通信">2.4 卫星通信</h2>
+<h2 id="数字调制与多路复用">2.5 数字调制与多路复用</h2>
+<p>基带传输：信号的传输占有传输介质上 <strong>从零到最大值</strong>
+之间的全部频率，最大频率决定了信令速率。有线介质传输中常用的调制方式。</p>
+<p>通带传输：信号传输占用了以载波信号频率为中心的一定频带。无线和光纤信道常用此种调制方式。</p>
+<p>多路复用：单个信道传送多个信号，即信道共享。</p>
+<h3 id="基带传输">2.5.1 基带传输</h3>
+<ol type="1">
+<li>不归零（NRZ）编码方案：0V/无光表示0，+V/有光表示1
+局限性：一长串0或者1会出现长时间的恒定电平，从而导致时钟漂移，接收端无法正确解码。</li>
+</ol>
+<p>带宽效率的量化： - 符号：多个比特的组合的一个信号 -
+符号率/波特率：信号改变的速率 - 比特率：符号率 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: 0.02ex;" xmlns="http://www.w3.org/2000/svg" width="1.76ex" height="1.09ex" role="img" focusable="false" viewbox="0 -491 778 482"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="D7" d="M630 29Q630 9 609 9Q604 9 587 25T493 118L389 222L284 117Q178 13 175 11Q171 9 168 9Q160 9 154 15T147 29Q147 36 161 51T255 146L359 250L255 354Q174 435 161 449T147 471Q147 480 153 485T168 490Q173 490 175 489Q178 487 284 383L389 278L493 382Q570 459 587 475T609 491Q630 491 630 471Q630 464 620 453T522 355L418 250L522 145Q606 61 618 48T630 29Z"/></g></g></g></svg></mjx-container></span> 符号包含的比特数</p>
+<p>时钟恢复： 数据线和时钟线共用一根。</p>
+<p>曼彻斯特编码：CLK NOR 0V = logic-0, CLK NOR +V =
+logic-1，经典以太网的解决方案 局限性：需要两倍NRZ编码的带宽。</p>
+<ol start="2" type="1">
+<li>不归零逆转（NRZI）编码方案：信号有跳变为1；无跳变为0，USB总线常用。
+局限性：只解决了一串1不会产生时钟漂移的问题，一串0仍然会产生时钟漂移。</li>
+<li>4B/5B编码：将4个比特映射为5个比特，解决了一串0的问题，但是带宽效率降低了20%。</li>
+<li>扰频/倒频：将数据与伪随机序列进行异或运算，解决了一串0的问题。</li>
+</ol>
+<p>平衡信号：
+在很短时间内<strong>正负电压一样多</strong>的信号。信号的均值为零，没有直流分量，可以通过电容耦合的方式传输。
+eg：可以定义-1V为1，+1V为1，0V为0：双极编码/交替标记逆转</p>
+<p>8B/10B编码：将8个比特映射为10个比特，解决编码不均等性。</p>
+<h3 id="通带传输">2.5.2 通带传输</h3>
+<p>天线大小与信号波长成正比</p>
+<p>ASK：幅移键控，两种不同的振幅代表0/1；
+FSK：频移键控，两种/多种不同的频率代表0/1； PSK：相移键控: -
+BPSK:二进制相移键控，在每个符号的周期中，系统把载波波形偏移0°或180°，每个符号可以传输1bit信息。
+-
+QPSK:正交相移键控，每个符号周期中，使用四个偏移量（例如45°，135°，225°，315°），每个符号可以传输2bit信息。</p>
+<p>可以综合使用：例如将相移和幅移结合。</p>
+<p>QAM：正交调幅，将相移和幅移结合，每个符号周期中，使用四个偏移量（例如45°，135°，225°，315）和不同的幅值表示更多的信息。QAM-16，QAM-64等会生成星座图。</p>
+<figure>
+<img lazyload src="/images/loading.svg" data-src="05.png" alt="fig05">
+<figcaption aria-hidden="true">fig05</figcaption>
+</figure>
+<p>格雷码映射QAM：纠错机制</p>
+<h3 id="频分复用fdm">2.5.3 频分复用（FDM）</h3>
+<p>正交频分复用：OFDM</p>
+<figure>
+<img lazyload src="/images/loading.svg" data-src="06.png" alt="fig06">
+<figcaption aria-hidden="true">fig06</figcaption>
+</figure>
+<h3 id="时分复用tdm">2.5.4 时分复用（TDM）</h3>
+<p>循环轮流工作</p>
+<h3 id="码分复用cdm码分多址cdma">2.5.5
+码分复用（CDM）/码分多址（CDMA）</h3>
+<p>扩展频谱通信的一种形式，将一个窄带信号扩展到一个宽带信号，更能容忍干扰，也能允许来自不同用户的信号共享同一频带</p>
+<p>CDMA的基本假设：信号同步性高，多个信号具有线性特性。</p>
+<p>类似在机场大厅里每一对交谈的人都使用不同的语言，并且把与本语言无关的内容当作噪声拒绝掉。关键点：<strong>提取期望信号，拒绝所有其他信号</strong></p>
+<p>码片：每个比特时间再被细分为更短的时间间隔。
+码片序列：在不同的通信站（交流房间）中分配的具有唯一性的序列码，位数和码片数相同。任何两个站点的码片序列相互正交（Walsh编码规则）</p>
+<p>应用：蜂窝网络、卫星通信、有线电视网</p>
+<h2 id="公共电话交换网络pstn">2.6 公共电话交换网络（PSTN）</h2>
+<h3 id="电话系统结构">2.6.1 电话系统结构</h3>
+<p>贝尔系统模式极其演进：中心交换网络（CEN）<span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewbox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"/></g></g></g></svg></mjx-container></span> 两层体系交换网络 <span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.025ex;" xmlns="http://www.w3.org/2000/svg" width="2.262ex" height="1.181ex" role="img" focusable="false" viewbox="0 -511 1000 522"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mo"><path data-c="2192" d="M56 237T56 250T70 270H835Q719 357 692 493Q692 494 692 496T691 499Q691 511 708 511H711Q720 511 723 510T729 506T732 497T735 481T743 456Q765 389 816 336T935 261Q944 258 944 250Q944 244 939 241T915 231T877 212Q836 186 806 152T761 85T740 35T732 4Q730 -6 727 -8T711 -11Q691 -11 691 0Q691 7 696 25Q728 151 835 230H70Q56 237 56 250Z"/></g></g></g></svg></mjx-container></span> 五层交换网络</p>
+<p>端局/本地中心局/：本地回路 长途局/汇接局：长途连接中继线</p>
+<figure>
+<img lazyload src="/images/loading.svg" data-src="07.png" alt="fig07">
+<figcaption aria-hidden="true">fig07</figcaption>
+</figure>
+<h3 id="电话政治化">2.6.2 电话政治化</h3>
+<h3 id="本地回路">2.6.3 本地回路</h3>
+<p>电话调制解调器</p>
 ]]></content>
       <tags>
         <tag>计算机网络</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>OneOS 启物 v1.2 开发板的Wifi模块开发</title>
-    <url>/2023/03/28/OneOS-%E5%90%AF%E7%89%A9-v1-2-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%9A%84Wifi%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
-    <content><![CDATA[<h1 id="一-iar-开发环境搭建">一 IAR 开发环境搭建</h1>
-<p>不得不说，Mindmotion这家公司是真的令人迷惑，v1.0.6的固件包只有F3270，v1.0.5的固件包我能找到的只有F3273G和3273E系列，根本没有F3277的影子，所以果断弃之用IAR。</p>
-<h1 id="二-亿些使用中的问题">二 亿些使用中的问题</h1>
-<h2 id="esp8266无法连接wifi">ESP8266无法连接WiFi</h2>
-<p>因为自己的手机热点没有把AP band调成2.4GHz</p>
-]]></content>
-      <tags>
-        <tag>OneOS</tag>
-        <tag>ESP8266</tag>
       </tags>
   </entry>
   <entry>
@@ -1288,6 +1345,20 @@ Blog</a>!</p>
 <pre class="code"><code>hexo deploy</code></pre>
 <p>More info: <a class="link" href="https://hexo.io/docs/one-command-deployment.html">Deployment <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>OneOS 启物 v1.2 开发板的Wifi模块开发</title>
+    <url>/2023/03/28/OneOS-%E5%90%AF%E7%89%A9-v1-2-%E5%BC%80%E5%8F%91%E6%9D%BF%E7%9A%84Wifi%E6%A8%A1%E5%9D%97%E5%BC%80%E5%8F%91/</url>
+    <content><![CDATA[<h1 id="一-iar-开发环境搭建">一 IAR 开发环境搭建</h1>
+<p>不得不说，Mindmotion这家公司是真的令人迷惑，v1.0.6的固件包只有F3270，v1.0.5的固件包我能找到的只有F3273G和3273E系列，根本没有F3277的影子，所以果断弃之用IAR。</p>
+<h1 id="二-亿些使用中的问题">二 亿些使用中的问题</h1>
+<h2 id="esp8266无法连接wifi">ESP8266无法连接WiFi</h2>
+<p>因为自己的手机热点没有把AP band调成2.4GHz</p>
+]]></content>
+      <tags>
+        <tag>OneOS</tag>
+        <tag>ESP8266</tag>
+      </tags>
   </entry>
   <entry>
     <title>《互联网设计与演化》阅读笔记</title>
