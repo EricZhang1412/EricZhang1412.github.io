@@ -18,12 +18,12 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="概述遗传算法（GA，genetic algorithm）是一种基于种群的元启发式算法（metaheuristic algorithms）。（关于元启发式算法参见各种元启发式算法（Metaheuristics）介绍 ），其灵感来自生物进化过程。">
+        <meta name="description" content="概述 遗传算法（GA，genetic algorithm）是一种基于种群的元启发式算法（metaheuristic algorithms）。（关于元启发式算法参见各种元启发式算法（Metaheuristics）介绍 ），其灵感来自生物进化过程。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="遗传算法与模型优化">
 <meta property="og:url" content="https://ericzhang1412.github.io/2023/03/26/02-GA/index.html">
 <meta property="og:site_name" content="EZ0328">
-<meta property="og:description" content="概述遗传算法（GA，genetic algorithm）是一种基于种群的元启发式算法（metaheuristic algorithms）。（关于元启发式算法参见各种元启发式算法（Metaheuristics）介绍 ），其灵感来自生物进化过程。">
+<meta property="og:description" content="概述 遗传算法（GA，genetic algorithm）是一种基于种群的元启发式算法（metaheuristic algorithms）。（关于元启发式算法参见各种元启发式算法（Metaheuristics）介绍 ），其灵感来自生物进化过程。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ericzhang1412.github.io/2023/03/26/02-GA/01.png">
 <meta property="og:image" content="https://ericzhang1412.github.io/2023/03/26/02-GA/02.png">
@@ -575,211 +575,232 @@ mjx-container[display="true"] + br {
             
 
             <div class="article-content markdown-body">
-                <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>遗传算法（GA，genetic algorithm）是一种基于种群的元启发式算法（metaheuristic algorithms）。（关于元启发式算法参见<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41313851/article/details/116045159">各种元启发式算法（Metaheuristics）介绍 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>），其灵感来自<strong>生物进化过程</strong>。</p>
+                <h1 id="概述">概述</h1>
+<p>遗传算法（GA，genetic
+algorithm）是一种基于种群的元启发式算法（metaheuristic
+algorithms）。（关于元启发式算法参见<a class="link" target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41313851/article/details/116045159">各种元启发式算法（Metaheuristics）介绍 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>），其灵感来自<strong>生物进化过程</strong>。</p>
 <span id="more"></span>
-
-<h2 id="遗传算法的基本要素"><a href="#遗传算法的基本要素" class="headerlink" title="遗传算法的基本要素"></a>遗传算法的基本要素</h2><pre><code>1.染色体表示（chromosome representation），
+<h2 id="遗传算法的基本要素">遗传算法的基本要素</h2>
+<pre><code>1.染色体表示（chromosome representation），
 2.适应度选择（fitness selection），
-3.仿生算子（biological-inspired operators）
-</code></pre>
-<h2 id="遗传算法的工作方式"><a href="#遗传算法的工作方式" class="headerlink" title="遗传算法的工作方式"></a>遗传算法的工作方式</h2><p>问题参数编码为染色体，再利用迭代的方式进行选择，交叉以及变异等运算来交换种群中的染色体信息，生成符合优化目标的染色体。染色体即对应数据/数组（串式结构）。</p>
-<h2 id="遗传算法的基本步骤"><a href="#遗传算法的基本步骤" class="headerlink" title="遗传算法的基本步骤"></a>遗传算法的基本步骤</h2><pre><code>1. 编码：GA进行搜索之前对解空间的解数据表示成遗传空间的基因型串结构数据，这些串结构数据的不同组合构成了不同的点。
+3.仿生算子（biological-inspired operators）</code></pre>
+<h2 id="遗传算法的工作方式">遗传算法的工作方式</h2>
+<p>问题参数编码为染色体，再利用迭代的方式进行选择，交叉以及变异等运算来交换种群中的染色体信息，生成符合优化目标的染色体。染色体即对应数据/数组（串式结构）。</p>
+<h2 id="遗传算法的基本步骤">遗传算法的基本步骤</h2>
+<pre><code>1. 编码：GA进行搜索之前对解空间的解数据表示成遗传空间的基因型串结构数据，这些串结构数据的不同组合构成了不同的点。
 2. 生成初始群体：随机产生N个初始串结构数据，每个串结构数据生成一个个体，N个个体构成一个群体。GA算法以这个群体为初始点开始进化。
 3. 适应度评估：依据实际的问题构造适应性函数。
 4. 选择：从当前群体中选出优良个体，使他们有机会作为父代为下一代繁殖子孙。（体现达尔文的适者生存法则）
 5. 交叉：（最主要的遗传操作）通过交叉操作得到新一代个体，新个体组合了父辈的个体特性，体现信息交换的思想。
-6. 变异：群体中随机选择一个个体，以一定概率随机改变串结构数据中的某个串的值。类比生物界的基因突变，GA算法的变异概率很低，通常取值很小。
-</code></pre>
-<h1 id="GA算法的基本结构与遗传算子"><a href="#GA算法的基本结构与遗传算子" class="headerlink" title="GA算法的基本结构与遗传算子"></a>GA算法的基本结构与遗传算子</h1><p>此部分将对GA算法的基本结构及其遗传算子进行讨论。</p>
-<h2 id="Classical-GA-Alg"><a href="#Classical-GA-Alg" class="headerlink" title="Classical GA Alg"></a>Classical GA Alg</h2><p>GA算法的伪代码描述如下（Hexo貌似不支持VSCode + Markdown Preview Enhanced + pseudocode.js文件魔改之后的伪代码渲染，只好放图了，显得直观些，想了解如何在markdown中写伪代码块参见<a class="link" target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/406649966">在 Markdown 中书写伪代码 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>）<br><img lazyload src="/images/loading.svg" data-src="/2023/03/26/02-GA/01.png" alt="fig01: Classical Genetic Algorithm Pseuducode"></p>
+6. 变异：群体中随机选择一个个体，以一定概率随机改变串结构数据中的某个串的值。类比生物界的基因突变，GA算法的变异概率很低，通常取值很小。</code></pre>
+<h1 id="ga算法的基本结构与遗传算子">GA算法的基本结构与遗传算子</h1>
+<p>此部分将对GA算法的基本结构及其遗传算子进行讨论。</p>
+<h2 id="classical-ga-alg">Classical GA Alg</h2>
+<p>GA算法的伪代码描述如下（Hexo貌似不支持VSCode + Markdown Preview
+Enhanced +
+pseudocode.js文件魔改之后的伪代码渲染，只好放图了，显得直观些，想了解如何在markdown中写伪代码块参见<a class="link" target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/406649966">在 Markdown
+中书写伪代码 <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a>） <img lazyload src="/images/loading.svg" data-src="01.png" alt="fig01: Classical Genetic Algorithm Pseuducode"></p>
 <p>简单总结：GA的过程就是生成群体-&gt;群体繁衍（交叉互换）-&gt;子代基因突变-&gt;子代成为新群体-&gt;不停迭代，是不是和生物种群的繁衍一模一样。（<del>这就是交叉学科吗</del>）</p>
-<p>那么，怎么去确定染色体交叉的概率？论文中给出了公式：<mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -1.602ex;" xmlns="http://www.w3.org/2000/svg" width="14.414ex" height="5.041ex" role="img" focusable="false" viewbox="0 -1520 6371 2228"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"/></g><g data-mml-node="mo" transform="translate(1036.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"/></g><g data-mml-node="mfrac" transform="translate(2092.6,0)"><g data-mml-node="mrow" transform="translate(220,774)"><g data-mml-node="mi"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"/></g><g data-mml-node="mo" transform="translate(1008.2,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"/></g><g data-mml-node="mn" transform="translate(2008.4,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g><g data-mml-node="msqrt" transform="translate(2508.4,0)"><g transform="translate(853,0)"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"/></g></g><g data-mml-node="mo" transform="translate(0,-114)"><path data-c="221A" d="M95 178Q89 178 81 186T72 200T103 230T169 280T207 309Q209 311 212 311H213Q219 311 227 294T281 177Q300 134 312 108L397 -77Q398 -77 501 136T707 565T814 786Q820 800 834 800Q841 800 846 794T853 782V776L620 293L385 -193Q381 -200 366 -200Q357 -200 354 -197Q352 -195 256 15L160 225L144 214Q129 202 113 190T95 178Z"/></g><rect width="477" height="60" x="853" y="626"/></g></g><g data-mml-node="mrow" transform="translate(1496.2,-686)"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"/></g><g data-mml-node="mi" transform="translate(500,0)"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"/></g></g><rect width="4038.4" height="60" x="120" y="220"/></g></g></g></svg></mjx-container><br>参数解释：</p>
+<p>那么，怎么去确定染色体交叉的概率？论文中给出了公式：<span class="math display"><mjx-container class="MathJax" jax="SVG" display="true"><svg style="vertical-align: -1.602ex;" xmlns="http://www.w3.org/2000/svg" width="14.414ex" height="5.041ex" role="img" focusable="false" viewbox="0 -1520 6371 2228"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D445" d="M230 637Q203 637 198 638T193 649Q193 676 204 682Q206 683 378 683Q550 682 564 680Q620 672 658 652T712 606T733 563T739 529Q739 484 710 445T643 385T576 351T538 338L545 333Q612 295 612 223Q612 212 607 162T602 80V71Q602 53 603 43T614 25T640 16Q668 16 686 38T712 85Q717 99 720 102T735 105Q755 105 755 93Q755 75 731 36Q693 -21 641 -21H632Q571 -21 531 4T487 82Q487 109 502 166T517 239Q517 290 474 313Q459 320 449 321T378 323H309L277 193Q244 61 244 59Q244 55 245 54T252 50T269 48T302 46H333Q339 38 339 37T336 19Q332 6 326 0H311Q275 2 180 2Q146 2 117 2T71 2T50 1Q33 1 33 10Q33 12 36 24Q41 43 46 45Q50 46 61 46H67Q94 46 127 49Q141 52 146 61Q149 65 218 339T287 628Q287 635 230 637ZM630 554Q630 586 609 608T523 636Q521 636 500 636T462 637H440Q393 637 386 627Q385 624 352 494T319 361Q319 360 388 360Q466 361 492 367Q556 377 592 426Q608 449 619 486T630 554Z"/></g><g data-mml-node="mo" transform="translate(1036.8,0)"><path data-c="3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"/></g><g data-mml-node="mfrac" transform="translate(2092.6,0)"><g data-mml-node="mrow" transform="translate(220,774)"><g data-mml-node="mi"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"/></g><g data-mml-node="mo" transform="translate(1008.2,0)"><path data-c="2B" d="M56 237T56 250T70 270H369V420L370 570Q380 583 389 583Q402 583 409 568V270H707Q722 262 722 250T707 230H409V-68Q401 -82 391 -82H389H387Q375 -82 369 -68V230H70Q56 237 56 250Z"/></g><g data-mml-node="mn" transform="translate(2008.4,0)"><path data-c="32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"/></g><g data-mml-node="msqrt" transform="translate(2508.4,0)"><g transform="translate(853,0)"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"/></g></g><g data-mml-node="mo" transform="translate(0,-114)"><path data-c="221A" d="M95 178Q89 178 81 186T72 200T103 230T169 280T207 309Q209 311 212 311H213Q219 311 227 294T281 177Q300 134 312 108L397 -77Q398 -77 501 136T707 565T814 786Q820 800 834 800Q841 800 846 794T853 782V776L620 293L385 -193Q381 -200 366 -200Q357 -200 354 -197Q352 -195 256 15L160 225L144 214Q129 202 113 190T95 178Z"/></g><rect width="477" height="60" x="853" y="626"/></g></g><g data-mml-node="mrow" transform="translate(1496.2,-686)"><g data-mml-node="mn"><path data-c="33" d="M127 463Q100 463 85 480T69 524Q69 579 117 622T233 665Q268 665 277 664Q351 652 390 611T430 522Q430 470 396 421T302 350L299 348Q299 347 308 345T337 336T375 315Q457 262 457 175Q457 96 395 37T238 -22Q158 -22 100 21T42 130Q42 158 60 175T105 193Q133 193 151 175T169 130Q169 119 166 110T159 94T148 82T136 74T126 70T118 67L114 66Q165 21 238 21Q293 21 321 74Q338 107 338 175V195Q338 290 274 322Q259 328 213 329L171 330L168 332Q166 335 166 348Q166 366 174 366Q202 366 232 371Q266 376 294 413T322 525V533Q322 590 287 612Q265 626 240 626Q208 626 181 615T143 592T132 580H135Q138 579 143 578T153 573T165 566T175 555T183 540T186 520Q186 498 172 481T127 463Z"/></g><g data-mml-node="mi" transform="translate(500,0)"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"/></g></g><rect width="4038.4" height="60" x="120" y="220"/></g></g></g></svg></mjx-container></span> 参数解释：</p>
 <table>
 <thead>
-<tr>
-<th align="center">Variants</th>
-<th align="center">Meaning</th>
+<tr class="header">
+<th style="text-align: center;">Variants</th>
+<th style="text-align: center;">Meaning</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="1.079ex" height="1.464ex" role="img" focusable="false" viewbox="0 -442 477 647"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"/></g></g></g></svg></mjx-container></td>
-<td align="center">世代数</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.464ex;" xmlns="http://www.w3.org/2000/svg" width="1.079ex" height="1.464ex" role="img" focusable="false" viewbox="0 -442 477 647"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D454" d="M311 43Q296 30 267 15T206 0Q143 0 105 45T66 160Q66 265 143 353T314 442Q361 442 401 394L404 398Q406 401 409 404T418 412T431 419T447 422Q461 422 470 413T480 394Q480 379 423 152T363 -80Q345 -134 286 -169T151 -205Q10 -205 10 -137Q10 -111 28 -91T74 -71Q89 -71 102 -80T116 -111Q116 -121 114 -130T107 -144T99 -154T92 -162L90 -164H91Q101 -167 151 -167Q189 -167 211 -155Q234 -144 254 -122T282 -75Q288 -56 298 -13Q311 35 311 43ZM384 328L380 339Q377 350 375 354T369 368T359 382T346 393T328 402T306 405Q262 405 221 352Q191 313 171 233T151 117Q151 38 213 38Q269 38 323 108L331 118L384 328Z"/></g></g></g></svg></mjx-container></span></td>
+<td style="text-align: center;">世代数</td>
 </tr>
-<tr>
-<td align="center"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="1.778ex" height="1.645ex" role="img" focusable="false" viewbox="0 -705 786 727"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"/></g></g></g></svg></mjx-container></td>
-<td align="center">种群集合的进化世代总数</td>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline"><mjx-container class="MathJax" jax="SVG"><svg style="vertical-align: -0.05ex;" xmlns="http://www.w3.org/2000/svg" width="1.778ex" height="1.645ex" role="img" focusable="false" viewbox="0 -705 786 727"><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="scale(1,-1)"><g data-mml-node="math"><g data-mml-node="mi"><path data-c="1D43A" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q492 659 471 656T418 643T357 615T294 567T236 496T189 394T158 260Q156 242 156 221Q156 173 170 136T206 79T256 45T308 28T353 24Q407 24 452 47T514 106Q517 114 529 161T541 214Q541 222 528 224T468 227H431Q425 233 425 235T427 254Q431 267 437 273H454Q494 271 594 271Q634 271 659 271T695 272T707 272Q721 272 721 263Q721 261 719 249Q714 230 709 228Q706 227 694 227Q674 227 653 224Q646 221 643 215T629 164Q620 131 614 108Q589 6 586 3Q584 1 581 1Q571 1 553 21T530 52Q530 53 528 52T522 47Q448 -22 322 -22Q201 -22 126 55T50 252Z"/></g></g></g></svg></mjx-container></span></td>
+<td style="text-align: center;">种群集合的进化世代总数</td>
 </tr>
-</tbody></table>
-<p>在 GA 的初始阶段，个体之间的相似性很低。R的取值要低，以保证新种群不会破坏个体优良的遗传图式。在进化的末期，个体之间的相似度很高，R 的值也应该很高。</p>
-<h2 id="GA-算子"><a href="#GA-算子" class="headerlink" title="GA 算子"></a>GA 算子</h2><p><img src="/2023/03/26/02-GA/02.png" alt="fig02: GA 中使用的算子/运算规则"></p>
-<h3 id="对染色体上的基因（数据串）的编码方案"><a href="#对染色体上的基因（数据串）的编码方案" class="headerlink" title="对染色体上的基因（数据串）的编码方案"></a>对染色体上的基因（数据串）的编码方案</h3><p><strong>二进制</strong>、<strong>八进制</strong>、<strong>十六进制</strong>、<strong>排列</strong>、<strong>基于值</strong>和<strong>树</strong>。（注：原论文中的这一节对基因和染色体这两个概念有混用的现象，不过生物学也存在这种混用，问题不大）。几种编码方式各有优劣，具体对比见如下表格：</p>
+</tbody>
+</table>
+<p>在 GA
+的初始阶段，个体之间的相似性很低。R的取值要低，以保证新种群不会破坏个体优良的遗传图式。在进化的末期，个体之间的相似度很高，R
+的值也应该很高。</p>
+<h2 id="ga-算子">GA 算子</h2>
+<figure>
+<img src="/2023/03/26/02-GA/02.png" alt="fig02: GA 中使用的算子/运算规则">
+<figcaption aria-hidden="true">fig02: GA
+中使用的算子/运算规则</figcaption>
+</figure>
+<h3 id="对染色体上的基因数据串的编码方案">对染色体上的基因（数据串）的编码方案</h3>
+<p><strong>二进制</strong>、<strong>八进制</strong>、<strong>十六进制</strong>、<strong>排列</strong>、<strong>基于值</strong>和<strong>树</strong>。（注：原论文中的这一节对基因和染色体这两个概念有混用的现象，不过生物学也存在这种混用，问题不大）。几种编码方式各有优劣，具体对比见如下表格：</p>
 <table>
 <thead>
-<tr>
-<th align="center">编码方式</th>
-<th align="center">优点</th>
-<th align="center">缺点</th>
-<th align="center">应用场景</th>
+<tr class="header">
+<th style="text-align: center;">编码方式</th>
+<th style="text-align: center;">优点</th>
+<th style="text-align: center;">缺点</th>
+<th style="text-align: center;">应用场景</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">二进制</td>
-<td align="center">易于实施，执行更快</td>
-<td align="center">不支持反转运算符</td>
-<td align="center">支持二进制编码的问题</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">二进制</td>
+<td style="text-align: center;">易于实施，执行更快</td>
+<td style="text-align: center;">不支持反转运算符</td>
+<td style="text-align: center;">支持二进制编码的问题</td>
 </tr>
-<tr>
-<td align="center">八进制</td>
-<td align="center">易于实施</td>
-<td align="center">不支持反转运算符</td>
-<td align="center">受限</td>
+<tr class="even">
+<td style="text-align: center;">八进制</td>
+<td style="text-align: center;">易于实施</td>
+<td style="text-align: center;">不支持反转运算符</td>
+<td style="text-align: center;">受限</td>
 </tr>
-<tr>
-<td align="center">十六进制</td>
-<td align="center">易于实施</td>
-<td align="center">不支持反转运算符</td>
-<td align="center">受限</td>
+<tr class="odd">
+<td style="text-align: center;">十六进制</td>
+<td style="text-align: center;">易于实施</td>
+<td style="text-align: center;">不支持反转运算符</td>
+<td style="text-align: center;">受限</td>
 </tr>
-<tr>
-<td align="center">排列</td>
-<td align="center">支持反转算子</td>
-<td align="center">不支持二元运算符</td>
-<td align="center">任务排序问题</td>
+<tr class="even">
+<td style="text-align: center;">排列</td>
+<td style="text-align: center;">支持反转算子</td>
+<td style="text-align: center;">不支持二元运算符</td>
+<td style="text-align: center;">任务排序问题</td>
 </tr>
-<tr>
-<td align="center">基于值</td>
-<td align="center">无需数值换算</td>
-<td align="center">需要特定的交叉和变异</td>
-<td align="center">神经网络问题</td>
+<tr class="odd">
+<td style="text-align: center;">基于值</td>
+<td style="text-align: center;">无需数值换算</td>
+<td style="text-align: center;">需要特定的交叉和变异</td>
+<td style="text-align: center;">神经网络问题</td>
 </tr>
-<tr>
-<td align="center">基于值</td>
-<td align="center">无需数值换算</td>
-<td align="center">需要特定的交叉和变异</td>
-<td align="center">神经网络找权值问题</td>
+<tr class="even">
+<td style="text-align: center;">基于值</td>
+<td style="text-align: center;">无需数值换算</td>
+<td style="text-align: center;">需要特定的交叉和变异</td>
+<td style="text-align: center;">神经网络找权值问题</td>
 </tr>
-<tr>
-<td align="center">树</td>
-<td align="center">操作员可以轻松应用</td>
-<td align="center">一些问题很难设计树</td>
-<td align="center">不断进化/发展的问题</td>
+<tr class="odd">
+<td style="text-align: center;">树</td>
+<td style="text-align: center;">操作员可以轻松应用</td>
+<td style="text-align: center;">一些问题很难设计树</td>
+<td style="text-align: center;">不断进化/发展的问题</td>
 </tr>
-</tbody></table>
-<h3 id="优良个体选择方法"><a href="#优良个体选择方法" class="headerlink" title="优良个体选择方法"></a>优良个体选择方法</h3><p>类比进化生物学，进化压力越大，生物受到“物竞天择”的强度越大。GA的收敛速度也取决于选择压力。<br>常见的选择方法有：<strong>轮盘赌</strong>、<strong>等级排序</strong>、<strong>锦标赛</strong>、<strong>玻尔兹曼法</strong>、<strong>随机通用抽样</strong>。具体对比见如下表格：</p>
+</tbody>
+</table>
+<h3 id="优良个体选择方法">优良个体选择方法</h3>
+<p>类比进化生物学，进化压力越大，生物受到“物竞天择”的强度越大。GA的收敛速度也取决于选择压力。
+常见的选择方法有：<strong>轮盘赌</strong>、<strong>等级排序</strong>、<strong>锦标赛</strong>、<strong>玻尔兹曼法</strong>、<strong>随机通用抽样</strong>。具体对比见如下表格：</p>
+<table>
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">选择方式</th>
+<th style="text-align: center;">优点</th>
+<th style="text-align: center;">缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">轮盘赌</td>
+<td style="text-align: center;">易于实施，简单，没有偏差</td>
+<td style="text-align: center;">有过早收敛的风险，取决于适应度函数中存在的方差</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">等级排序</td>
+<td style="text-align: center;">保持多样性，没有偏差</td>
+<td style="text-align: center;">收敛慢，需要排序，计算量大</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">锦标赛</td>
+<td style="text-align: center;">保持多样性，并行执行，无需排序</td>
+<td style="text-align: center;">锦标赛规模大时多样性的损失</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">玻尔兹曼法</td>
+<td style="text-align: center;">全局最优</td>
+<td style="text-align: center;">计算量大</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">随机通用抽样</td>
+<td style="text-align: center;">无偏差，快速</td>
+<td style="text-align: center;">需要特定的交叉和变异</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">精英主义</td>
+<td style="text-align: center;">保留种群中最好的个体</td>
+<td style="text-align: center;">由于交叉和变异算子，最佳个体可能会丢失</td>
+</tr>
+</tbody>
+</table>
+<h3 id="交叉运算">交叉运算</h3>
+<p>通过组合两个或多个父母的遗传信息来生成后代。常见的交叉运算方法有：<strong>单点交叉</strong>、<strong>两点交叉</strong>、<strong>k点交叉</strong>、<strong>均匀交叉</strong>、<strong>部分匹配交叉
+(Partially matched crossover (PMX) )</strong>、<strong>顺序交叉(Order
+crossover (OX) )</strong>、<strong>优先保留交叉(Precedence preserving
+crossover (PPX) )</strong>、<strong>随机交叉(Shuffle
+crossover)</strong>、<strong>减少代理交叉(Reduced surrogate crossover
+(RCX) )</strong>、<strong>循环交叉</strong>。具体对比见如下表格：</p>
 <table>
 <thead>
-<tr>
-<th align="center">选择方式</th>
-<th align="center">优点</th>
-<th align="center">缺点</th>
+<tr class="header">
+<th style="text-align: center;">交叉运算方式</th>
+<th style="text-align: center;">优点</th>
+<th style="text-align: center;">缺点</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">轮盘赌</td>
-<td align="center">易于实施，简单，没有偏差</td>
-<td align="center">有过早收敛的风险，取决于适应度函数中存在的方差</td>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">单点交叉</td>
+<td style="text-align: center;">易于实施，简单</td>
+<td style="text-align: center;">不太多样化</td>
 </tr>
-<tr>
-<td align="center">等级排序</td>
-<td align="center">保持多样性，没有偏差</td>
-<td align="center">收敛慢，需要排序，计算量大</td>
+<tr class="even">
+<td style="text-align: center;">两点交叉</td>
+<td style="text-align: center;">易于实施</td>
+<td style="text-align: center;">适用于小子集、不太多样化</td>
 </tr>
-<tr>
-<td align="center">锦标赛</td>
-<td align="center">保持多样性，并行执行，无需排序</td>
-<td align="center">锦标赛规模大时多样性的损失</td>
+<tr class="odd">
+<td style="text-align: center;">减少代理交叉</td>
+<td style="text-align: center;">在小的优化问题上有更好的性能</td>
+<td style="text-align: center;">过早收敛</td>
 </tr>
-<tr>
-<td align="center">玻尔兹曼法</td>
-<td align="center">全局最优</td>
-<td align="center">计算量大</td>
+<tr class="even">
+<td style="text-align: center;">均匀交叉</td>
+<td style="text-align: center;">无偏检索、适用于大型子集、更好的重组潜力</td>
+<td style="text-align: center;">不太多样化</td>
 </tr>
-<tr>
-<td align="center">随机通用抽样</td>
-<td align="center">无偏差，快速</td>
-<td align="center">需要特定的交叉和变异</td>
+<tr class="odd">
+<td style="text-align: center;">优先保留交叉</td>
+<td style="text-align: center;">更好的后代</td>
+<td style="text-align: center;">冗余</td>
 </tr>
-<tr>
-<td align="center">精英主义</td>
-<td align="center">保留种群中最好的个体</td>
-<td align="center">由于交叉和变异算子，最佳个体可能会丢失</td>
+<tr class="even">
+<td style="text-align: center;">顺序交叉</td>
+<td style="text-align: center;">更好的探索</td>
+<td style="text-align: center;">以前个体的信息丢失</td>
 </tr>
-</tbody></table>
-<h3 id="交叉运算"><a href="#交叉运算" class="headerlink" title="交叉运算"></a>交叉运算</h3><p>通过组合两个或多个父母的遗传信息来生成后代。常见的交叉运算方法有：<strong>单点交叉</strong>、<strong>两点交叉</strong>、<strong>k点交叉</strong>、<strong>均匀交叉</strong>、<strong>部分匹配交叉 (Partially matched crossover (PMX) )<strong>、</strong>顺序交叉(Order crossover (OX) )<strong>、</strong>优先保留交叉(Precedence preserving crossover (PPX) )<strong>、</strong>随机交叉(Shuffle crossover)<strong>、</strong>减少代理交叉(Reduced surrogate crossover (RCX) )<strong>、</strong>循环交叉</strong>。具体对比见如下表格：</p>
-<table>
-<thead>
-<tr>
-<th align="center">交叉运算方式</th>
-<th align="center">优点</th>
-<th align="center">缺点</th>
+<tr class="odd">
+<td style="text-align: center;">循环交叉</td>
+<td style="text-align: center;">无偏检索</td>
+<td style="text-align: center;">过早收敛</td>
 </tr>
-</thead>
-<tbody><tr>
-<td align="center">单点交叉</td>
-<td align="center">易于实施，简单</td>
-<td align="center">不太多样化</td>
+<tr class="even">
+<td style="text-align: center;">部分匹配交叉</td>
+<td style="text-align: center;">更好的收敛率、优于其他交叉</td>
+<td style="text-align: center;">NA</td>
 </tr>
-<tr>
-<td align="center">两点交叉\k点交叉</td>
-<td align="center">易于实施</td>
-<td align="center">适用于小子集、不太多样化</td>
-</tr>
-<tr>
-<td align="center">减少代理交叉</td>
-<td align="center">在小的优化问题上有更好的性能</td>
-<td align="center">过早收敛</td>
-</tr>
-<tr>
-<td align="center">均匀交叉</td>
-<td align="center">无偏检索、适用于大型子集、更好的重组潜力</td>
-<td align="center">不太多样化</td>
-</tr>
-<tr>
-<td align="center">优先保留交叉</td>
-<td align="center">更好的后代</td>
-<td align="center">冗余</td>
-</tr>
-<tr>
-<td align="center">顺序交叉</td>
-<td align="center">更好的探索</td>
-<td align="center">以前个体的信息丢失</td>
-</tr>
-<tr>
-<td align="center">循环交叉</td>
-<td align="center">无偏检索</td>
-<td align="center">过早收敛</td>
-</tr>
-<tr>
-<td align="center">部分匹配交叉</td>
-<td align="center">更好的收敛率、优于其他交叉</td>
-<td align="center">NA</td>
-</tr>
-</tbody></table>
-<h3 id="变异运算"><a href="#变异运算" class="headerlink" title="变异运算"></a>变异运算</h3><p>用于维持从一个种群到下一个种群的遗传多样性的算子。常见的交叉运算方法有：<strong>移位突变（Displacement mutation，DM）、单一反转突变（simple inversion mutation，SIM）、乱码突变（Scramble Mutation，SM）</strong>。具体对比见如下表格：</p>
-<table>
-<thead>
-<tr>
-<th align="center">变异运算方式</th>
-<th align="center">优点</th>
-<th align="center">缺点</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">移位突变</td>
-<td align="center">易于实施，适用于小问题实例</td>
-<td align="center">有可能过早收敛</td>
-</tr>
-<tr>
-<td align="center">单一反转突变</td>
-<td align="center">易于实施</td>
-<td align="center">过早收敛</td>
-</tr>
-<tr>
-<td align="center">乱码突变</td>
-<td align="center">影响大量的基因、适用于大型问题实例</td>
-<td align="center">对种群干扰大、某些问题的解决方案质量下降</td>
-</tr>
-</tbody></table>
+</tbody>
+</table>
+<h3 id="变异运算">变异运算</h3>
+<p>用于维持从一个种群到下一个种群的遗传多样性的算子。常见的交叉运算方法有：<strong>移位突变（Displacement
+mutation，DM）、单一反转突变（simple inversion
+mutation，SIM）、乱码突变（Scramble
+Mutation，SM）</strong>。具体对比见如下表格： | 变异运算方式 | 优点
+|缺点| | :-------: | :-------: | :-------: |
+|移位突变|易于实施，适用于小问题实例|有可能过早收敛|
+|单一反转突变|易于实施|过早收敛|
+|乱码突变|影响大量的基因、适用于大型问题实例|对种群干扰大、某些问题的解决方案质量下降|</p>
 
             </div>
 
@@ -910,7 +931,7 @@ mjx-container[display="true"] + br {
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">遗传算法与模型优化</div>
-        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A6%81%E7%B4%A0"><span class="nav-text">遗传算法的基本要素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="nav-text">遗传算法的工作方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="nav-text">遗传算法的基本步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GA%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E4%B8%8E%E9%81%97%E4%BC%A0%E7%AE%97%E5%AD%90"><span class="nav-text">GA算法的基本结构与遗传算子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Classical-GA-Alg"><span class="nav-text">Classical GA Alg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GA-%E7%AE%97%E5%AD%90"><span class="nav-text">GA 算子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%9F%93%E8%89%B2%E4%BD%93%E4%B8%8A%E7%9A%84%E5%9F%BA%E5%9B%A0%EF%BC%88%E6%95%B0%E6%8D%AE%E4%B8%B2%EF%BC%89%E7%9A%84%E7%BC%96%E7%A0%81%E6%96%B9%E6%A1%88"><span class="nav-text">对染色体上的基因（数据串）的编码方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E8%89%AF%E4%B8%AA%E4%BD%93%E9%80%89%E6%8B%A9%E6%96%B9%E6%B3%95"><span class="nav-text">优良个体选择方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E8%BF%90%E7%AE%97"><span class="nav-text">交叉运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E5%BC%82%E8%BF%90%E7%AE%97"><span class="nav-text">变异运算</span></a></li></ol></li></ol></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A6%81%E7%B4%A0"><span class="nav-text">遗传算法的基本要素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="nav-text">遗传算法的工作方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%AD%A5%E9%AA%A4"><span class="nav-text">遗传算法的基本步骤</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ga%E7%AE%97%E6%B3%95%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%BB%93%E6%9E%84%E4%B8%8E%E9%81%97%E4%BC%A0%E7%AE%97%E5%AD%90"><span class="nav-text">GA算法的基本结构与遗传算子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#classical-ga-alg"><span class="nav-text">Classical GA Alg</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ga-%E7%AE%97%E5%AD%90"><span class="nav-text">GA 算子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E6%9F%93%E8%89%B2%E4%BD%93%E4%B8%8A%E7%9A%84%E5%9F%BA%E5%9B%A0%E6%95%B0%E6%8D%AE%E4%B8%B2%E7%9A%84%E7%BC%96%E7%A0%81%E6%96%B9%E6%A1%88"><span class="nav-text">对染色体上的基因（数据串）的编码方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E8%89%AF%E4%B8%AA%E4%BD%93%E9%80%89%E6%8B%A9%E6%96%B9%E6%B3%95"><span class="nav-text">优良个体选择方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E8%BF%90%E7%AE%97"><span class="nav-text">交叉运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%98%E5%BC%82%E8%BF%90%E7%AE%97"><span class="nav-text">变异运算</span></a></li></ol></li></ol></li></ol>
 
     </div>
 </div>
