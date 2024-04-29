@@ -27,7 +27,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/04/30/arm-linux-mqtt/mqtt_version_compare.png">
 <meta property="article:published_time" content="2024-04-29T16:03:50.000Z">
-<meta property="article:modified_time" content="2024-04-29T16:43:33.800Z">
+<meta property="article:modified_time" content="2024-04-29T16:49:24.045Z">
 <meta property="article:author" content="Eric Zhang">
 <meta property="article:tag" content="MQTT">
 <meta property="article:tag" content="ARM">
@@ -456,8 +456,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-04-30 00:43:33</span>
-            <span class="mobile">2024-04-30 00:43:33</span>
+            <span class="desktop">2024-04-30 00:49:24</span>
+            <span class="mobile">2024-04-30 00:49:24</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -525,11 +525,17 @@ MQTT使用指导, 华为云</p></li>
 <p>Paho
 MQTT的包对多种语言都有支持，其中特别是嵌入式设备中（之前bz用过海斯Hi3861的paho-embedded-mqtt，是工程师事先构建好在OpenHarmony镜像中，用户层面一般操作不到底层（也可能是本人菜qaq））有一个版本是Embedded-C/C++。相比于标准C/C++库，Embedded版本特意删减了嵌入式设备不常用的几个功能。但如果要在嵌入式Linux设备上板端部署，标准C和Embedded-C都可以，这里选取标准C语言库。</p>
 <h2 id="图1paho-mqtt不同语言支持包的功能比较"><img lazyload src="/images/loading.svg" data-src="mqtt_version_compare.png" alt="图1：Paho-MQTT不同语言支持包的功能比较"></h2>
-<p>准备Paho-MQTT-C支持包</p>
+<p>Paho-MQTT-C支持包：</p>
+<pre><code>https://github.com/eclipse/paho.mqtt.c.git</code></pre>
+<p>openssl1.1.1v库：</p>
+<pre><code>https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1v/openssl-1.1.1v.tar.gz</code></pre>
+<p>在<code>/home/&#123;$USER&#125;</code>目录下新建一个工作区<code>paho_test</code>用来保存工程和开发资料：(其实也不是很必要，找个文件夹放编译文件就行)</p>
+<pre><code>mkdir paho_test
+cd paho_test/
+mkdir workspace &amp;&amp; cd workspace
+mkdir mqtt &amp;&amp; cd mqtt</code></pre>
+<p>在<code>/home/&#123;$USER&#125;/paho_test/workspace/mqtt</code>下将paho-mqtt的仓库克隆下来(master分支就行)</p>
 <pre><code>git clone https://github.com/eclipse/paho.mqtt.c.git</code></pre>
-<p>准备openssl1.1.1v库</p>
-<pre><code>wget https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1v/openssl-1.1.1v.tar.gz</code></pre>
-<pre><code>tar -xzvf openssl-1.1.1v.tar.gz</code></pre>
 
         </div>
 
@@ -544,7 +550,7 @@ MQTT的包对多种语言都有支持，其中特别是嵌入式设备中（之�
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-04-30 00:43:33
+                    :</strong> 2024-04-30 00:49:24
             </li>
         
         <li>
