@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/04/30/arm-linux-mqtt/mqtt_version_compare.png">
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/04/30/arm-linux-mqtt/mqtt_c_test.png">
 <meta property="article:published_time" content="2024-04-29T16:03:50.000Z">
-<meta property="article:modified_time" content="2024-04-29T17:13:23.297Z">
+<meta property="article:modified_time" content="2024-04-29T18:13:27.128Z">
 <meta property="article:author" content="Eric Zhang">
 <meta property="article:tag" content="MQTT">
 <meta property="article:tag" content="ARM">
@@ -457,8 +457,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-04-30 01:13:23</span>
-            <span class="mobile">2024-04-30 01:13:23</span>
+            <span class="desktop">2024-04-30 02:13:27</span>
+            <span class="mobile">2024-04-30 02:13:27</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -617,6 +617,84 @@ ls
 on topic MQTT Examples for client with ClientID: 6620c6xxx_xxxx_x_x_202xxxxx08
 Message with delivery token 1 delivered</code></pre>
 <p>从华为云服务器的控制台消息跟踪也可以看到消息发布成功 <img lazyload src="/images/loading.svg" data-src="mqtt_c_test.png" alt="图2：消息上报成功"></p>
+<h3 id="交叉编译与移植至zynq-7020-ps端基于petalinux">2.
+交叉编译与移植至Zynq-7020 PS端（基于Petalinux）</h3>
+<p>如果没有构建好Petalinux，请参考以下博客进行镜像构建：https://lostacnet.top/post/31220/</p>
+<p>检查下编译器是否生效可用：</p>
+<pre><code>arm-buildroot-linux-gnueabihf-gcc -v
+--&gt;
+Using built-in specs.
+COLLECT_GCC=arm-linux-gnueabihf-gcc
+COLLECT_LTO_WRAPPER=/usr/lib/gcc-cross/arm-linux-gnueabihf/7/lto-wrapper
+Target: arm-linux-gnueabihf
+Configured with: ../src/configure -v --with-pkgversion=&#39;Ubuntu/Linaro 7.5.0-3ubuntu1~18.04&#39; --with-bugurl=file:///usr/share/doc/gcc-7/README.Bugs --enable-languages=c,ada,c++,go,d,fortran,objc,obj-c++ --prefix=/usr --with-gcc-major-version-only --program-suffix=-7 --enable-shared --enable-linker-build-id --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --libdir=/usr/lib --enable-nls --with-sysroot=/ --enable-clocale=gnu --enable-libstdcxx-debug --enable-libstdcxx-time=yes --with-default-libstdcxx-abi=new --enable-gnu-unique-object --disable-libitm --disable-libquadmath --disable-libquadmath-support --enable-plugin --enable-default-pie --with-system-zlib --with-target-system-zlib --enable-multiarch --enable-multilib --disable-sjlj-exceptions --with-arch=armv7-a --with-fpu=vfpv3-d16 --with-float=hard --with-mode=thumb --disable-werror --enable-multilib --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=arm-linux-gnueabihf --program-prefix=arm-linux-gnueabihf- --includedir=/usr/arm-linux-gnueabihf/include
+Thread model: posix
+gcc version 7.5.0 (Ubuntu/Linaro 7.5.0-3ubuntu1~18.04)</code></pre>
+<p>修改Makefile:</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="dt">CC</span> <span class="ch">=</span><span class="st"> arm-linux-gnueabihf-gcc </span><span class="co"># Line 126</span></span></code></pre></div>
+<p>进行交叉编译：</p>
+<pre><code>&lt;!-- 可选make clean，清理之前的编译文件 --&gt;
+make -j 16
+---&gt;
+mkdir -p build/output/samples
+mkdir -p build/output/test
+mkdir -p build
+echo OSTYPE is Linux
+sed -e &quot;s/@CLIENT_VERSION@/1.3.13/g&quot; -e &quot;s/@BUILD_TIMESTAMP@/Mon Apr 29 12:35:38 CST 2024/g&quot; src/VersionInfo.h.in &gt; build/VersionInfo.h
+OSTYPE is Linux
+arm-linux-gnueabihf-gcc -g -fPIC  -D_GNU_SOURCE -Os -Wall -fvisibility=hidden -Ibuild -DPAHO_MQTT_EXPORTS=1 -o build/output/libpaho-mqtt3c.so.1.3 src/Heap.c src/LinkedList.c src/MQTTProtocolClient.c src/MQTTProtocolOut.c src/SHA1.c src/MQTTPersistence.c src/MQTTProperties.c src/MQTTPersistenceDefault.c src/Messages.c src/MQTTTime.c src/MQTTPacketOut.c src/Socket.c src/WebSocket.c src/Clients.c src/OsWrapper.c src/Thread.c src/MQTTPacket.c src/Base64.c src/Log.c src/StackTrace.c src/MQTTReasonCodes.c src/utf-8.c src/SocketBuffer.c src/Proxy.c src/Tree.c src/MQTTClient.c  -shared -Wl,-init,MQTTClient_init -Wl,--start-group -pthread -lanl -Wl,--end-group -Wl,-soname,libpaho-mqtt3c.so.1
+# arm-linux-gnueabihf-gcc -g -fPIC  -D_GNU_SOURCE -Os -Wall -fvisibility=hidden -Ibuild -DPAHO_MQTT_EXPORTS=1 -o build/output/libpaho-mqtt3cs.so.1.3 src/Heap.c src/LinkedList.c src/SSLSocket.c src/MQTTProtocolClient.c src/MQTTProtocolOut.c src/SHA1.c src/MQTTPersistence.c src/MQTTProperties.c src/MQTTPersistenceDefault.c src/Messages.c src/MQTTTime.c src/MQTTPacketOut.c src/Socket.c src/WebSocket.c src/Clients.c src/OsWrapper.c src/Thread.c src/MQTTPacket.c src/Base64.c src/Log.c src/StackTrace.c src/MQTTReasonCodes.c src/utf-8.c src/SocketBuffer.c src/Proxy.c src/Tree.c src/MQTTClient.c -DOPENSSL  -shared -Wl,--start-group -pthread -lanl -ldl -lssl -lcrypto -Wl,--end-group -Wl,-init,MQTTClient_init -Wl,-soname,libpaho-mqtt3cs.so.1 -Wl,-no-whole-archive
+arm-linux-gnueabihf-gcc -g -fPIC  -D_GNU_SOURCE -Os -Wall -fvisibility=hidden -Ibuild -DPAHO_MQTT_EXPORTS=1 -o build/output/libpaho-mqtt3a.so.1.3 src/Heap.c src/LinkedList.c src/MQTTAsyncUtils.c src/MQTTProtocolClient.c src/MQTTProtocolOut.c src/MQTTAsync.c src/SHA1.c src/MQTTPersistence.c src/MQTTProperties.c src/MQTTPersistenceDefault.c src/Messages.c src/MQTTTime.c src/MQTTPacketOut.c src/Socket.c src/WebSocket.c src/Clients.c src/OsWrapper.c src/Thread.c src/MQTTPacket.c src/Base64.c src/Log.c src/StackTrace.c src/MQTTReasonCodes.c src/utf-8.c src/SocketBuffer.c src/Proxy.c src/Tree.c  -shared -Wl,-init,MQTTAsync_init -Wl,--start-group -pthread -lanl -Wl,--end-group -Wl,-soname,libpaho-mqtt3a.so.1
+# arm-linux-gnueabihf-gcc -g -fPIC  -D_GNU_SOURCE -Os -Wall -fvisibility=hidden -Ibuild -DPAHO_MQTT_EXPORTS=1 -o build/output/libpaho-mqtt3as.so.1.3 src/Heap.c src/LinkedList.c src/SSLSocket.c src/MQTTAsyncUtils.c src/MQTTProtocolClient.c src/MQTTProtocolOut.c src/MQTTAsync.c src/SHA1.c src/MQTTPersistence.c src/MQTTProperties.c src/MQTTPersistenceDefault.c src/Messages.c src/MQTTTime.c src/MQTTPacketOut.c src/Socket.c src/WebSocket.c src/Clients.c src/OsWrapper.c src/Thread.c src/MQTTPacket.c src/Base64.c src/Log.c src/StackTrace.c src/MQTTReasonCodes.c src/utf-8.c src/SocketBuffer.c src/Proxy.c src/Tree.c -DOPENSSL  -shared -Wl,--start-group -pthread -lanl -ldl -lssl -lcrypto -Wl,--end-group -Wl,-init,MQTTAsync_init -Wl,-soname,libpaho-mqtt3as.so.1 -Wl,-no-whole-archive
+arm-linux-gnueabihf-gcc -g -fPIC  -D_GNU_SOURCE -Os -Wall -fvisibility=hidden -Ibuild -DPAHO_MQTT_EXPORTS=1 -o build/output/libpaho-mqtt3cs.so.1.3 src/Heap.c src/LinkedList.c src/SSLSocket.c src/MQTTProtocolClient.c src/MQTTProtocolOut.c src/SHA1.c src/MQTTPersistence.c src/MQTTProperties.c src/MQTTPersistenceDefault.c src/Messages.c src/MQTTTime.c src/MQTTPacketOut.c src/Socket.c src/WebSocket.c src/Clients.c src/OsWrapper.c src/Thread.c src/MQTTPacket.c src/Base64.c src/Log.c src/StackTrace.c src/MQTTReasonCodes.c src/utf-8.c src/SocketBuffer.c src/Proxy.c src/Tree.c src/MQTTClient.c  -shared -Wl,--start-group -pthread -lanl -ldl -lssl -lcrypto -Wl,--end-group -Wl,-init,MQTTClient_init -Wl,-soname,libpaho-mqtt3cs.so.1 -Wl,-no-whole-archive
+arm-linux-gnueabihf-gcc -g -fPIC  -D_GNU_SOURCE -Os -Wall -fvisibility=hidden -Ibuild -DPAHO_MQTT_EXPORTS=1 -o build/output/libpaho-mqtt3as.so.1.3 src/Heap.c src/LinkedList.c src/SSLSocket.c src/MQTTAsyncUtils.c src/MQTTProtocolClient.c src/MQTTProtocolOut.c src/MQTTAsync.c src/SHA1.c src/MQTTPersistence.c src/MQTTProperties.c src/MQTTPersistenceDefault.c src/Messages.c src/MQTTTime.c src/MQTTPacketOut.c src/Socket.c src/WebSocket.c src/Clients.c src/OsWrapper.c src/Thread.c src/MQTTPacket.c src/Base64.c src/Log.c src/StackTrace.c src/MQTTReasonCodes.c src/utf-8.c src/SocketBuffer.c src/Proxy.c src/Tree.c  -shared -Wl,--start-group -pthread -lanl -ldl -lssl -lcrypto -Wl,--end-group -Wl,-init,MQTTAsync_init -Wl,-soname,libpaho-mqtt3as.so.1 -Wl,-no-whole-archive
+src/WebSocket.c:124:13: warning: ‘uuid_unparse’ defined but not used [-Wunused-function]
+ static void uuid_unparse( uuid_t uu, char *out )
+             ^~~~~~~~~~~~
+src/WebSocket.c:124:13: warning: ‘uuid_unparse’ defined but not used [-Wunused-function]
+ static void uuid_unparse( uuid_t uu, char *out )
+             ^~~~~~~~~~~~
+src/WebSocket.c:124:13: warning: ‘uuid_unparse’ defined but not used [-Wunused-function]
+ static void uuid_unparse( uuid_t uu, char *out )
+             ^~~~~~~~~~~~
+src/WebSocket.c:124:13: warning: ‘uuid_unparse’ defined but not used [-Wunused-function]
+ static void uuid_unparse( uuid_t uu, char *out )
+             ^~~~~~~~~~~~
+/lib/../lib/libcrypto.so: file not recognized: File format not recognized
+collect2: error: ld returned 1 exit status
+Makefile:267: recipe for target &#39;build/output/libpaho-mqtt3cs.so.1.3&#39; failed
+make: *** [build/output/libpaho-mqtt3cs.so.1.3] Error 1
+make: *** Waiting for unfinished jobs....
+ln -s libpaho-mqtt3c.so.1.3  build/output/libpaho-mqtt3c.so.1
+ln -s libpaho-mqtt3c.so.1 build/output/libpaho-mqtt3c.so
+/lib/../lib/libcrypto.so: file not recognized: File format not recognized
+collect2: error: ld returned 1 exit status
+Makefile:278: recipe for target &#39;build/output/libpaho-mqtt3as.so.1.3&#39; failed
+make: *** [build/output/libpaho-mqtt3as.so.1.3] Error 1
+ln -s libpaho-mqtt3a.so.1.3  build/output/libpaho-mqtt3a.so.1
+ln -s libpaho-mqtt3a.so.1 build/output/libpaho-mqtt3a.so</code></pre>
+<p>不要惊慌，报错信息在提示我们/lib/../lib/libcrypto.so: file not
+recognized: File format not
+recognized，也有可能是/lib/../lib/libssl.so。首先我们去查看一下这两个文件类型是什么样的：</p>
+<p>运行locate命令定位链接库文件位置：</p>
+<pre><code>locate libssl.so
+-&gt;  /usr/lib/x86_64-linux-gnu/libssl.so.1.0.0
+    /usr/lib/x86_64-linux-gnu/libssl.so.1.1</code></pre>
+<p>运行file命令查看文件类型</p>
+<pre><code>file /lib/libssl.so
+-&gt; /lib/libssl.so: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=27aee7be3c71555217d5a7f70a791405eca003bd, not stripped</code></pre>
+<p>（libcrypto.so同理同样是x86-64指令集的）</p>
+<p>这么一来，交叉编译肯定是走不通，因为ARM指令集和x86指令集不同。所以我们需要ARM架构的libssl.so,
+libcrypto.so。</p>
+<h3 id="openssl交叉编译安装arm-linux-gnueabihf">3.
+openssl交叉编译安装(arm-linux-gnueabihf)</h3>
+<p>在用户根目录下(<code>/home/&#123;$USER&#125;/</code>)下载openssl1.1.1v
+release版本</p>
+<pre><code>wget https://github.com/openssl/openssl/releases/download/OpenSSL_1_1_1v/openssl-1.1.1v.tar.gz
+tar xvf openssl-1.1.1v.tar.gz
+cd openssl-1.1.1v/</code></pre>
+<p>执行以下命令生成指定编译链的Makefile:</p>
+<pre><code></code></pre>
 
         </div>
 
@@ -631,7 +709,7 @@ Message with delivery token 1 delivered</code></pre>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-04-30 01:13:23
+                    :</strong> 2024-04-30 02:13:27
             </li>
         
         <li>
@@ -764,7 +842,9 @@ Message with delivery token 1 delivered</code></pre>
         <div class="toc-title">此页目录</div>
         <div class="page-title">ARM-Linux-MQTT移植</div>
         <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8zynq-7020-ps%E7%AB%AF%E4%BD%BF%E7%94%A8paho.mqtt%E5%AE%9E%E7%8E%B0%E8%AE%BE%E5%A4%87%E4%BE%A7%E5%BC%80%E5%8F%91%E8%BF%9E%E6%8E%A5%E5%8D%8E%E4%B8%BA%E4%BA%91iotda%E6%9C%8D%E5%8A%A1"><span class="nav-text">在ZYNQ
-7020 PS端使用paho.mqtt实现设备侧开发连接华为云IoTDA服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu18.04-wsl%E5%87%86%E5%A4%87"><span class="nav-text">0. Ubuntu18.04 WSL准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E5%8C%85%E5%87%86%E5%A4%87"><span class="nav-text">1. 前置包准备</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE1paho-mqtt%E4%B8%8D%E5%90%8C%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81%E5%8C%85%E7%9A%84%E5%8A%9F%E8%83%BD%E6%AF%94%E8%BE%83"><span class="nav-text"></span></a></li></ol>
+7020 PS端使用paho.mqtt实现设备侧开发连接华为云IoTDA服务</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ubuntu18.04-wsl%E5%87%86%E5%A4%87"><span class="nav-text">0. Ubuntu18.04 WSL准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E5%8C%85%E5%87%86%E5%A4%87"><span class="nav-text">1. 前置包准备</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE1paho-mqtt%E4%B8%8D%E5%90%8C%E8%AF%AD%E8%A8%80%E6%94%AF%E6%8C%81%E5%8C%85%E7%9A%84%E5%8A%9F%E8%83%BD%E6%AF%94%E8%BE%83"><span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E4%B8%8E%E7%A7%BB%E6%A4%8D%E8%87%B3zynq-7020-ps%E7%AB%AF%E5%9F%BA%E4%BA%8Epetalinux"><span class="nav-text">2.
+交叉编译与移植至Zynq-7020 PS端（基于Petalinux）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#openssl%E4%BA%A4%E5%8F%89%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85arm-linux-gnueabihf"><span class="nav-text">3.
+openssl交叉编译安装(arm-linux-gnueabihf)</span></a></li></ol></li></ol>
 
     </div>
 </div>
