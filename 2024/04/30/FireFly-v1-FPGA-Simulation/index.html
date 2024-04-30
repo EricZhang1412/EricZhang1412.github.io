@@ -18,12 +18,12 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
     
-        <meta name="description" content="参考文献 FireFly: A High-Throughput Hardware Accelerator for Spiking Neural Networks With Efficient DSP and Memory Optimization, IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 10.11">
+        <meta name="description" content="参考文献FireFly: A High-Throughput Hardware Accelerator for Spiking Neural Networks With Efficient DSP and Memory Optimization, IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 10.1109&amp;#x">
 <meta property="og:type" content="article">
 <meta property="og:title" content="FireFly-v1-FPGA Simulation">
 <meta property="og:url" content="https://ericzhang1412.github.io/2024/04/30/FireFly-v1-FPGA-Simulation/index.html">
 <meta property="og:site_name" content="EZ0328">
-<meta property="og:description" content="参考文献 FireFly: A High-Throughput Hardware Accelerator for Spiking Neural Networks With Efficient DSP and Memory Optimization, IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 10.11">
+<meta property="og:description" content="参考文献FireFly: A High-Throughput Hardware Accelerator for Spiking Neural Networks With Efficient DSP and Memory Optimization, IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 10.1109&amp;#x">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/04/30/FireFly-v1-FPGA-Simulation/basic_func_dsp48e2.png">
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/04/30/FireFly-v1-FPGA-Simulation/detailed_func_dsp.png">
@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/04/30/FireFly-v1-FPGA-Simulation/OPMODE_ctrl_Y.png">
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/04/30/FireFly-v1-FPGA-Simulation/OPMODE_ctrl_Z.png">
 <meta property="article:published_time" content="2024-04-29T16:11:51.000Z">
-<meta property="article:modified_time" content="2024-04-30T16:24:17.577Z">
+<meta property="article:modified_time" content="2024-04-30T16:29:49.212Z">
 <meta property="article:author" content="Eric Zhang">
 <meta property="article:tag" content="SNN">
 <meta property="article:tag" content="FPGA">
@@ -467,8 +467,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-05-01 00:24:17</span>
-            <span class="mobile">2024-05-01 00:24:17</span>
+            <span class="desktop">2024-05-01 00:29:49</span>
+            <span class="mobile">2024-05-01 00:29:49</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -514,185 +514,158 @@
 
 
         <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
-            <h3 id="参考文献">参考文献</h3>
-<p>FireFly: A High-Throughput Hardware Accelerator for Spiking Neural
-Networks With Efficient DSP and Memory Optimization, IEEE Transactions
-on Very Large Scale Integration (VLSI) Systems,
-10.1109/TVLSI.2023.3279349</p>
-<p>URL: https://ieeexplore.ieee.org/document/10143752/</p>
-<h4 id="其他参考资料">其他参考资料</h4>
-<ol type="1">
-<li><p>UltraScale Architecture DSP Slice, UG579 (v1.7) June 4,
-2018</p></li>
+            <h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>FireFly: A High-Throughput Hardware Accelerator for Spiking Neural Networks With Efficient DSP and Memory Optimization, IEEE Transactions on Very Large Scale Integration (VLSI) Systems, 10.1109&#x2F;TVLSI.2023.3279349</p>
+<p>URL: <a class="link" target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/10143752/">https://ieeexplore.ieee.org/document/10143752/ <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a></p>
+<h4 id="其他参考资料"><a href="#其他参考资料" class="headerlink" title="其他参考资料"></a>其他参考资料</h4><ol>
+<li><p>UltraScale Architecture DSP Slice, UG579 (v1.7) June 4, 2018</p>
+</li>
 <li></li>
 </ol>
-<h3 id="通过单个-dsp48e2-进行突触交叉计算-synaptic-crossbar-computation-by-a-single-dsp48e2">1.
-通过单个 DSP48E2 进行突触交叉计算 (Synaptic Crossbar Computation by a
-Single DSP48E2)</h3>
-<p>DSP48E2是Xilinx Ultrascale
-SoC中会提供的一个数字信号运算IP，基本架构在下两图所示，由三部分组成：</p>
-<ol type="1">
-<li><p>27位预加器 (27'b pre-adder)</p></li>
-<li><p>27 x 18 乘法器(multiplier)</p></li>
-<li><p>一个灵活的 48 位 ALU(flexible 48-bit
-ALU)，负责进行加法减法(post-adder/subtractor)、累加(accumulator)、逻辑运算(logic
-unit)</p></li>
+<h3 id="1-通过单个-DSP48E2-进行突触交叉计算-Synaptic-Crossbar-Computation-by-a-Single-DSP48E2"><a href="#1-通过单个-DSP48E2-进行突触交叉计算-Synaptic-Crossbar-Computation-by-a-Single-DSP48E2" class="headerlink" title="1. 通过单个 DSP48E2 进行突触交叉计算 (Synaptic Crossbar Computation by a Single DSP48E2)"></a>1. 通过单个 DSP48E2 进行突触交叉计算 (Synaptic Crossbar Computation by a Single DSP48E2)</h3><p>DSP48E2是Xilinx Ultrascale SoC中会提供的一个数字信号运算IP，基本架构在下两图所示，由三部分组成：</p>
+<ol>
+<li><p>27位预加器 (27’b pre-adder)</p>
+</li>
+<li><p>27 x 18 乘法器(multiplier)</p>
+</li>
+<li><p>一个灵活的 48 位 ALU(flexible 48-bit ALU)，负责进行加法减法(post-adder&#x2F;subtractor)、累加(accumulator)、逻辑运算(logic unit)</p>
+</li>
 </ol>
-<figure>
-<img lazyload src="/images/loading.svg" data-src="basic_func_dsp48e2.png" alt="图1: DSP48E2总体架构">
-<figcaption aria-hidden="true">图1: DSP48E2总体架构</figcaption>
-</figure>
-<figure>
-<img lazyload src="/images/loading.svg" data-src="detailed_func_dsp.png" alt="图2: DSP48E2细化的功能架构">
-<figcaption aria-hidden="true">图2: DSP48E2细化的功能架构</figcaption>
-</figure>
-<p>让我们先看看论文中的表述： <img lazyload src="/images/loading.svg" data-src="paper1.png" alt="图3: 单一DSP实现突触交叉运算的核心思路"></p>
-<figure>
-<img lazyload src="/images/loading.svg" data-src="paper2.png" alt="图3: 论文fig-2">
-<figcaption aria-hidden="true">图3: 论文fig-2</figcaption>
-</figure>
+<p><img lazyload src="/images/loading.svg" data-src="/2024/04/30/FireFly-v1-FPGA-Simulation/basic_func_dsp48e2.png" alt="图1: DSP48E2总体架构"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/2024/04/30/FireFly-v1-FPGA-Simulation/detailed_func_dsp.png" alt="图2: DSP48E2细化的功能架构"></p>
+<p>让我们先看看论文中的表述：<br><img lazyload src="/images/loading.svg" data-src="/2024/04/30/FireFly-v1-FPGA-Simulation/paper1.png" alt="图3: 单一DSP实现突触交叉运算的核心思路"></p>
+<p><img lazyload src="/images/loading.svg" data-src="/2024/04/30/FireFly-v1-FPGA-Simulation/paper2.png" alt="图3: 论文fig-2"></p>
 <p>思想：将一组量化成INT8的权重数送到DSPMux里，再利用输入脉冲决定哪些权重通过做后续运算，哪些不通过（不通过等价于卷积乘了0，不参与累加运算）。</p>
 <p>四组INT8权重经过有符号拓展成INT12，再拼接成48位的大向量。上30位送进A端口，下18位送进B端口。</p>
-<p>DSP48E2有几个控制端口，论文中分为<strong>静态设置</strong>和<strong>动态控制</strong>。静态设置主要设置DSP工作方式（计算方式），动态控制主要是利用脉冲控制多路选择器。在本文中，静态设置<code>4-bit ALUMODE = 4'b0000</code>,
-<code>5-bit INMODE = 5’b10001</code>。标志位置设置完成后，工作状态如下图所示
-<img lazyload src="/images/loading.svg" data-src="dsp1.png" alt="DSP48E2静态工作状态设置：INMODE"> <img lazyload src="/images/loading.svg" data-src="dsp2.png" alt="DSP48E2静态工作状态设置：ALUMODE"></p>
-<p>INMODE说明:
-最低位和最高位负责控制A，B输入打几拍之后再输出（即经过几个时钟周期/过了几个filp-flop再输出）。INMODE[0]和INMODE[4]置为1，表示A，B均打一拍之后输出。</p>
-<p><img lazyload src="/images/loading.svg" data-src="dsp3.png" alt="INMODE[0]控制Dual A模块的输出"> <img lazyload src="/images/loading.svg" data-src="dsp4.png" alt="INMODE[4]控制Dual B模块的输出"></p>
-<p>ALUMODE说明: ALU则被设置为SIMD(单指令多数据, Single Instruction,
-Multiple Data)模式。输入的48位数据可以被分成12位的4个数据切片/段(data
-segments)，每个小数据段(W, X, Y, Z)独立进行相同的计算，互不干扰。</p>
-<figure>
-<img lazyload src="/images/loading.svg" data-src="ALU_SIMD.png" alt="ALU的SIMD模式">
-<figcaption aria-hidden="true">ALU的SIMD模式</figcaption>
-</figure>
+<p>DSP48E2有几个控制端口，论文中分为<strong>静态设置</strong>和<strong>动态控制</strong>。静态设置主要设置DSP工作方式（计算方式），动态控制主要是利用脉冲控制多路选择器。在本文中，静态设置<code>4-bit ALUMODE = 4&#39;b0000</code>, <code>5-bit INMODE = 5’b10001</code>。标志位置设置完成后，工作状态如下图所示<br><img lazyload src="/images/loading.svg" data-src="/2024/04/30/FireFly-v1-FPGA-Simulation/dsp1.png" alt="DSP48E2静态工作状态设置：INMODE"><br><img lazyload src="/images/loading.svg" data-src="/2024/04/30/FireFly-v1-FPGA-Simulation/dsp2.png" alt="DSP48E2静态工作状态设置：ALUMODE"></p>
+<p>INMODE说明: 最低位和最高位负责控制A，B输入打几拍之后再输出（即经过几个时钟周期&#x2F;过了几个filp-flop再输出）。INMODE[0]和INMODE[4]置为1，表示A，B均打一拍之后输出。</p>
+<p><img lazyload src="/images/loading.svg" data-src="/2024/04/30/FireFly-v1-FPGA-Simulation/dsp3.png" alt="INMODE[0]控制Dual A模块的输出"><br><img lazyload src="/images/loading.svg" data-src="/2024/04/30/FireFly-v1-FPGA-Simulation/dsp4.png" alt="INMODE[4]控制Dual B模块的输出"></p>
+<p>ALUMODE说明: ALU则被设置为SIMD(单指令多数据, Single Instruction, Multiple Data)模式。输入的48位数据可以被分成12位的4个数据切片&#x2F;段(data segments)，每个小数据段(W, X, Y, Z)独立进行相同的计算，互不干扰。</p>
+<p><img lazyload src="/images/loading.svg" data-src="/2024/04/30/FireFly-v1-FPGA-Simulation/ALU_SIMD.png" alt="ALU的SIMD模式"></p>
 <p>将ALUMODE设成全0，ALU工作在SIMD ADD模式：Z + (W + X + Y + CIN)</p>
-<p>下面是DSP
-IP块的动态控制。论文中主要通过输入脉冲来动态控制一个9位的OPMODE端口来控制WXYZ四个Mux的输出。OPMODE端口的定义和功能如下图所示。</p>
-<p><img lazyload src="/images/loading.svg" data-src="OPMODE_ctrl_W.png" alt="OPMODE控制W的输出"> <img lazyload src="/images/loading.svg" data-src="OPMODE_ctrl_X.png" alt="OPMODE控制X的输出"> <img lazyload src="/images/loading.svg" data-src="OPMODE_ctrl_Y.png" alt="OPMODE控制Y的输出"> <img lazyload src="/images/loading.svg" data-src="OPMODE_ctrl_Z.png" alt="OPMODE控制Z的输出"></p>
-<p>以论文fig-2为例，<code>OPMODE=&#123;2&#123;s2&#125;,3'b001,2'b00,2&#123;s3&#125;&#125;</code>;
-Z的输出为PCIN（来自上一级经由专用 DSP 级联路径(Dedicated DSP Cascade
-Path)传到此一级），Y的输出恒为0，s2脉冲控制W输出，s3脉冲控制X输出。</p>
+<p>下面是DSP IP块的动态控制。论文中主要通过输入脉冲来动态控制一个9位的OPMODE端口来控制WXYZ四个Mux的输出。OPMODE端口的定义和功能如下图所示。</p>
+<p><img lazyload src="/images/loading.svg" data-src="/2024/04/30/FireFly-v1-FPGA-Simulation/OPMODE_ctrl_W.png" alt="OPMODE控制W的输出"><br><img lazyload src="/images/loading.svg" data-src="/2024/04/30/FireFly-v1-FPGA-Simulation/OPMODE_ctrl_X.png" alt="OPMODE控制X的输出"><br><img lazyload src="/images/loading.svg" data-src="/2024/04/30/FireFly-v1-FPGA-Simulation/OPMODE_ctrl_Y.png" alt="OPMODE控制Y的输出"><br><img lazyload src="/images/loading.svg" data-src="/2024/04/30/FireFly-v1-FPGA-Simulation/OPMODE_ctrl_Z.png" alt="OPMODE控制Z的输出"></p>
+<p>以论文fig-2为例，<code>OPMODE=&#123;2&#123;s2&#125;,3&#39;b001,2&#39;b00,2&#123;s3&#125;&#125;</code>; Z的输出为PCIN（来自上一级经由专用 DSP 级联路径(Dedicated DSP Cascade Path)传到此一级），Y的输出恒为0，s2脉冲控制W输出，s3脉冲控制X输出。</p>
 <p>附：Verilog代码实现：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode v"><code class="sourceCode verilog"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">module</span> single_dsp48<span class="op">(</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">input</span>   clk<span class="op">,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">input</span> <span class="dt">wire</span> <span class="op">[</span><span class="dv">11</span><span class="op">:</span><span class="dv">0</span><span class="op">]</span> w_20<span class="op">,</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">input</span> <span class="dt">wire</span> <span class="op">[</span><span class="dv">11</span><span class="op">:</span><span class="dv">0</span><span class="op">]</span> w_21<span class="op">,</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">input</span> <span class="dt">wire</span> <span class="op">[</span><span class="dv">11</span><span class="op">:</span><span class="dv">0</span><span class="op">]</span> w_22<span class="op">,</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">input</span> <span class="dt">wire</span> <span class="op">[</span><span class="dv">11</span><span class="op">:</span><span class="dv">0</span><span class="op">]</span> w_23<span class="op">,</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">input</span> <span class="dt">wire</span> <span class="op">[</span><span class="dv">11</span><span class="op">:</span><span class="dv">0</span><span class="op">]</span> w_30<span class="op">,</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">input</span> <span class="dt">wire</span> <span class="op">[</span><span class="dv">11</span><span class="op">:</span><span class="dv">0</span><span class="op">]</span> w_31<span class="op">,</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">input</span> <span class="dt">wire</span> <span class="op">[</span><span class="dv">11</span><span class="op">:</span><span class="dv">0</span><span class="op">]</span> w_32<span class="op">,</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">input</span> <span class="dt">wire</span> <span class="op">[</span><span class="dv">11</span><span class="op">:</span><span class="dv">0</span><span class="op">]</span> w_33<span class="op">,</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">input</span> <span class="dt">wire</span> s2<span class="op">,</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">input</span> <span class="dt">wire</span> s3<span class="op">,</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="dt">output</span> <span class="dt">wire</span> <span class="op">[</span><span class="dv">47</span><span class="op">:</span><span class="dv">0</span><span class="op">]</span> p</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">);</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="dt">wire</span> <span class="op">[</span><span class="dv">29</span><span class="op">:</span><span class="dv">0</span><span class="op">]</span> A<span class="op">;</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="dt">wire</span> <span class="op">[</span><span class="dv">17</span><span class="op">:</span><span class="dv">0</span><span class="op">]</span> B<span class="op">;</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="dt">wire</span> <span class="op">[</span><span class="dv">47</span><span class="op">:</span><span class="dv">0</span><span class="op">]</span> C<span class="op">;</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="dt">wire</span> <span class="op">[</span><span class="dv">8</span><span class="op">:</span><span class="dv">0</span><span class="op">]</span> OPMODE<span class="op">;</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="kw">assign</span> <span class="op">&#123;</span>B<span class="op">,</span> A<span class="op">&#125;</span> <span class="op">=</span> <span class="op">&#123;</span>w_30<span class="op">,</span> w_31<span class="op">,</span> w_32<span class="op">,</span> w_33<span class="op">&#125;;</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="kw">assign</span> C      <span class="op">=</span> <span class="op">&#123;</span>w_20<span class="op">,</span> w_21<span class="op">,</span> w_22<span class="op">,</span> w_23<span class="op">&#125;;</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="kw">assign</span> OPMODE <span class="op">=</span> <span class="op">&lt;!--</span>swig￼<span class="dv">0</span><span class="op">--&gt;,</span> <span class="bn">3&#39;b001</span><span class="op">,</span> <span class="bn">2&#39;b00</span><span class="op">,</span> <span class="op">&#123;</span><span class="dv">2</span><span class="op">&#123;</span>s3<span class="op">&#125;&#125;&#125;;</span> <span class="co">//复制两次s2/s3, 即只能是00, 11两种可能输入</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>   DSP48E2 #<span class="op">(</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Feature Control Attributes: Data Path Selection</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>      .A_INPUT<span class="op">(</span><span class="st">&quot;DIRECT&quot;</span><span class="op">),</span>               <span class="co">// Selects A input source, &quot;DIRECT&quot; (A port) or &quot;CASCADE&quot; (ACIN port)</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>      .B_INPUT<span class="op">(</span><span class="st">&quot;DIRECT&quot;</span><span class="op">),</span>               <span class="co">// Selects B input source, &quot;DIRECT&quot; (B port) or &quot;CASCADE&quot; (BCIN port)</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="co">//   .USE_DPORT(&quot;FALSE&quot;),              // Select D port usage (TRUE or FALSE)</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>      .AMULTSEL<span class="op">(</span><span class="st">&quot;A&quot;</span><span class="op">),</span>           <span class="co">//DSP48E2特性</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>      .USE_MULT<span class="op">(</span><span class="st">&quot;NONE&quot;</span><span class="op">),</span>            <span class="co">// Select multiplier usage (&quot;MULTIPLY&quot;, &quot;DYNAMIC&quot;, or &quot;NONE&quot;)</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>      .USE_SIMD<span class="op">(</span><span class="st">&quot;FOUR12&quot;</span><span class="op">),</span>               <span class="co">// SIMD selection (&quot;ONE48&quot;, &quot;TWO24&quot;, &quot;FOUR12&quot;)</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Pattern Detector Attributes: Pattern Detection Configuration</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>      .AUTORESET_PATDET<span class="op">(</span><span class="st">&quot;NO_RESET&quot;</span><span class="op">),</span>    <span class="co">// &quot;NO_RESET&quot;, &quot;RESET_MATCH&quot;, &quot;RESET_NOT_MATCH&quot;</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>      .MASK<span class="op">(</span><span class="bn">48&#39;h3fffffffffff</span><span class="op">),</span>          <span class="co">// 48-bit mask value for pattern detect (1=ignore)</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>      .PATTERN<span class="op">(</span><span class="bn">48&#39;h000000000000</span><span class="op">),</span>       <span class="co">// 48-bit pattern match for pattern detect</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>      .SEL_MASK<span class="op">(</span><span class="st">&quot;MASK&quot;</span><span class="op">),</span>                <span class="co">// &quot;C&quot;, &quot;MASK&quot;, &quot;ROUNDING_MODE1&quot;, &quot;ROUNDING_MODE2&quot;</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>      .SEL_PATTERN<span class="op">(</span><span class="st">&quot;PATTERN&quot;</span><span class="op">),</span>          <span class="co">// Select pattern value (&quot;PATTERN&quot; or &quot;C&quot;)</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>      .USE_PATTERN_DETECT<span class="op">(</span><span class="st">&quot;NO_PATDET&quot;</span><span class="op">),</span> <span class="co">// Enable pattern detect (&quot;PATDET&quot; or &quot;NO_PATDET&quot;)</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Register Control Attributes: Pipeline Register Configuration</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>      .ACASCREG<span class="op">(</span><span class="dv">0</span><span class="op">),</span>                     <span class="co">// Number of pipeline stages between A/ACIN and ACOUT (0, 1 or 2)</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>      .ADREG<span class="op">(</span><span class="dv">1</span><span class="op">),</span>                        <span class="co">// Number of pipeline stages for pre-adder (0 or 1)</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>      .ALUMODEREG<span class="op">(</span><span class="dv">0</span><span class="op">),</span>                   <span class="co">// Number of pipeline stages for ALUMODE (0 or 1)</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>      .AREG<span class="op">(</span><span class="dv">0</span><span class="op">),</span>                         <span class="co">// Number of pipeline stages for A (0, 1 or 2)</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>      .BCASCREG<span class="op">(</span><span class="dv">0</span><span class="op">),</span>                     <span class="co">// Number of pipeline stages between B/BCIN and BCOUT (0, 1 or 2)</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>      .BREG<span class="op">(</span><span class="dv">0</span><span class="op">),</span>                         <span class="co">// Number of pipeline stages for B (0, 1 or 2)</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>      .CARRYINREG<span class="op">(</span><span class="dv">1</span><span class="op">),</span>                   <span class="co">// Number of pipeline stages for CARRYIN (0 or 1)</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>      .CARRYINSELREG<span class="op">(</span><span class="dv">1</span><span class="op">),</span>                <span class="co">// Number of pipeline stages for CARRYINSEL (0 or 1)</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>      .CREG<span class="op">(</span><span class="dv">0</span><span class="op">),</span>                         <span class="co">// Number of pipeline stages for C (0 or 1)</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>      .DREG<span class="op">(</span><span class="dv">0</span><span class="op">),</span>                         <span class="co">// Number of pipeline stages for D (0 or 1)</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>      .INMODEREG<span class="op">(</span><span class="dv">1</span><span class="op">),</span>                    <span class="co">// Number of pipeline stages for INMODE (0 or 1)</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>      .MREG<span class="op">(</span><span class="dv">0</span><span class="op">),</span>                         <span class="co">// Number of multiplier pipeline stages (0 or 1)</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>      .OPMODEREG<span class="op">(</span><span class="dv">1</span><span class="op">),</span>                    <span class="co">// Number of pipeline stages for OPMODE (0 or 1)</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>      .PREG<span class="op">(</span><span class="dv">1</span><span class="op">)</span>                          <span class="co">// Number of pipeline stages for P (0 or 1)</span></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>   <span class="op">)</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>   DSP48E2_inst <span class="op">(</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Cascade: 30-bit (each) output: Cascade Ports</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>      .ACOUT<span class="op">(),</span>                   <span class="co">// 30-bit output: A port cascade output</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>      .BCOUT<span class="op">(),</span>                   <span class="co">// 18-bit output: B port cascade output</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>      .CARRYCASCOUT<span class="op">(),</span>     <span class="co">// 1-bit output: Cascade carry output</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>      .MULTSIGNOUT<span class="op">(),</span>       <span class="co">// 1-bit output: Multiplier sign cascade output</span></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>      .PCOUT<span class="op">(),</span>                   <span class="co">// 48-bit output: Cascade output</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Control: 1-bit (each) output: Control Inputs/Status Bits</span></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>      .OVERFLOW<span class="op">(),</span>             <span class="co">// 1-bit output: Overflow in add/acc output</span></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>      .PATTERNBDETECT<span class="op">(),</span> <span class="co">// 1-bit output: Pattern bar detect output</span></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>      .PATTERNDETECT<span class="op">(),</span>   <span class="co">// 1-bit output: Pattern detect output</span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>      .UNDERFLOW<span class="op">(),</span>           <span class="co">// 1-bit output: Underflow in add/acc output</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Data: 4-bit (each) output: Data Ports</span></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>      .CARRYOUT<span class="op">(),</span>             <span class="co">// 4-bit output: Carry output</span></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>      .P<span class="op">(</span>p<span class="op">),</span>                           <span class="co">// 48-bit output: Primary data output</span></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Cascade: 30-bit (each) input: Cascade Ports</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>      .ACIN<span class="op">(</span><span class="bn">30&#39;d0</span><span class="op">),</span>                     <span class="co">// 30-bit input: A cascade data input</span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>      .BCIN<span class="op">(</span><span class="bn">18&#39;d0</span><span class="op">),</span>                     <span class="co">// 18-bit input: B cascade input</span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>      .CARRYCASCIN<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>       <span class="co">// 1-bit input: Cascade carry input</span></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>      .MULTSIGNIN<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>         <span class="co">// 1-bit input: Multiplier sign input</span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>      .PCIN<span class="op">(),</span>                     <span class="co">// 48-bit input: P cascade input</span></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Control: 4-bit (each) input: Control Inputs/Status Bits</span></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>      .ALUMODE<span class="op">(</span><span class="bn">4&#39;b0000</span><span class="op">),</span>               <span class="co">// 4-bit input: ALU control input</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>      .CARRYINSEL<span class="op">(</span><span class="bn">3&#39;b000</span><span class="op">),</span>         <span class="co">// 3-bit input: Carry select input</span></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>      .CLK<span class="op">(</span>clk<span class="op">),</span>                       <span class="co">// 1-bit input: Clock input</span></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>      .INMODE<span class="op">(</span><span class="bn">5&#39;b10001</span><span class="op">),</span>                 <span class="co">// 5-bit input: INMODE control input</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>      .OPMODE<span class="op">(</span>OPMODE<span class="op">),</span>                 <span class="co">// 7-bit input: Operation mode input</span></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Data: 30-bit (each) input: Data Ports</span></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>      .A<span class="op">(</span>A<span class="op">),</span>                           <span class="co">// 30-bit input: A data input</span></span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>      .B<span class="op">(</span>B<span class="op">),</span>                           <span class="co">// 18-bit input: B data input</span></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>      .C<span class="op">(</span>C<span class="op">),</span>                           <span class="co">// 48-bit input: C data input</span></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>      .CARRYIN<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>               <span class="co">// 1-bit input: Carry input signal</span></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>      .D<span class="op">(</span><span class="dv">0</span><span class="op">),</span>                           <span class="co">// 25-bit input: D data input</span></span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>      <span class="co">// Reset/Clock Enable: 1-bit (each) input: Reset/Clock Enable Inputs</span></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>      .CEA1<span class="op">(</span><span class="bn">1&#39;b1</span><span class="op">),</span>                     <span class="co">// 1-bit input: Clock enable input for 1st stage AREG</span></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>      .CEA2<span class="op">(</span><span class="bn">1&#39;b1</span><span class="op">),</span>                     <span class="co">// 1-bit input: Clock enable input for 2nd stage AREG</span></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>      .CEAD<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>                     <span class="co">// 1-bit input: Clock enable input for ADREG</span></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>      .CEALUMODE<span class="op">(</span><span class="bn">1&#39;b1</span><span class="op">),</span>           <span class="co">// 1-bit input: Clock enable input for ALUMODE</span></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>      .CEB1<span class="op">(</span><span class="bn">1&#39;b1</span><span class="op">),</span>                     <span class="co">// 1-bit input: Clock enable input for 1st stage BREG</span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>      .CEB2<span class="op">(</span><span class="bn">1&#39;b1</span><span class="op">),</span>                     <span class="co">// 1-bit input: Clock enable input for 2nd stage BREG</span></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>      .CEC<span class="op">(</span><span class="bn">1&#39;b1</span><span class="op">),</span>                       <span class="co">// 1-bit input: Clock enable input for CREG</span></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a>      .CECARRYIN<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>           <span class="co">// 1-bit input: Clock enable input for CARRYINREG</span></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>      .CECTRL<span class="op">(</span><span class="bn">1&#39;b1</span><span class="op">),</span>                 <span class="co">// 1-bit input: Clock enable input for OPMODEREG and CARRYINSELREG</span></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>      .CED<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>                       <span class="co">// 1-bit input: Clock enable input for DREG</span></span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a>      .CEINMODE<span class="op">(</span><span class="bn">1&#39;b1</span><span class="op">),</span>             <span class="co">// 1-bit input: Clock enable input for INMODEREG</span></span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>      .CEM<span class="op">(</span><span class="bn">1&#39;b1</span><span class="op">),</span>                       <span class="co">// 1-bit input: Clock enable input for MREG</span></span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a>      .CEP<span class="op">(</span><span class="bn">1&#39;b1</span><span class="op">),</span>                       <span class="co">// 1-bit input: Clock enable input for PREG</span></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>      .RSTA<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>                     <span class="co">// 1-bit input: Reset input for AREG</span></span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>      .RSTALLCARRYIN<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>   <span class="co">// 1-bit input: Reset input for CARRYINREG</span></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>      .RSTALUMODE<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>         <span class="co">// 1-bit input: Reset input for ALUMODEREG</span></span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>      .RSTB<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>                     <span class="co">// 1-bit input: Reset input for BREG</span></span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>      .RSTC<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>                     <span class="co">// 1-bit input: Reset input for CREG</span></span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>      .RSTCTRL<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>               <span class="co">// 1-bit input: Reset input for OPMODEREG and CARRYINSELREG</span></span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>      .RSTD<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>                     <span class="co">// 1-bit input: Reset input for DREG and ADREG</span></span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>      .RSTINMODE<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>           <span class="co">// 1-bit input: Reset input for INMODEREG</span></span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a>      .RSTM<span class="op">(</span><span class="bn">1&#39;b0</span><span class="op">),</span>                     <span class="co">// 1-bit input: Reset input for MREG</span></span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>      .RSTP<span class="op">(</span>i_corr_en <span class="op">==</span> <span class="dv">0</span> <span class="op">||</span> i_dump<span class="op">)</span>                      <span class="co">// 1-bit input: Reset input for PREG</span></span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>   <span class="op">);</span>    </span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="kw">endmodule</span></span></code></pre></div>
-<p>PS：不要直接用IP Catelog里的DSP Macro
-IP核，高度定制化的IP核还是应参照Xilinx数据手册，编写原语实现。</p>
+<pre><code class="v">module single_dsp48(
+    input   clk,
+    input wire [11:0] w_20,
+    input wire [11:0] w_21,
+    input wire [11:0] w_22,
+    input wire [11:0] w_23,
+    input wire [11:0] w_30,
+    input wire [11:0] w_31,
+    input wire [11:0] w_32,
+    input wire [11:0] w_33,
+    input wire s2,
+    input wire s3,
+    
+    output wire [47:0] p
+
+    );
+    
+wire [29:0] A;
+wire [17:0] B;
+
+wire [47:0] C;
+wire [8:0] OPMODE;
+
+assign &#123;B, A&#125; = &#123;w_30, w_31, w_32, w_33&#125;;
+assign C      = &#123;w_20, w_21, w_22, w_23&#125;;
+assign OPMODE = &#123;&#123;2&#123;s2&#125;&#125;, 3&#39;b001, 2&#39;b00, &#123;2&#123;s3&#125;&#125;&#125;; //复制两次s2/s3, 即只能是00, 11两种可能输入
+
+   DSP48E2 #(
+      // Feature Control Attributes: Data Path Selection
+      .A_INPUT(&quot;DIRECT&quot;),               // Selects A input source, &quot;DIRECT&quot; (A port) or &quot;CASCADE&quot; (ACIN port)
+      .B_INPUT(&quot;DIRECT&quot;),               // Selects B input source, &quot;DIRECT&quot; (B port) or &quot;CASCADE&quot; (BCIN port)
+    //   .USE_DPORT(&quot;FALSE&quot;),              // Select D port usage (TRUE or FALSE)
+      .AMULTSEL(&quot;A&quot;),           //DSP48E2特性
+      .USE_MULT(&quot;NONE&quot;),            // Select multiplier usage (&quot;MULTIPLY&quot;, &quot;DYNAMIC&quot;, or &quot;NONE&quot;)
+      .USE_SIMD(&quot;FOUR12&quot;),               // SIMD selection (&quot;ONE48&quot;, &quot;TWO24&quot;, &quot;FOUR12&quot;)
+      // Pattern Detector Attributes: Pattern Detection Configuration
+      .AUTORESET_PATDET(&quot;NO_RESET&quot;),    // &quot;NO_RESET&quot;, &quot;RESET_MATCH&quot;, &quot;RESET_NOT_MATCH&quot;
+      .MASK(48&#39;h3fffffffffff),          // 48-bit mask value for pattern detect (1=ignore)
+      .PATTERN(48&#39;h000000000000),       // 48-bit pattern match for pattern detect
+      .SEL_MASK(&quot;MASK&quot;),                // &quot;C&quot;, &quot;MASK&quot;, &quot;ROUNDING_MODE1&quot;, &quot;ROUNDING_MODE2&quot;
+      .SEL_PATTERN(&quot;PATTERN&quot;),          // Select pattern value (&quot;PATTERN&quot; or &quot;C&quot;)
+      .USE_PATTERN_DETECT(&quot;NO_PATDET&quot;), // Enable pattern detect (&quot;PATDET&quot; or &quot;NO_PATDET&quot;)
+      // Register Control Attributes: Pipeline Register Configuration
+      .ACASCREG(0),                     // Number of pipeline stages between A/ACIN and ACOUT (0, 1 or 2)
+      .ADREG(1),                        // Number of pipeline stages for pre-adder (0 or 1)
+      .ALUMODEREG(0),                   // Number of pipeline stages for ALUMODE (0 or 1)
+      .AREG(0),                         // Number of pipeline stages for A (0, 1 or 2)
+      .BCASCREG(0),                     // Number of pipeline stages between B/BCIN and BCOUT (0, 1 or 2)
+      .BREG(0),                         // Number of pipeline stages for B (0, 1 or 2)
+      .CARRYINREG(1),                   // Number of pipeline stages for CARRYIN (0 or 1)
+      .CARRYINSELREG(1),                // Number of pipeline stages for CARRYINSEL (0 or 1)
+      .CREG(0),                         // Number of pipeline stages for C (0 or 1)
+      .DREG(0),                         // Number of pipeline stages for D (0 or 1)
+      .INMODEREG(1),                    // Number of pipeline stages for INMODE (0 or 1)
+      .MREG(0),                         // Number of multiplier pipeline stages (0 or 1)
+      .OPMODEREG(1),                    // Number of pipeline stages for OPMODE (0 or 1)
+      .PREG(1)                          // Number of pipeline stages for P (0 or 1)
+   )
+   DSP48E2_inst (
+      // Cascade: 30-bit (each) output: Cascade Ports
+      .ACOUT(),                   // 30-bit output: A port cascade output
+      .BCOUT(),                   // 18-bit output: B port cascade output
+      .CARRYCASCOUT(),     // 1-bit output: Cascade carry output
+      .MULTSIGNOUT(),       // 1-bit output: Multiplier sign cascade output
+      .PCOUT(),                   // 48-bit output: Cascade output
+      // Control: 1-bit (each) output: Control Inputs/Status Bits
+      .OVERFLOW(),             // 1-bit output: Overflow in add/acc output
+      .PATTERNBDETECT(), // 1-bit output: Pattern bar detect output
+      .PATTERNDETECT(),   // 1-bit output: Pattern detect output
+      .UNDERFLOW(),           // 1-bit output: Underflow in add/acc output
+      // Data: 4-bit (each) output: Data Ports
+      .CARRYOUT(),             // 4-bit output: Carry output
+      .P(p),                           // 48-bit output: Primary data output
+      // Cascade: 30-bit (each) input: Cascade Ports
+      .ACIN(30&#39;d0),                     // 30-bit input: A cascade data input
+      .BCIN(18&#39;d0),                     // 18-bit input: B cascade input
+      .CARRYCASCIN(1&#39;b0),       // 1-bit input: Cascade carry input
+      .MULTSIGNIN(1&#39;b0),         // 1-bit input: Multiplier sign input
+      .PCIN(),                     // 48-bit input: P cascade input
+      // Control: 4-bit (each) input: Control Inputs/Status Bits
+      .ALUMODE(4&#39;b0000),               // 4-bit input: ALU control input
+      .CARRYINSEL(3&#39;b000),         // 3-bit input: Carry select input
+      .CLK(clk),                       // 1-bit input: Clock input
+      .INMODE(5&#39;b10001),                 // 5-bit input: INMODE control input
+      .OPMODE(OPMODE),                 // 7-bit input: Operation mode input
+      // Data: 30-bit (each) input: Data Ports
+      .A(A),                           // 30-bit input: A data input
+      .B(B),                           // 18-bit input: B data input
+      .C(C),                           // 48-bit input: C data input
+      .CARRYIN(1&#39;b0),               // 1-bit input: Carry input signal
+      .D(0),                           // 25-bit input: D data input
+      // Reset/Clock Enable: 1-bit (each) input: Reset/Clock Enable Inputs
+      .CEA1(1&#39;b1),                     // 1-bit input: Clock enable input for 1st stage AREG
+      .CEA2(1&#39;b1),                     // 1-bit input: Clock enable input for 2nd stage AREG
+      .CEAD(1&#39;b0),                     // 1-bit input: Clock enable input for ADREG
+      .CEALUMODE(1&#39;b1),           // 1-bit input: Clock enable input for ALUMODE
+      .CEB1(1&#39;b1),                     // 1-bit input: Clock enable input for 1st stage BREG
+      .CEB2(1&#39;b1),                     // 1-bit input: Clock enable input for 2nd stage BREG
+      .CEC(1&#39;b1),                       // 1-bit input: Clock enable input for CREG
+      .CECARRYIN(1&#39;b0),           // 1-bit input: Clock enable input for CARRYINREG
+      .CECTRL(1&#39;b1),                 // 1-bit input: Clock enable input for OPMODEREG and CARRYINSELREG
+      .CED(1&#39;b0),                       // 1-bit input: Clock enable input for DREG
+      .CEINMODE(1&#39;b1),             // 1-bit input: Clock enable input for INMODEREG
+      .CEM(1&#39;b1),                       // 1-bit input: Clock enable input for MREG
+      .CEP(1&#39;b1),                       // 1-bit input: Clock enable input for PREG
+      .RSTA(1&#39;b0),                     // 1-bit input: Reset input for AREG
+      .RSTALLCARRYIN(1&#39;b0),   // 1-bit input: Reset input for CARRYINREG
+      .RSTALUMODE(1&#39;b0),         // 1-bit input: Reset input for ALUMODEREG
+      .RSTB(1&#39;b0),                     // 1-bit input: Reset input for BREG
+      .RSTC(1&#39;b0),                     // 1-bit input: Reset input for CREG
+      .RSTCTRL(1&#39;b0),               // 1-bit input: Reset input for OPMODEREG and CARRYINSELREG
+      .RSTD(1&#39;b0),                     // 1-bit input: Reset input for DREG and ADREG
+      .RSTINMODE(1&#39;b0),           // 1-bit input: Reset input for INMODEREG
+      .RSTM(1&#39;b0),                     // 1-bit input: Reset input for MREG
+      .RSTP(i_corr_en == 0 || i_dump)                      // 1-bit input: Reset input for PREG
+   );    
+endmodule
+</code></pre>
+<p>PS：不要直接用IP Catelog里的DSP Macro IP核，高度定制化的IP核还是应参照Xilinx数据手册，编写原语实现。</p>
+<p>当然，上述代码只能过RTL和Synthesis仿真，不能进行布局布线，因为我们把 OPMODE[5:4] 设置为 ‘01’，这表示正在使用 PCIN 总线，但在上述代码中所有的 PCIN 总线引脚被连接到 GND。</p>
 
         </div>
 
@@ -707,7 +680,7 @@ IP核，高度定制化的IP核还是应参照Xilinx数据手册，编写原语�
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-05-01 00:24:17
+                    :</strong> 2024-05-01 00:29:49
             </li>
         
         <li>
@@ -820,9 +793,7 @@ IP核，高度定制化的IP核还是应参照Xilinx数据手册，编写原语�
     <div class="post-toc">
         <div class="toc-title">此页目录</div>
         <div class="page-title">FireFly-v1-FPGA Simulation</div>
-        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%8D%95%E4%B8%AA-dsp48e2-%E8%BF%9B%E8%A1%8C%E7%AA%81%E8%A7%A6%E4%BA%A4%E5%8F%89%E8%AE%A1%E7%AE%97-synaptic-crossbar-computation-by-a-single-dsp48e2"><span class="nav-text">1.
-通过单个 DSP48E2 进行突触交叉计算 (Synaptic Crossbar Computation by a
-Single DSP48E2)</span></a></li></ol>
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E9%80%9A%E8%BF%87%E5%8D%95%E4%B8%AA-DSP48E2-%E8%BF%9B%E8%A1%8C%E7%AA%81%E8%A7%A6%E4%BA%A4%E5%8F%89%E8%AE%A1%E7%AE%97-Synaptic-Crossbar-Computation-by-a-Single-DSP48E2"><span class="nav-text">1. 通过单个 DSP48E2 进行突触交叉计算 (Synaptic Crossbar Computation by a Single DSP48E2)</span></a></li></ol>
 
     </div>
 </div>
