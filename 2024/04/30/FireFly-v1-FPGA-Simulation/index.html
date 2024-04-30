@@ -29,8 +29,10 @@
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/04/30/FireFly-v1-FPGA-Simulation/detailed_func_dsp.png">
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/04/30/FireFly-v1-FPGA-Simulation/paper1.png">
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/04/30/FireFly-v1-FPGA-Simulation/paper2.png">
+<meta property="og:image" content="https://ericzhang1412.github.io/2024/04/30/FireFly-v1-FPGA-Simulation/dsp1.png">
+<meta property="og:image" content="https://ericzhang1412.github.io/2024/04/30/FireFly-v1-FPGA-Simulation/dsp2.png">
 <meta property="article:published_time" content="2024-04-29T16:11:51.000Z">
-<meta property="article:modified_time" content="2024-04-30T08:20:45.432Z">
+<meta property="article:modified_time" content="2024-04-30T08:46:29.262Z">
 <meta property="article:author" content="Eric Zhang">
 <meta property="article:tag" content="SNN">
 <meta property="article:tag" content="FPGA">
@@ -458,8 +460,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-04-30 16:20:45</span>
-            <span class="mobile">2024-04-30 16:20:45</span>
+            <span class="desktop">2024-04-30 16:46:29</span>
+            <span class="mobile">2024-04-30 16:46:29</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -542,6 +544,11 @@ unit)</p></li>
 <img lazyload src="/images/loading.svg" data-src="paper2.png" alt="图3: 论文fig-2">
 <figcaption aria-hidden="true">图3: 论文fig-2</figcaption>
 </figure>
+<p>思想：将一组量化成INT8的权重数送到DSPMux里，再利用输入脉冲决定哪些权重通过做后续运算，哪些不通过（不通过等价于卷积乘了0，不参与累加运算）。</p>
+<p>四组INT8权重经过有符号拓展成INT12，再拼接成48位的大向量。上30位送进A端口，下18位送进B端口。</p>
+<p>DSP48E2有几个控制端口，论文中分为<strong>静态设置</strong>和<strong>动态控制</strong>。静态设置主要设置DSP工作方式（计算方式），动态控制主要是利用脉冲控制多路选择器。在本文中，静态设置<code>4-bit ALUMODE = 4'b0000</code>,
+<code>5-bit INMODE = 5’b10001</code>。标志位置设置完成后，工作状态如下图所示
+<img lazyload src="/images/loading.svg" data-src="dsp1.png" alt="DSP48E2静态工作状态设置：INMODE"> <img lazyload src="/images/loading.svg" data-src="dsp2.png" alt="DSP48E2静态工作状态设置：ALUMODE"></p>
 
         </div>
 
@@ -556,7 +563,7 @@ unit)</p></li>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-04-30 16:20:45
+                    :</strong> 2024-04-30 16:46:29
             </li>
         
         <li>
