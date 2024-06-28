@@ -27,8 +27,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/06/17/VIT-Need-Regs-ICLR-2024/output_image.png">
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/06/17/VIT-Need-Regs-ICLR-2024/net_struct.png">
+<meta property="og:image" content="https://ericzhang1412.github.io/2024/06/17/VIT-Need-Regs-ICLR-2024/VIT-Need-Regs-ICLR-2024/stack_and_squeeze.png">
 <meta property="article:published_time" content="2024-06-17T05:39:54.000Z">
-<meta property="article:modified_time" content="2024-06-28T13:27:11.548Z">
+<meta property="article:modified_time" content="2024-06-28T14:39:38.420Z">
 <meta property="article:author" content="Eric Zhang">
 <meta property="article:tag" content="前沿论文阅读">
 <meta property="article:tag" content="ViT">
@@ -464,8 +465,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-06-28 21:27:11</span>
-            <span class="mobile">2024-06-28 21:27:11</span>
+            <span class="desktop">2024-06-28 22:39:38</span>
+            <span class="mobile">2024-06-28 22:39:38</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -529,7 +530,16 @@ Block的个数是一致的。即Transformer强制要求输入输出为同一维�
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">att_mat = torch.stack(att_mat).squeeze(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></div>
 <p>这是在对attention map
 list进行拼接，降维处理。这里给出<code>torch.stack</code> API的用法：
-<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">torch.stack(tensors, dim=0, *, out=None) → Tensor</span><br><span class="line">    Concatenates a sequence of tensors along a new dimension.</span><br><span class="line">    All tensors need to be of the same size.</span><br><span class="line">SEE ALSO</span><br><span class="line">    torch.cat(): concatenates the given sequence along an existing dimension.</span><br><span class="line"></span><br><span class="line">* Parameters: </span><br><span class="line">- tensors (sequence of Tensors) – sequence of tensors to concatenate</span><br><span class="line"></span><br><span class="line">- dim (int, optional) – dimension to insert. Has to be between 0 and the number of dimensions of concatenated tensors (inclusive). Default: 0</span><br><span class="line"></span><br><span class="line">* Keyword Arguments</span><br><span class="line">- out (Tensor, optional) – the output tensor.</span><br></pre></td></tr></table></figure></div></p>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">torch.stack(tensors, dim=0, *, out=None) → Tensor</span><br><span class="line">    Concatenates a sequence of tensors along a new dimension.</span><br><span class="line">    All tensors need to be of the same size.</span><br><span class="line">SEE ALSO</span><br><span class="line">    torch.cat(): concatenates the given sequence along an existing dimension.</span><br><span class="line">* Parameters: </span><br><span class="line">    tensors (sequence of Tensors) – sequence of tensors to concatenate</span><br><span class="line">    dim (int, optional) – dimension to insert. Has to be between 0 and the number of dimensions of concatenated tensors (inclusive). Default: 0</span><br><span class="line">* Keyword Arguments</span><br><span class="line">    out (Tensor, optional) – the output tensor.</span><br></pre></td></tr></table></figure></div>
+不传入dim参数时默认为0，故将这个list以第1个维度进行拼接。之后再进行<code>squeeze(1)</code>操作，得到的是除去指定位置的维数为1的维度输出（这里比较绕QAQ）。运行<code>print(att_mat.shape)</code>,得到的输出是<code>torch.Size([12, 12, 197, 197])</code>。</p>
+<p>我猜测的数据流是这样的： <img lazyload src="/images/loading.svg" data-src="VIT-Need-Regs-ICLR-2024/stack_and_squeeze.png" alt="Stack and Squeeze"></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">att_mat = torch.mean(att_mat, dim=<span class="number">1</span>)</span><br></pre></td></tr></table></figure></div>
+<p>按照第二个维度（12）进行均值计算，最后得到的理论上是12张一样的平均过后的attention
+map。</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">residual_att = torch.eye(att_mat.size(<span class="number">1</span>))</span><br><span class="line">aug_att_mat = att_mat + residual_att</span><br><span class="line">aug_att_mat = aug_att_mat / aug_att_mat.<span class="built_in">sum</span>(dim=-<span class="number">1</span>).unsqueeze(-<span class="number">1</span>)</span><br></pre></td></tr></table></figure></div>
+<p>在 ViT 中，注意力矩阵 <span class="math inline">\(A\)</span>
+表示每个token对其他token的注意力权重。通过添加单位矩阵 <span class="math inline">\(I\)</span>：<span class="math display">\[aug_{att_mat}=A+I\]</span>. 其中，I
+是一个单位矩阵（对角线上元素为1，其他元素为0），我们确保了每个token对自己的注意力权重至少为1。这种方式可以看作是残差连接的一种形式，它保证了每个token的原始信息在经过多个注意力层后仍能保留。(来源：ChatGPT)</p>
 
         </div>
 
@@ -544,7 +554,7 @@ list进行拼接，降维处理。这里给出<code>torch.stack</code> API的用
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-06-28 21:27:11
+                    :</strong> 2024-06-28 22:39:38
             </li>
         
         <li>
