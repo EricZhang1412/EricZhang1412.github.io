@@ -28,7 +28,7 @@
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/06/17/VIT-Need-Regs-ICLR-2024/output_image.png">
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/06/17/VIT-Need-Regs-ICLR-2024/net_struct.png">
 <meta property="article:published_time" content="2024-06-17T05:39:54.000Z">
-<meta property="article:modified_time" content="2024-06-28T12:28:25.091Z">
+<meta property="article:modified_time" content="2024-06-28T12:54:26.692Z">
 <meta property="article:author" content="Eric Zhang">
 <meta property="article:tag" content="前沿论文阅读">
 <meta property="article:tag" content="ViT">
@@ -464,8 +464,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-06-28 20:28:25</span>
-            <span class="mobile">2024-06-28 20:28:25</span>
+            <span class="desktop">2024-06-28 20:54:26</span>
+            <span class="mobile">2024-06-28 20:54:26</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -520,7 +520,12 @@ Map</h2>
 <p>我们详细看看可视化代码里干了什么事情。</p>
 <p>前期的网络处理流程如下图所示。 <img lazyload src="/images/loading.svg" data-src="net_struct.png" alt="ViT_Base_16 Net Structure"></p>
 <p>核心部分处理score matrix 和Attention map的代码如下：</p>
-<div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">logits, att_mat = model(x.unsqueeze(<span class="number">0</span>))</span><br><span class="line"></span><br><span class="line">att_mat = torch.stack(att_mat).squeeze(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Average the attention weights across all heads.</span></span><br><span class="line">att_mat = torch.mean(att_mat, dim=<span class="number">1</span>)</span><br></pre></td></tr></table></figure></div>
+<div class="highlight-container" data-rel="Py"><figure class="iseeu highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">logits, att_mat = model(x.unsqueeze(<span class="number">0</span>))</span><br></pre></td></tr></table></figure></div>
+<p>此行代码预测并获取注意力矩阵,
+此时若运行<code>print(len(att_mat))</code>,
+我们会得到输出为<code>12</code>，代表模型输出的Attention
+Map共有12个。这个数字与Transformer Encoder
+Block的个数是一致的。即Transformer强制要求输入输出为同一维度，这样才可以级联好多个Transformer块进行不断地网络学习与拟合。</p>
 
         </div>
 
@@ -535,7 +540,7 @@ Map</h2>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-06-28 20:28:25
+                    :</strong> 2024-06-28 20:54:26
             </li>
         
         <li>
