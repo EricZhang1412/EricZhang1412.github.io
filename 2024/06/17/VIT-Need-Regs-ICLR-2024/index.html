@@ -30,8 +30,10 @@
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/06/17/VIT-Need-Regs-ICLR-2024/stack_and_squeeze.png">
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/06/17/VIT-Need-Regs-ICLR-2024/re-norm.png">
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/06/17/VIT-Need-Regs-ICLR-2024/joint_Attn.png">
+<meta property="og:image" content="https://ericzhang1412.github.io/2024/06/17/VIT-Need-Regs-ICLR-2024/reshape_resize.png">
+<meta property="og:image" content="https://ericzhang1412.github.io/2024/06/17/VIT-Need-Regs-ICLR-2024/attention_maps_canvas.png">
 <meta property="article:published_time" content="2024-06-17T05:39:54.000Z">
-<meta property="article:modified_time" content="2024-06-29T01:28:42.093Z">
+<meta property="article:modified_time" content="2024-06-29T09:02:43.445Z">
 <meta property="article:author" content="Eric Zhang">
 <meta property="article:tag" content="前沿论文阅读">
 <meta property="article:tag" content="ViT">
@@ -579,8 +581,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-06-29 09:28:42</span>
-            <span class="mobile">2024-06-29 09:28:42</span>
+            <span class="desktop">2024-06-29 17:02:43</span>
+            <span class="mobile">2024-06-29 17:02:43</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -668,6 +670,18 @@ matrix），它不仅考虑了每个token对其他token的注意力权重，还�
 <p>这两行进行<strong>递归累乘</strong>操作。首先初始化了一个与增强注意力矩阵（aug_att_mat）尺寸相同的零矩阵，用于存储每层的联合注意力矩阵。在第一层时，联合注意力矩阵就是增强注意力矩阵本身。从第二层开始（n=1），通过递归地相乘当前层的增强注意力矩阵和前一层的联合注意力矩阵，来更新联合注意力矩阵。具体来说，当前层的联合注意力矩阵等于当前层的增强注意力矩阵乘以前一层的联合注意力矩阵。</p>
 <p>为什么要递归相乘？递归相乘的目的是为了累积每层注意力矩阵的影响。通过这种方式，最终得到的联合注意力矩阵能够综合考虑所有层次的注意力关系，捕捉输入token之间更复杂的依赖关系。</p>
 <p>用图表示joint_attn计算过程如下： <img lazyload src="/images/loading.svg" data-src="joint_Attn.png" alt="Joint Attention Calculation"></p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">v = joint_attentions[-<span class="number">1</span>]</span><br></pre></td></tr></table></figure></div>
+<p>取最后一个作为整个模型的联合注意力矩阵.</p>
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">grid_size = <span class="built_in">int</span>(np.sqrt(aug_att_mat.size(-<span class="number">1</span>)))</span><br><span class="line">mask = v[<span class="number">0</span>, <span class="number">1</span>:].reshape(grid_size, grid_size).detach().numpy()</span><br><span class="line">mask = cv2.resize(mask / mask.<span class="built_in">max</span>(), im.size)[..., np.newaxis]</span><br><span class="line">result = (mask * im).astype(<span class="string">"uint8"</span>) </span><br></pre></td></tr></table></figure></div>
+<p>先计算每个Patch的边长，这里为14，再重塑注意力矩阵，提取最后一层的联合Attention
+Map中第一个token<code>[CLS]</code>对所有token的注意力权重,
+将这个一维数组reshape为二维数组，形成一个网格，每个值表示对应位置的注意力权重。通过<code>cv2.resize</code>函数将注意力掩码调整到与原图像相同的大小。mask
+/ mask.max() 将注意力掩码归一化到0-1之间。[..., np.newaxis]
+为了使mask具有三个通道，这样可以与原图像进行逐像素乘法。</p>
+<p>计算过程如下图： <img lazyload src="/images/loading.svg" data-src="reshape_resize.png" alt="reshape and resize"></p>
+<p>接着我又改了一个代码块出来，能输出12个Block的特征图输出：
+<div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">attention_maps = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, aug_att_mat.shape[<span class="number">0</span>]):</span><br><span class="line">    tmp_attn_map = aug_att_mat[i]</span><br><span class="line">    grid_size = <span class="built_in">int</span>(np.sqrt(aug_att_mat.size(-<span class="number">1</span>)))</span><br><span class="line">    mask = tmp_attn_map[<span class="number">0</span>, <span class="number">1</span>:].reshape(grid_size, grid_size).detach().numpy()</span><br><span class="line">    <span class="comment"># print(mask.shape)</span></span><br><span class="line">    mask = cv2.resize(mask / mask.<span class="built_in">max</span>(), im.size)</span><br><span class="line">    mask = (mask * <span class="number">255</span>).astype(np.uint8)</span><br><span class="line">    heatmap = cv2.applyColorMap(mask, cv2.COLORMAP_JET)</span><br><span class="line">    output_filename = <span class="string">f'attention_mask_<span class="subst">{i}</span>.png'</span></span><br><span class="line">    attention_maps.append(heatmap)</span><br><span class="line">    <span class="comment"># cv2.imwrite(output_filename, heatmap)</span></span><br><span class="line">    </span><br><span class="line">map_height, map_width, _ = attention_maps[<span class="number">0</span>].shape</span><br><span class="line">num_maps = <span class="built_in">len</span>(attention_maps)</span><br><span class="line">canvas_height = map_height</span><br><span class="line">canvas_width = map_width * num_maps</span><br><span class="line"></span><br><span class="line">canvas = np.zeros((canvas_height, canvas_width, <span class="number">3</span>), dtype=np.uint8)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i, heatmap <span class="keyword">in</span> <span class="built_in">enumerate</span>(attention_maps):</span><br><span class="line">    canvas[:, i * map_width:(i + <span class="number">1</span>) * map_width, :] = heatmap</span><br><span class="line"></span><br><span class="line">cv2.imwrite(<span class="string">'attention_maps_canvas.png'</span>, canvas)</span><br></pre></td></tr></table></figure></div> 输出的12张图并起来长这样： <img lazyload src="/images/loading.svg" data-src="attention_maps_canvas.png" alt="attention maps">
+确实证明了ViT存在Attention Map中有Artifacts存在。</p>
 
         </div>
 
@@ -682,7 +696,7 @@ matrix），它不仅考虑了每个token对其他token的注意力权重，还�
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-06-29 09:28:42
+                    :</strong> 2024-06-29 17:02:43
             </li>
         
         <li>
