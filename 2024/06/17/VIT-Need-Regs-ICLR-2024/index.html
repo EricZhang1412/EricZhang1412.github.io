@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/06/17/VIT-Need-Regs-ICLR-2024/reshape_resize.png">
 <meta property="og:image" content="https://ericzhang1412.github.io/2024/06/17/VIT-Need-Regs-ICLR-2024/attention_maps_canvas.png">
 <meta property="article:published_time" content="2024-06-17T05:39:54.000Z">
-<meta property="article:modified_time" content="2024-06-29T09:02:43.445Z">
+<meta property="article:modified_time" content="2024-06-29T09:51:49.586Z">
 <meta property="article:author" content="Eric Zhang">
 <meta property="article:tag" content="前沿论文阅读">
 <meta property="article:tag" content="ViT">
@@ -581,8 +581,8 @@ mjx-container[display="true"] + br {
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-06-29 17:02:43</span>
-            <span class="mobile">2024-06-29 17:02:43</span>
+            <span class="desktop">2024-06-29 17:51:49</span>
+            <span class="mobile">2024-06-29 17:51:49</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -682,6 +682,8 @@ Map中第一个token<code>[CLS]</code>对所有token的注意力权重,
 <p>接着我又改了一个代码块出来，能输出12个Block的特征图输出：
 <div class="highlight-container" data-rel="Python"><figure class="iseeu highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">attention_maps = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>, aug_att_mat.shape[<span class="number">0</span>]):</span><br><span class="line">    tmp_attn_map = aug_att_mat[i]</span><br><span class="line">    grid_size = <span class="built_in">int</span>(np.sqrt(aug_att_mat.size(-<span class="number">1</span>)))</span><br><span class="line">    mask = tmp_attn_map[<span class="number">0</span>, <span class="number">1</span>:].reshape(grid_size, grid_size).detach().numpy()</span><br><span class="line">    <span class="comment"># print(mask.shape)</span></span><br><span class="line">    mask = cv2.resize(mask / mask.<span class="built_in">max</span>(), im.size)</span><br><span class="line">    mask = (mask * <span class="number">255</span>).astype(np.uint8)</span><br><span class="line">    heatmap = cv2.applyColorMap(mask, cv2.COLORMAP_JET)</span><br><span class="line">    output_filename = <span class="string">f'attention_mask_<span class="subst">{i}</span>.png'</span></span><br><span class="line">    attention_maps.append(heatmap)</span><br><span class="line">    <span class="comment"># cv2.imwrite(output_filename, heatmap)</span></span><br><span class="line">    </span><br><span class="line">map_height, map_width, _ = attention_maps[<span class="number">0</span>].shape</span><br><span class="line">num_maps = <span class="built_in">len</span>(attention_maps)</span><br><span class="line">canvas_height = map_height</span><br><span class="line">canvas_width = map_width * num_maps</span><br><span class="line"></span><br><span class="line">canvas = np.zeros((canvas_height, canvas_width, <span class="number">3</span>), dtype=np.uint8)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i, heatmap <span class="keyword">in</span> <span class="built_in">enumerate</span>(attention_maps):</span><br><span class="line">    canvas[:, i * map_width:(i + <span class="number">1</span>) * map_width, :] = heatmap</span><br><span class="line"></span><br><span class="line">cv2.imwrite(<span class="string">'attention_maps_canvas.png'</span>, canvas)</span><br></pre></td></tr></table></figure></div> 输出的12张图并起来长这样： <img lazyload src="/images/loading.svg" data-src="attention_maps_canvas.png" alt="attention maps">
 确实证明了ViT存在Attention Map中有Artifacts存在。</p>
+<h2 id="snn-based-transformer有没有类似的现象呢">SNN-based
+Transformer有没有类似的现象呢</h2>
 
         </div>
 
@@ -696,7 +698,7 @@ Map中第一个token<code>[CLS]</code>对所有token的注意力权重,
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-06-29 17:02:43
+                    :</strong> 2024-06-29 17:51:49
             </li>
         
         <li>
@@ -821,7 +823,8 @@ Map中第一个token<code>[CLS]</code>对所有token的注意力权重,
         <div class="toc-title">此页目录</div>
         <div class="page-title">VIT_Need_Regs_ICLR_2024</div>
         <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E6%9C%89%E4%B8%80%E5%AE%9A%E5%8F%AF%E8%A7%A3%E9%87%8A%E6%80%A7%E7%9A%84attention-map"><span class="nav-text">如何生成有一定可解释性的Attention
-Map</span></a></li></ol>
+Map</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#snn-based-transformer%E6%9C%89%E6%B2%A1%E6%9C%89%E7%B1%BB%E4%BC%BC%E7%9A%84%E7%8E%B0%E8%B1%A1%E5%91%A2"><span class="nav-text">SNN-based
+Transformer有没有类似的现象呢</span></a></li></ol>
 
     </div>
 </div>
@@ -840,65 +843,66 @@ Map</span></a></li></ol>
         </div>
 
         <div class="main-content-footer">
-            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
-    <div class="info-container py-3 text-center">
-        
-        <div class="text-center">
-            &copy;
-            
-              <span>2022</span>
-              -
-            
-            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">Eric Zhang</a>
-        </div>
-        
-            <script data-swup-reload-script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
-                
-                    <span id="busuanzi_container_site_uv" class="lg:!block">
-                        <span class="text-sm">访问人数</span>
-                        <span id="busuanzi_value_site_uv"></span>
-                    </span>
-                
-                
-                    <span id="busuanzi_container_site_pv" class="lg:!block">
-                        <span class="text-sm">总访问量</span>
-                        <span id="busuanzi_value_site_pv"></span>
-                    </span>
-                
-            </div>
-        
-        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
-            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
-            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.5.6</a></span>
-        </div>
-        
-        
-            <div>
-                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
-            </div>
-        
-        
-            <script data-swup-reload-script>
-                try {
-                    function odometer_init() {
-                    const elements = document.querySelectorAll('.odometer');
-                    elements.forEach(el => {
-                        new Odometer({
-                            el,
-                            format: '( ddd).dd',
-                            duration: 200
-                        });
-                    });
-                    }
-                    odometer_init();
-                } catch (error) {}
-            </script>
-        
-        
-        
-    </div>  
-</footer>
+            @import '../../common/variables'
+
+.footer
+  .odometer.odometer-auto-theme, .odometer.odometer-theme-default
+    display inline-block
+    vertical-align baseline
+    position relative
+
+  .odometer.odometer-auto-theme .odometer-digit, .odometer.odometer-theme-default .odometer-digit
+    display inline-block
+    vertical-align baseline
+    position relative
+
+  .odometer.odometer-auto-theme .odometer-digit .odometer-digit-spacer, .odometer.odometer-theme-default .odometer-digit .odometer-digit-spacer
+    display inline-block
+    vertical-align baseline
+    visibility hidden
+
+  .odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner, .odometer.odometer-theme-default .odometer-digit .odometer-digit-inner
+    text-align left
+    display block
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    overflow hidden
+
+  .odometer.odometer-auto-theme .odometer-digit .odometer-ribbon, .odometer.odometer-theme-default .odometer-digit .odometer-ribbon
+    display block
+
+  .odometer.odometer-auto-theme .odometer-digit .odometer-ribbon-inner, .odometer.odometer-theme-default .odometer-digit .odometer-ribbon-inner
+    display block
+    -webkit-backface-visibility hidden
+
+  .odometer.odometer-auto-theme .odometer-digit .odometer-value, .odometer.odometer-theme-default .odometer-digit .odometer-value
+    display block
+
+  .odometer.odometer-auto-theme .odometer-digit .odometer-value.odometer-last-value, .odometer.odometer-theme-default .odometer-digit .odometer-value.odometer-last-value
+    position absolute
+
+  .odometer.odometer-auto-theme.odometer-animating-up .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up .odometer-ribbon-inner
+    transition transform 999ms
+
+  .odometer.odometer-auto-theme.odometer-animating-up.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-up.odometer-animating .odometer-ribbon-inner
+    transform translateY(-100%)
+
+  .odometer.odometer-auto-theme.odometer-animating-down .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down .odometer-ribbon-inner
+    transform translateY(-100%)
+
+  .odometer.odometer-auto-theme.odometer-animating-down.odometer-animating .odometer-ribbon-inner, .odometer.odometer-theme-default.odometer-animating-down.odometer-animating .odometer-ribbon-inner
+    transition transform 999ms
+    transform translateY(0)
+
+  .odometer.odometer-auto-theme, .odometer.odometer-theme-default
+    line-height 1.1em
+
+  .odometer.odometer-auto-theme .odometer-value, .odometer.odometer-theme-default .odometer-value
+    text-align center
+
         </div>
     </div>
 

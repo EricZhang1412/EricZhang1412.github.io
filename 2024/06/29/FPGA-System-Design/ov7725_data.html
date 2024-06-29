@@ -1,0 +1,155 @@
+<h1 id="entity-ov7725_data">Entity: ov7725_data</h1>
+<ul>
+<li><strong>File</strong>: ov7725_data.v</li>
+</ul>
+<h2 id="diagram">Diagram</h2>
+<p><img src="ov7725_data.svg" title="Diagram" alt="Diagram" /> ##
+Ports</p>
+<table>
+<thead>
+<tr class="header">
+<th>Port name</th>
+<th>Direction</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>sys_rst_n</td>
+<td>input</td>
+<td>wire</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>ov7725_pclk</td>
+<td>input</td>
+<td>wire</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>ov7725_href</td>
+<td>input</td>
+<td>wire</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>ov7725_vsync</td>
+<td>input</td>
+<td>wire</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>ov7725_data</td>
+<td>input</td>
+<td>wire [ 7:0]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>ov7725_wr_en</td>
+<td>output</td>
+<td>wire</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>ov7725_data_out</td>
+<td>output</td>
+<td>wire [15:0]</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="signals">Signals</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pic_flag</td>
+<td>wire</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>ov7725_vsync_dly</td>
+<td>reg</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>cnt_pic</td>
+<td>reg [3:0]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>pic_valid</td>
+<td>reg</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>pic_data_reg</td>
+<td>reg [7:0]</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>data_out_reg</td>
+<td>reg [15:0]</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>data_flag</td>
+<td>reg</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>data_flag_dly1</td>
+<td>reg</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="constants">Constants</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Value</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>PIC_WAIT</td>
+<td></td>
+<td>4'd10</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="processes">Processes</h2>
+<ul>
+<li>unnamed: ( @(posedge ov7725_pclk or negedge sys_rst_n) )
+<ul>
+<li><strong>Type:</strong> always</li>
+</ul></li>
+<li>unnamed: ( @(posedge ov7725_pclk or negedge sys_rst_n) )
+<ul>
+<li><strong>Type:</strong> always</li>
+</ul></li>
+<li>unnamed: ( @(posedge ov7725_pclk or negedge sys_rst_n) )
+<ul>
+<li><strong>Type:</strong> always</li>
+</ul></li>
+<li>unnamed: ( @(posedge ov7725_pclk or negedge sys_rst_n) )
+<ul>
+<li><strong>Type:</strong> always</li>
+</ul></li>
+<li>unnamed: ( @(posedge ov7725_pclk or negedge sys_rst_n) )
+<ul>
+<li><strong>Type:</strong> always</li>
+</ul></li>
+</ul>
