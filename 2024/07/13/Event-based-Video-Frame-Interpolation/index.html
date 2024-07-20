@@ -26,7 +26,7 @@
 <meta property="og:description" content="Reference [1] H. Cho, T. Kim, Y. Jeong, and K.-J. Yoon, “TTA-EVF: Test-Time Adaptation for Event-based Video Frame Interpolation via Reliable Pixel and Sample Estimation,” in Proceedings of the IEE">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-07-13T04:21:35.000Z">
-<meta property="article:modified_time" content="2024-07-20T05:35:39.138Z">
+<meta property="article:modified_time" content="2024-07-20T05:38:42.534Z">
 <meta property="article:author" content="Eric Zhang">
 <meta property="article:tag" content="前沿论文阅读">
 <meta property="article:tag" content="VFI">
@@ -462,8 +462,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2024-07-20 13:35:39</span>
-            <span class="mobile">2024-07-20 13:35:39</span>
+            <span class="desktop">2024-07-20 13:38:42</span>
+            <span class="mobile">2024-07-20 13:38:42</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -545,12 +545,12 @@ Interpolation，即视频插帧，在两个连续视频帧之间合成不存在�
 <h2 id="event-based-vfi方法对比">Event-based VFI方法对比</h2>
 <table>
 <colgroup>
-<col style="width: 7%">
-<col style="width: 45%">
 <col style="width: 6%">
+<col style="width: 61%">
+<col style="width: 2%">
 <col style="width: 20%">
-<col style="width: 9%">
-<col style="width: 10%">
+<col style="width: 4%">
+<col style="width: 4%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -573,7 +573,7 @@ Interpolation</td>
 前人工作中提出了EDI（Event-based Double
 Integral）模型将给定模糊帧和相应的事件流经过去模糊后，通过估计它们之间的残差，可以从上述初步去模糊的图像中插值出其他潜在视频帧。该方法自然地连接了强度图像和事件数据，在高帧率视频生成方面显示出不错的结果。但是由于事件相机的触发阈值随着硬件和场景条件在空间和时间上变化，会引入强烈的累积噪声</font></td>
 <td>IntegralNet+GateNet</td>
-<td>✨残差估计<br>✨关键帧去模糊<br>✨插帧<br>✨帧融合</td>
+<td><font size="1">✨残差估计<br>✨关键帧去模糊<br>✨插帧<br>✨帧融合</font></td>
 <td>None</td>
 <td>主要聚焦<strong>高速视频重建</strong>任务，插帧作为该任务其中一个策略</td>
 </tr>
@@ -586,11 +586,11 @@ trade-offs）的多相机方法克服这一限制，但存两份或多分同一�
 单纯依赖事件相机(Events-only)的数据进行图像强度恢复不够完美，表现为1.插值帧的整体对比度通常会计算错误；2.插值结果强依赖于物体的运动情况（换言之对不运动的物体无法插值，也就无法完成VFI）<br>🔑
 依赖事件数据和强度帧数据(Events-plus-frames)的方法虽然能有效估计非线性运动，但由于<strong>对比度阈值</strong>和<strong>传感器噪声</strong>的固有<strong>不稳定性</strong>，并非所有的亮度变化都能准确地被记录为事件。</font></td>
 <td>Time Lens(CNN-based)</td>
-<td>✨从事件数据出发的基于变形(Warping-based)的插值方法<br>✨引入“变形优化”(warping
+<td><font size="1">✨从事件数据出发的基于变形(Warping-based)的插值方法<br>✨引入“变形优化”(warping
 refinement)步骤,
 提高这些初始插值帧的质量<br>✨基于合成的(Synthesis-based)插帧方法,
 利用两种信源(像素强度和事件流)融合生成新的帧<br>✨最后利用基于注意力机制的平均化(attention-baed
-averaging)模块组合两种方法的结果</td>
+averaging)模块组合两种方法的结果</font></td>
 <td><a class="link" target="_blank" rel="noopener" href="https://rpg.ifi.uzh.ch/TimeLens.html">Project
 Demo <i class="fa-regular fa-arrow-up-right-from-square fa-sm"></i></a><br></td>
 <td>每一个单独的插帧策略不行，就两个一起用（有点<strong>大力出奇迹</strong>的味道）</td>
@@ -676,7 +676,7 @@ Ratio，中文译为<strong>峰值信噪比</strong>，</td>
         
             <li>
                 <strong>更新于
-                    :</strong> 2024-07-20 13:35:39
+                    :</strong> 2024-07-20 13:38:42
             </li>
         
         <li>
